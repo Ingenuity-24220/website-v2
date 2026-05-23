@@ -13,6 +13,9 @@
     // hooray learning how to use .map (and on the way .forEach :D)
     function moveMemberRight() {
         memberIndexes = memberIndexes.map((element) => {
+                if (members.length == 0) { // should never happen! but if it does theres this guard here
+                    return
+                }
                 return (element + 1 ) % members.length
             }
         )
@@ -20,7 +23,11 @@
 
     function moveMemberLeft() {
         memberIndexes = memberIndexes.map((element) => {
+                if (members.length == 0) {
+                    return
+                }
                 return (element - 1 + members.length) % members.length
+                // apparently JS % acts more like a remainder so we're doing this
             }
         )
     }
