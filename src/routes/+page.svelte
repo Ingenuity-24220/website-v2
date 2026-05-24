@@ -1,23 +1,30 @@
 <script lang="ts">
-    import teamImg from '$lib/assets/team.webp';
+    import teamImg from '$lib/assets/images/team.webp';
     import arrowUp from '$lib/assets/arrowup.webp';
-    import team1 from '$lib/assets/team-1.webp';
-    import team2 from '$lib/assets/team-2.webp';
-    import robot1 from '$lib/assets/robot-1.webp';
-    import robot2 from '$lib/assets/robot-2.webp';
-    import elaine from '$lib/assets/elaine.png';
-    import coachdai from '$lib/assets/coachdai.jpeg';
-    import erik from '$lib/assets/erik.png';
-    import johnathan from '$lib/assets/jonathan.jpeg';
-    import nathan from '$lib/assets/nathan.jpeg';
-    import max from '$lib/assets/max.jpg'
-    import coachwan from '$lib/assets/john.png';
-    import sherry from '$lib/assets/sherry1.png'
-    import vincent from '$lib/assets/vincent.jpg'
-    import zilong from '$lib/assets/zilong.jpg'
-    import constance from '$lib/assets/constance.jpg'
-    import mentorzhang from '$lib/assets/baoshe.jpg'
-    import niko from '$lib/assets/niko.jpg'
+    import team1 from '$lib/assets/images/team-1.webp';
+    import team2 from '$lib/assets/images/team-2.webp';
+    import robot1 from '$lib/assets/images/robot-1.webp';
+    import robot2 from '$lib/assets/images/robot-2.webp';
+    import elaine from '$lib/assets/team/elaine.png';
+    import coachdai from '$lib/assets/team/coachdai.jpeg';
+    import erik from '$lib/assets/team/erik.png';
+    import johnathan from '$lib/assets/team/jonathan.jpeg';
+    import nathan from '$lib/assets/team/nathan.jpeg';
+    import max from '$lib/assets/team/max.jpg'
+    import coachwan from '$lib/assets/team/john.png';
+    import sherry from '$lib/assets/team/sherry1.png'
+    import vincent from '$lib/assets/team/vincent.jpg'
+    import zilong from '$lib/assets/team/zilong.jpg'
+    import constance from '$lib/assets/team/constance.jpg'
+    import mentorzhang from '$lib/assets/team/baoshe.jpg'
+    import niko from '$lib/assets/team/niko.jpg'
+    import msde from '$lib/assets/logos/msde.svg'
+    import hccs from '$lib/assets/logos/hccs.png'
+    import luxcraft from '$lib/assets/logos/luxcraft.png'
+    import allstate from '$lib/assets/logos/allstate.svg'
+    import craftingtable from '$lib/assets/logos/craftingtable.png'
+    import costco from '$lib/assets/logos/costco.svg'
+    import chipotle from '$lib/assets/logos/chipotle.svg'
     import { resolve } from '$app/paths';
     import { flip } from 'svelte/animate';
 
@@ -129,12 +136,12 @@
         We're a team of <i><u>innovators</u></i>, <br> <i><u>creators</u></i>, and <i><u>leaders</u></i>.
     </h2>
     <div class="hero-cta">
-        <a type="button" class="button-1">Contact Us</a>
-        <a type="button" class="button-1">Learn More</a>
+        <button type="button" class="button-1">Contact Us</button>
+        <button type="button" class="button-1">Learn More</button>
     </div>
     <img src={teamImg} alt="Our team" class="hero-img">
     <p class="hero-img-sub">
-        <i>This is us! <img src={arrowUp}>
+        <i>This is us! <img src={arrowUp} alt="">
             <br>
             Taken at Moorefield, WV Qualifier 1 by 
             <a href="https://sydsp1cs.mypixieset.com/">@sydsp1cs</a>
@@ -154,14 +161,14 @@
                 <!-- <br> -->
                 Our rookie year was 2023, and we've gone to Regionals as well as winning multiple Inspire awards during our 2025-26 season. Our team is currently 10 members large, with 2 coaches and 1 mentor.
             </p>
-            <a class="button-2" href={resolve("/team")} aria-label="Read more">
+            <a class="button-2" href={resolve("/about")} aria-label="Read more">
                 Read More
             </a>
         </div>
         <div class="right image-about">
-            <img class="team-img-1" src={team1}>
+            <img class="team-img-1" src={team1} alt="Team Ingenuity's mascot worn by Johnathan">
             <!-- TODO: arrow on hover talking about how thats our mascot? -->
-            <img class="team-img-2" src={team2}>
+            <img class="team-img-2" src={team2} alt="Team Ingenuity members at the hotel before an event">
         </div>
     </div>
     <div class="block-grid">
@@ -172,9 +179,9 @@
             </p>
         </div>
         <div class="left image-robot">
-            <img class="robot-img-1" src={robot1}>
-            <!-- TODO: same as L133 -->
-            <img class="robot-img-2" src={robot2}>
+            <img class="robot-img-1" src={robot1} alt="Our 2025-2026 robot, Ginny, next to Erik">
+            <!-- TODO: for one w/o erik cite author (@sydsp1cs)-->
+            <img class="robot-img-2" src={robot2} alt="Our robot Ginny during a practice round">
         </div>
     </div>
     {#if memberLength > 0} <!-- can't believe im doing this but just in case -->
@@ -234,10 +241,46 @@
         <div class="left sponsor">
             <h2>Ingenuity is <br><u>nothing without you.</u></h2>
             <p>
-                We couldn't do what we do without our sponsors, who provide us money to help us succeed. All of our sponsors for the 25-26 year are on the right!
+                We couldn't do what we do without our sponsors, who provide us money to help us succeed. All of our sponsors for the 25-26 year are <span class="sponsor-position-wide">on the right!</span><span class="sponsor-position-narrow">below! Click the logos to navigate to their respective websites.</span>
             </p>
         </div>
-        <div class="right sponsor-image">
+        <div class="right image-sponsor">
+            <div class="div1">
+                <a href="https://marylandpublicschools.org/about/pages/ofpos/gac/mdroboticsfy26/index.aspx" target="_blank" rel="noreferrer noopener">
+                    <img src={msde} alt="Maryland State Department of Education">
+                </a>
+            </div>
+            <div class="div2"> 
+                <a href="https://www.allstate.com" target="_blank" rel="noreferrer noopener">
+                    <img src={allstate} alt="Allstate">
+                </a>
+            </div>
+            <div class="div3"> 
+                <a href="https://www.hccs-md.org/en/" target="_blank" rel="noreferrer noopener">
+                    <img src={hccs} alt="Howard County Chinese School">
+                </a>
+            </div>
+            <div class="div4"> 
+                <a href="https://luxcraft.com" target="_blank" rel="noreferrer noopener">
+                    <img src={luxcraft} alt="Luxcraft">
+                </a>
+            </div>
+            <div class="div5">
+                <a href="https://costco.com" target="_blank" rel="noreferrer noopener">
+                    <img src={costco} alt="Costco">
+                </a>
+            </div>
+            <div class="div6">
+                <!-- TODO: get the actual URL for this -->
+                <!-- <a href="https://luxcraft.com" target="_blank" rel="noreferrer noopener"> -->
+                    <img src={craftingtable} alt="Crafting Table">
+                <!-- </a> -->
+            </div>
+            <div class="div7"> 
+                <a href="https://chipotle.com" target="_blank" rel="noreferrer noopener">
+                    <img src={chipotle} alt="Chipotle">
+                </a>
+            </div>
             <!-- TODO: ADD SPONSOR IMAGES HERE -->
         </div>
     </div> 
@@ -447,6 +490,54 @@
         border-width: 10px;
     }
 
+    .sponsor-position-narrow {
+        display: none;
+    }
+
+    .image-sponsor {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: auto;
+        gap: 1rem;
+        align-items: center;
+        justify-items: center;
+        padding: 1rem;
+    }
+
+    .image-sponsor > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        cursor: pointer;
+    }
+
+    .image-sponsor a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .image-sponsor img {
+        max-width: 100%;
+        max-height: 6rem;
+        object-fit: contain;
+        transition: transform 0.2s ease;
+    }
+
+    .image-sponsor > div:hover img {
+        transform: translateY(-6px);
+    }
+
+    .div1 { grid-area: 1 / 2 / 2 / 3; }
+    .div2 { grid-area: 2 / 1 / 3 / 2; }
+    .div3 { grid-area: 2 / 3 / 3 / 4; }
+    .div4 { grid-area: 3 / 2 / 4 / 3; }
+    .div5,
+    .div6,
+    .div7 { display: none; }
+
     .image-robot {
         grid-column: 1;
         display: flex;
@@ -644,6 +735,16 @@
     }
 
     @media (max-width: 48rem) {
+        .sponsor-position-wide {
+            display: none;
+        }
+        .sponsor-position-narrow {
+            display: inline;
+        }
+        .strip-nav {
+            opacity: 1;
+            transition: none;
+        }
         .block-grid {
             grid-template-columns: 1fr;
         }
@@ -678,6 +779,11 @@
             right: 0%;
             bottom: 0%;
         }
+
+        .robot-img-1,
+        .robot-img-2 {
+            top: 10%;
+        }
         .hero-bg {
             text-align: center;
         }
@@ -690,28 +796,9 @@
         .hero-img {
             margin-top: clamp(1.5rem, 4vh, 3rem);
         }
+        .button-2 {
+            align-self: center;
+            justify-self: center;
+        }
     }
 </style>
-
-<script module>
-    // TODO: FIX ALL OF THIS TO WORK WITH DICTS
-    // this is more like slugs but whateverrr :bleh:
-    // note to self: change into dict with image and name to use linked
-    //Bugs to fix first:
-
-    //1. memberIndexes initializer uses members.length — but members is now an object. members.length is undefined, so undefined - 2, undefined - 1 = NaN, NaN, 0, 1, 2. You already made memberLength for this — use it: [memberLength-2, memberLength-1, 0, 1, 2].
-    //2. moveMemberLeft still uses members.length (which is undefined). Switch to memberLength. Also undefined % undefined is NaN — so left clicks are silently broken right now.
-    //3. Stray import: import { serialize } from 'v8' at the top — that's a Node-only API that snuck in from an autocomplete. Delete it; it'll break the browser build.
-
-    //Then plan the next step (the rendering):
-
-    //You need to turn memberIndexes (numeric positions) into actual member data. Hint chain:
-    //- Object.keys(members) → array of slugs in insertion order (['elaine', 'coach-dai', ...]).
-    //- Object.entries(members) → array of [slug, data] pairs — even more useful, since each card needs both the slug (for the link /team/{slug}) and the data (for the image/name).
-    //- Build a derived array: const slots = $derived(memberIndexes.map(i => Object.entries(members)[i])).
-    //- In the markup, {#each slots as [slug, member]} → render card with <a href="/team/{slug}">, <img src={member.img}>, <span>{member.name}</span>.
-
-    //Tiny extras:
-    //- Object.keys(members) recomputes each call — fine for 13 members, but you could lift it to a const slugs = Object.keys(members) near the top.
-    //- members is a const, so memberLength will never change — no need for $state/$derived on it.
-</script>
