@@ -25,6 +25,7 @@
     import craftingtable from '$lib/assets/logos/craftingtable.png'
     import costco from '$lib/assets/logos/costco.svg'
     import chipotle from '$lib/assets/logos/chipotle.svg'
+    import Footer from '$lib/components/footer.svelte'
     import { resolve } from '$app/paths';
     import { flip } from 'svelte/animate';
 
@@ -293,6 +294,7 @@
     </div>
 </div>
 
+<Footer />
 <!-- TODO: FOOTER -->
 
 <style>
