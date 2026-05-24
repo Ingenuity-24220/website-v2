@@ -5,14 +5,14 @@
     import team2 from '$lib/assets/images/team-2.webp';
     import robot1 from '$lib/assets/images/robot-1.webp';
     import robot2 from '$lib/assets/images/robot-2.webp';
-    import elaine from '$lib/assets/team/elaine.png';
+    import elaine from '$lib/assets/team/elaine.jpg';
     import coachdai from '$lib/assets/team/coachdai.jpeg';
-    import erik from '$lib/assets/team/erik.png';
+    import erik from '$lib/assets/team/erik.jpg';
     import johnathan from '$lib/assets/team/jonathan.jpeg';
     import nathan from '$lib/assets/team/nathan.jpeg';
     import max from '$lib/assets/team/max.jpg'
-    import coachwan from '$lib/assets/team/john.png';
-    import sherry from '$lib/assets/team/sherry1.png'
+    import coachwan from '$lib/assets/team/john.jpg';
+    import sherry from '$lib/assets/team/sherry1.jpg'
     import vincent from '$lib/assets/team/vincent.jpg'
     import zilong from '$lib/assets/team/zilong.jpg'
     import constance from '$lib/assets/team/constance.jpg'
@@ -101,8 +101,114 @@
             name: 'Coach Wan',
             role: "Assistant Coach"
         } // 2nd on init
-     };
-    const memberLength = Object.keys(members).length;
+        };
+
+        const Reach = {
+        Local: 'local',
+        Regional: 'regional',
+        National: 'national',
+        International: 'international'
+        } as const;
+
+        const outreachType = {
+        Reach: 'reach',
+        Connect: 'connect',
+        ConnectExpert: 'connect-expert'
+        }
+
+        // TODO: Remove img
+        const outreach = {
+        'SEED': {
+           name: 'SEED Presentation',
+           img: '',
+           people: 80,
+           reach: Reach.Local,
+           type: outreachType.Reach,
+           alt: ''
+        },
+        'STEM': {
+           name: 'MD STEM Festival',
+           img: '',
+           people: 400,
+           reach: Reach.Regional,
+           type: outreachType.Reach,
+           alt: ''
+        },
+        'CHINA': {
+           name: 'China Day Sale',
+           img: '',
+           people: 200,
+           reach: Reach.Local,
+           type: outreachType.Reach,
+           alt: ''
+        },
+        'NOVATARD': {
+           name: 'Novatard #24950 meetings',
+           img: '',
+           people: 0,
+           reach: Reach.International,
+           type: outreachType.Connect,
+           alt: ''
+        },
+        'CDC': {
+           name: 'CDC.zip #34148 Mentoring',
+           img: '',
+           people: 0,
+           reach: Reach.International,
+           type: outreachType.Connect,
+           alt: ''
+        },
+        'NORTHROP': {
+           name: 'Meeting with Northrop Gruman Engineer',
+           img: '',
+           people: 0,
+           reach: Reach.Local,
+           type: outreachType.ConnectExpert,
+           alt: ''
+        },
+        'CODENINJA': {
+           name: 'Meeting with VP of CodeNinjas',
+           img: '',
+           people: 0,
+           reach: Reach.National,
+           type: outreachType.ConnectExpert,
+           alt: ''
+        },
+        'NVIDIA': {
+           name: 'Meeting with NVIDIA Data Scientist',
+           img: '',
+           people: 0,
+           reach: Reach.Local,
+           type: outreachType.ConnectExpert,
+           alt: ''
+        },
+        'USARMY': {
+            name: 'Meeting with Mechanical Engineer at the US Army ERDC',
+            img: '',
+            people: 0,
+            reach: Reach.Local,
+            type: outreachType.ConnectExpert,
+            alt: ''
+        },
+        'FLLSTATES': {
+            name: 'Showcase at FLL States',
+            img: '',
+            people: 100,
+            reach: Reach.Regional,
+            type: outreachType.Connect,
+            alt: ''
+        },
+        'FLLV5': {
+            name: 'Mentoring FLL #65542 V5',
+            img: '',
+            people: 20,
+            reach: Reach.Local,
+            type: outreachType.Connect,
+            alt: ''
+        }
+        };
+
+        const memberLength = Object.keys(members).length;
     let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully!
     const slots = $derived(memberIndexes.map(i => Object.entries(members)[i])); // yips
 
@@ -234,8 +340,27 @@
                 From community events to open sourcing our code, Team Ingenuity is dedicated to giving back more to the community than we take.
             </p>
         </div>
-        <div class="left marquee-community">
-            <!-- TODO: scrolling stuff here, link to seperate page on hover, remember to reduce motion -->
+    </div>
+    <div class="marquee-community">
+        <div class="outreach-grid">
+            {#each Object.entries(outreach) as [slug, item] (slug)}
+                <div class="outreach-card">
+                    <span class="outreach-reach">{item.reach}</span>
+                    <p class="outreach-name">{item.name}</p>
+                    {#if item.people > 0}
+                        <p class="outreach-people"><u><i>{item.people}</i></u>+ people</p>
+                    {/if}
+                </div>
+            {/each}
+            {#each Object.entries(outreach) as [slug, item] (slug)}
+                <div class="outreach-card">
+                    <span class="outreach-reach">{item.reach}</span>
+                    <p class="outreach-name"><u>{item.name}</u></p>
+                    {#if item.people > 0}
+                        <p class="outreach-people"><u><i>{item.people}</i></u>+ people</p>
+                    {/if}
+                </div>
+            {/each}
         </div>
     </div>
     <div class="block-grid">
@@ -436,6 +561,73 @@
     .image-robot, .marquee-community {
         grid-column: 1;
         grid-row: 1;
+    }
+
+    .marquee-community {
+        width: calc(100% + (var(--gutter) * 2));
+        margin-left: calc(var(--gutter) * -1);
+        overflow-x: auto;
+        mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 20%,
+            black 80%,
+            transparent 100%
+        );
+    }
+
+    @keyframes marquee-content {
+        from {
+            transform: translateX( 0% );
+        }
+        to {
+            transform: translateX( -50% );
+        }
+    }
+
+    .outreach-grid {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        padding-right: 1rem;
+        padding-block: 0.5rem;
+        width: max-content;
+        animation: 40s infinite marquee-content linear;
+        user-select: none;
+    }
+
+    .outreach-card {
+        flex: 0 0 auto;
+        width: clamp(10rem, 14vw, 14rem);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        transition: transform 0.2s ease, border-color 0.2s ease;
+        text-align: center;
+    }
+
+    .outreach-reach {
+        font-size: 0.7rem;
+        font-weight: 200;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        opacity: 0.6;
+    }
+
+    .outreach-name {
+        font-weight: 500;
+        font-size: 0.95rem;
+        margin: 0;
+        line-height: 1.3;
+    }
+
+    .outreach-people {
+        font-size: 0.8rem;
+        font-weight: 400;
+        opacity: 0.7;
+        margin: 0;
     }
 
     .about {
