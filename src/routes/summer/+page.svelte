@@ -35,7 +35,7 @@
             Taught by <u>FLL state champions</u> with <i>5</i>+ years of experience in FIRST.
         </h2>
         <p class="about-text">
-            Join us August 3-7, 2025 from 9AM to 3PM for a hands-on robotics experience at the <u>Howard County Chinese School</u>.
+            Join us August 3-7, 2026 from 9AM to 3PM for a hands-on robotics experience at the <u>Howard County Chinese School</u>.
             Students will work in teams to build and program LEGO robots using SPIKE Prime, 
             tackle official FIRST LEGO League missions, and develop real presentation skills. 
             All guided by mentors from FTC Team Ingenuity 24220 who have experience in FLL.
