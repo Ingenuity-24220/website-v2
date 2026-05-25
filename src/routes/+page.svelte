@@ -491,7 +491,7 @@
     }
 
     .member-item p {
-        margin-block: 0.25rem;
+        margin-bottom: 0;
     }
 
     .strip-nav {
