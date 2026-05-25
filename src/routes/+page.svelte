@@ -490,6 +490,10 @@
         flex-direction: column;
     }
 
+    .member-item p {
+        margin-block: 0.25rem;
+    }
+
     .strip-nav {
         all: unset;
         position: relative;
@@ -615,7 +619,7 @@
     .marquee-community {
         width: calc(100% + (var(--gutter) * 2));
         margin-left: calc(var(--gutter) * -1);
-        overflow-x: auto;
+        overflow-x: hidden;
         mask-image: linear-gradient(
             to right,
             transparent 0%,
@@ -642,6 +646,7 @@
         padding-block: 0.5rem;
         width: max-content;
         animation: 40s infinite marquee-content linear;
+        overflow: hidden;
         user-select: none;
     }
 
