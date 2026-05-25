@@ -14,7 +14,7 @@
         A week long summer camp for students, by students. 
     </h2>
     <h2>
-        Cost: 400$, with aftercare and precare available.
+        Cost: $400, with aftercare and precare available.
     </h2>
     <p>
         Accepting all aged 6-14 and all experience levels.
@@ -44,15 +44,15 @@
             Cost? Not an issue.
         </h2>
         <p class="about-text">
-            Our camp costs only 400$ for the whole week. Financial aid is available. Please reach out to contact@ingenuity.team if you require this.
+            Our camp costs only $00 for the whole week. Financial aid is available. Please reach out to contact@ingenuity.team if you require this.
         </p>
         <h2>
             Need aftercare or precare? We've got it.
         </h2>
         <p class="about-text">
-            We have aftercare from 3PM to 4PM for 50$ for the whole week, or 15$ per day. From 3PM to 5PM, it costs 65$ for the whole week. or 20$ per day.
+            We have aftercare from 3PM to 4PM for $50 for the whole week, or $15 per day. From 3PM to 5PM, it costs $65 for the whole week. or $20 per day.
             <br>
-            For precare, doors open at 8AM for 50$.
+            For precare, doors open at 8AM for $50.
             <br>
             Financial aid is available for both of these. Please reach out to contact@ingenuity.team if you require this so we can discuss options.
         </p>
