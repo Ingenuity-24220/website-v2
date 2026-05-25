@@ -67,7 +67,7 @@
     </div>
 </div>
 <figure class="about-figure">
-    <!-- <figcaption><i>Our team captain, Elaine, in FLL!</i></figcaption> -->
+    <figcaption><i>Our team captain, Elaine, in FLL!</i></figcaption>
     <img class="about-img-1" alt="Team Captain Elaine in FLL" src={about}>
 </figure>
 <Footer/>
@@ -103,13 +103,14 @@
         mask-size: 100% 100%;
     }
 
-    /* figcaption {
+    figcaption {
         font-weight: 300;
         margin-top: 0.5rem;
         color: white;
         margin-bottom: 0.5rem;
         margin-left: clamp(1rem, 4vw, 4rem);
-    } */
+        text-align: center;
+    }
 
     .hero-cta {
         display: flex;

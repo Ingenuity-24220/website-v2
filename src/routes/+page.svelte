@@ -210,7 +210,6 @@
             alt: ''
         }
     };
-    let myElement: Header = $state();
     let heroEl: HTMLDivElement | null = $state(null);
     let showInlineHeader = $state(true); // hero header starts visible
     let showStickyHeader = $state(false); // sticky header only after hero scrolls past
@@ -266,16 +265,16 @@
         return () => observer.disconnect();
     });
 </script>
-
+<!-- TODO: MAKE THE BUTTONS WORK IN HERO-BG -->
 {#if showStickyHeader}
     <div transition:fade={{ duration: 180 }}>
-        <Header variant="sticky" />
+        <Header variant="sticky" summer={true} />
     </div>
 {/if}
 
 <div class="hero-bg" bind:this={heroEl}>
     {#if showInlineHeader}
-        <Header />
+        <Header summer={true} />
     {/if}
     <div class="hero-content">
         <h1>
@@ -285,8 +284,8 @@
             We're a team of <i><u>innovators</u></i>, <br> <i><u>creators</u></i>, and <i><u>leaders</u></i>.
         </h2>
         <div class="hero-cta">
-            <button type="button" class="button-1">Contact Us</button>
-            <button type="button" class="button-1">Learn More</button>
+            <!-- <button type="button" class="button-1">Contact Us</button>
+            <button type="button" class="button-1">Learn More</button> -->
         </div>
         <img src={teamImg} alt="Our team" class="hero-img">
         <p class="hero-img-sub">
@@ -299,6 +298,7 @@
     </div>
 </div>
 
+<!-- TODO: FINISH TEAM + ABOUT PAGE TO BE ABLE TO LINK THE BUTTONS AND UNCOMMENT -->
 <div class="content">
     <!-- <h2 class="center question">
         What is Ingenuity?
@@ -311,9 +311,9 @@
                 <!-- <br> -->
                 Our rookie year was 2023, and we've gone to Regionals as well as winning multiple Inspire awards during our 2025-26 season. Our team is currently 10 members large, with 2 coaches and 1 mentor.
             </p>
-            <a class="button-2" href={resolve("/about")} aria-label="Read more">
+            <!-- <a class="button-2" href={resolve("/about")} aria-label="Read more">
                 Read More
-            </a>
+            </a> -->
         </div>
         <div class="right image-about">
             <img class="team-img-1" src={team1} alt="Team Ingenuity's mascot worn by Johnathan">
@@ -341,9 +341,9 @@
                 <p>
                     Everyone on our team has a role to play. Meet each of them, and see the faces behind Ingenuity.
                 </p>
-                <a class="button-2" href={resolve("/team")} aria-label="Meet the Team">
+                <!-- <a class="button-2" href={resolve("/team")} aria-label="Meet the Team">
                     Meet the Team
-                </a>
+                </a> -->
             </div>
         </div>
         <div class="member-section">
