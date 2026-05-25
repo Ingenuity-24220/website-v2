@@ -5,6 +5,25 @@
     import { resolve } from '$app/paths';
 
 </script>
+
+<svelte:head>
+    <title>Summer Camp | Ingenuity</title>
+    <meta name="description" content="A week long FLL Summer Robotics Camp for students aged 6-14, hosted by Ingenuity #24220. $400, aftercare and precare available." />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="FLL Summer Robotics Camp | Ingenuity" />
+    <meta property="og:description" content="A week long FLL Summer Robotics Camp for students aged 6-14, hosted by Ingenuity #24220. $400, aftercare and precare available." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/og-summer.png" />
+    <meta property="og:url" content="https://ingenuity.team/summer" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="FLL Summer Robotics Camp | Ingenuity" />
+    <meta name="twitter:description" content="A week long FLL Summer Robotics Camp for students aged 6-14, hosted by Ingenuity #24220." />
+    <meta name="twitter:image" content="/og-summer.png" />
+</svelte:head>
+
 <Header/>
 <div class="hero">
     <h1>

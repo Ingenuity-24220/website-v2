@@ -4,6 +4,10 @@
     import Header from '$lib/components/header.svelte';
 </script>
 
+<svelte:head>
+    <title>Safeguarding | Ingenuity</title>
+</svelte:head>
+
 <Header />
 
 <div class="content">
