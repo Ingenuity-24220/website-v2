@@ -28,6 +28,9 @@
     import Footer from '$lib/components/footer.svelte'
     import { resolve } from '$app/paths';
     import { flip } from 'svelte/animate';
+    import { fade } from 'svelte/transition';
+    import { onMount } from 'svelte';
+	import Header from '$lib/components/header.svelte';
 
     const members = {
         // leadership
@@ -206,9 +209,12 @@
             type: outreachType.Connect,
             alt: ''
         }
-        };
-
-        const memberLength = Object.keys(members).length;
+    };
+    let myElement: Header = $state();
+    let heroEl: HTMLDivElement | null = $state(null);
+    let showInlineHeader = $state(true); // hero header starts visible
+    let showStickyHeader = $state(false); // sticky header only after hero scrolls past
+    const memberLength = Object.keys(members).length;
     let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully!
     const slots = $derived(memberIndexes.map(i => Object.entries(members)[i])); // yips
 
@@ -233,27 +239,64 @@
             }
         )
     };
+
+    // swap headers based on whether the hero is still on screen
+    onMount(() => {
+        // no hero? nothing to watch
+        if (!heroEl) {
+            return;
+        }
+
+        // watch the hero and flip which header shows
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                // inline header when hero is visible, sticky when it isn't
+                showInlineHeader = entry.isIntersecting;
+                showStickyHeader = !entry.isIntersecting;
+            },
+            {
+                root: null, // viewport
+                threshold: 0.2 // swap after ~20% of hero is out
+            }
+        );
+        // start watching the hero
+        observer.observe(heroEl);
+
+        // cleanup observer on unmount
+        return () => observer.disconnect();
+    });
 </script>
 
-<div class="hero-bg">
-    <h1>
-        Ingenuity <sup class="number-sup">#24220</sup>
-    </h1>
-    <h2 class="hero-sub">
-        We're a team of <i><u>innovators</u></i>, <br> <i><u>creators</u></i>, and <i><u>leaders</u></i>.
-    </h2>
-    <div class="hero-cta">
-        <button type="button" class="button-1">Contact Us</button>
-        <button type="button" class="button-1">Learn More</button>
+{#if showStickyHeader}
+    <div transition:fade={{ duration: 180 }}>
+        <Header variant="sticky" />
     </div>
-    <img src={teamImg} alt="Our team" class="hero-img">
-    <p class="hero-img-sub">
-        <i>This is us! <img src={arrowUp} alt="">
-            <br>
-            Taken at Moorefield, WV Qualifier 1 by 
-            <a href="https://sydsp1cs.mypixieset.com/">@sydsp1cs</a>
-        </i>
-    </p>
+{/if}
+
+<div class="hero-bg" bind:this={heroEl}>
+    {#if showInlineHeader}
+        <Header />
+    {/if}
+    <div class="hero-content">
+        <h1>
+            Ingenuity <sup class="number-sup">#24220</sup>
+        </h1>
+        <h2 class="hero-sub">
+            We're a team of <i><u>innovators</u></i>, <br> <i><u>creators</u></i>, and <i><u>leaders</u></i>.
+        </h2>
+        <div class="hero-cta">
+            <button type="button" class="button-1">Contact Us</button>
+            <button type="button" class="button-1">Learn More</button>
+        </div>
+        <img src={teamImg} alt="Our team" class="hero-img">
+        <p class="hero-img-sub">
+            <i>This is us! <img src={arrowUp} alt="">
+                <br>
+                Taken at Moorefield, WV Qualifier 1 by 
+                <a href="https://sydsp1cs.mypixieset.com/">@sydsp1cs</a>
+            </i>
+        </p>
+    </div>
 </div>
 
 <div class="content">
@@ -773,10 +816,15 @@
         /* min-height: 100vh; */
         margin: 0;
         color: white;
-        padding-inline: var(--gutter);
-        padding-block: clamp(1rem, 4vh, 4rem);
+        padding-inline: 0;
+        padding-block: 0;
         box-sizing: border-box;
         overflow-x: clip;
+    }
+
+    .hero-content {
+        padding-inline: var(--gutter);
+        padding-block: clamp(1rem, 4vh, 4rem);
     }
 
     .block-grid {
