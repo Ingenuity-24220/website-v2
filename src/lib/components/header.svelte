@@ -12,7 +12,10 @@
         </a>
     </div>
     <div class="nav"> <!-- NAV CONTAINER, PUSH TO END-->
-        <a class="nav-link" href={resolve("/about")}>
+        <a class="nav-link" href={resolve("/summer")}>
+            Summer Camp
+        </a>
+        <!-- <a class="nav-link" href={resolve("/about")}>
             About
         </a>
         <a class="nav-link" href={resolve("/team")}>
@@ -23,7 +26,7 @@
         </a>
         <a class="nav-link" href={resolve("/blog")}>
             Blog
-        </a>
+        </a> -->
     </div>
 </div>
 

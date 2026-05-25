@@ -953,29 +953,6 @@
         font-weight: 300;
     }
 
-    :global(a) {
-        color: #ed2525;
-        text-decoration: none;
-    }
-
-    :global(a:visited) {
-        color: #af1b1b;
-    }
-
-    :global(a:hover) {
-        color: darkred;
-        text-decoration: underline
-    }
-
-    :global(body, html) {
-        margin: 0;
-        padding: 0;
-        font-family: 'IBM Plex Sans', sans-serif;
-        font-weight: 500;
-        font-style: normal;
-        background-color: black;
-    }
-
     @media (max-width: 48rem) {
         .sponsor-position-wide {
             display: none;
