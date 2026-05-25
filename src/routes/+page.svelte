@@ -211,8 +211,6 @@
         }
     };
     let heroEl: HTMLDivElement | null = $state(null);
-    let showInlineHeader = $state(true); // hero header starts visible
-    let showStickyHeader = $state(false); // sticky header only after hero scrolls past
     const memberLength = Object.keys(members).length;
     let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully!
     const slots = $derived(memberIndexes.map(i => Object.entries(members)[i])); // yips
@@ -266,16 +264,16 @@
     });
 </script>
 <!-- TODO: MAKE THE BUTTONS WORK IN HERO-BG -->
-{#if showStickyHeader}
+<!-- {#if showStickyHeader}
     <div transition:fade={{ duration: 180 }}>
         <Header variant="sticky" summer={true} />
     </div>
-{/if}
+{/if} -->
 
 <div class="hero-bg" bind:this={heroEl}>
-    {#if showInlineHeader}
-        <Header summer={true} />
-    {/if}
+    <!-- {#if showInlineHeader} -->
+    <Header summer={true} />
+    <!-- {/if} -->
     <div class="hero-content">
         <h1>
             Ingenuity <sup class="number-sup">#24220</sup>
