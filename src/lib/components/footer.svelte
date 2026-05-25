@@ -36,7 +36,7 @@
             This website is open sourced and licensed under the
             <a href="https://opensource.org/license/mit" target="_blank" rel="license noreferrer noopener">MIT License</a>,
             with a copy of the license available on this website's
-            <a href="https://github.com/Ingenuity-24220" target="_blank" rel="noreferrer noopener">GitHub repository</a>.
+            <a href="https://github.com/Ingenuity-24220/website-v2" target="_blank" rel="noreferrer noopener">GitHub repository</a>.
             <br>
             Content (text and images) is licensed under
             <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="license noreferrer noopener">CC BY-SA 4.0</a>

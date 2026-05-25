@@ -456,7 +456,7 @@
     <div class="center contact">
         <h2>Interested?</h2>
         <p>
-            We'd be happy to hear from you for anything from sponsorships to questions about what we do. Contact us at the form below, or email <a href="mailto:contact@ingenuity.team">contact@ingenuity.team</a>
+            We'd be happy to hear from you for anything from sponsorships to questions about what we do. Contact us by emailing <a href="mailto:contact@ingenuity.team">contact@ingenuity.team</a>.
         </p>
         <!-- TODO: ADD FILLOUT HERE -->
     </div>
