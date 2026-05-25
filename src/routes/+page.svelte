@@ -710,9 +710,32 @@
     
     .robot-img-2 {
         position: relative;
+        width: clamp(10rem, 16vw, 18rem);
+    }
+
+    .image-robot > figure {
+        position: relative;
         top: -15%;
         rotate: 15deg;
+        margin: 0;
         width: clamp(10rem, 16vw, 18rem);
+    }
+
+    .image-robot > figure > img {
+        display: block;
+        width: 100%;
+        border: solid;
+        border-color: white;
+        border-width: 10px;
+        box-sizing: border-box;
+    }
+
+    .image-robot > figure > figcaption {
+        font-size: 0.85rem;
+        font-style: italic;
+        text-align: center;
+        margin-top: 0.5rem;
+        opacity: 0.8;
     }
 
     .image-about {
