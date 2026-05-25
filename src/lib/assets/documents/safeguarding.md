@@ -1,15 +1,16 @@
 # Team Ingenuity Safeguarding Document
 
-v0.0.1
+v0.0.2
+
 Last updated: Monday, May 25th
 
 This Safeguarding Policy is currently in "Draft" status. This means that this Policy is subject to change, and is currently exempt from updating notification requirements.
 
 This Safeguarding Policy (hereby referred to as "Policy" or "The Policy") is intended to outline guidelines that will ensure the safety of all participants and staff at Team Ingenuity events.
 
-# 2. Scope
+# 1. Scope
 
-## 2.1 Application
+## 1.1 Application
 
 This policy applies to *all* participants at Team Ingenuity events, including but not limited to:
 - Minor participants
@@ -20,7 +21,7 @@ This policy applies to *all* participants at Team Ingenuity events, including bu
 
 This policy covers all spaces used by the event at all times while the event is considered to be running, as well as all event related communication and event related activities.
 
-## 2.2 Principles
+## 1.2 Principles
 
 This policy seeks to ensure the following principles are met:
 
@@ -38,7 +39,7 @@ This policy seeks to ensure the following principles are met:
 6. All participants, volunteers, or any other external individuals, must report any incidents to the designated Safeguarding Officer or an Event Lead as soon as they are made aware of an incident.
 7. Any updates to this policy must be communicated to event organizers, event participants, and adults as soon as the update is made.
 
-## 2.3 Rules
+## 1.3 Rules
 
 Rules include but are not limited to:
 
@@ -50,9 +51,9 @@ Rules include but are not limited to:
 6. Any volunteer who witnesses a potential rule violation must report it immediately, even if they are uncertain.
 7. A volunteer may choose to report or take action on their own discretion, even if the rule is not outlined in this document.
 
-# 3. Roles
+# 2. Roles
 
-## 3.1 Event Lead / Point of Contact
+## 2.1 Event Lead / Point of Contact
 
 - Responsible for implementation and oversight of all policies designated within this document
 - Responsible for handling of all safeguarding incidents, or may designate a safeguarding certified individual to handle such.
@@ -60,7 +61,7 @@ Rules include but are not limited to:
 - Accreditation of the designated safeguarding individual must be available upon request, and contact details should be clearly communicated to all participants using the contact template outlined in Appendix C. This includes a personal cell number at which they may be reachable.
 - Event Lead may be required to maintain communication with venue staff and security to ensure that these requirements are met.
 
-## 3.2 Volunteers
+## 2.2 Volunteers
 
 - Responsible for timely reporting of any incidents spotted
 - Responsible for timely escalation of any incidents reported
@@ -70,7 +71,7 @@ Rules include but are not limited to:
 - Must maintain proper boundaries with participants in any space, and must never be alone with participants.
 - Must not attempt to communicate with participants outside of official communication channels designated by the Event Lead
 
-## 3.3 Participants
+## 2.3 Participants
 
 - Responsible for behaving in line with both Team Ingenuity and HCCS Code of Conducts
 - Responsible for behaving in line with any additional venue regulations
@@ -78,16 +79,16 @@ Rules include but are not limited to:
 - Participants are liable for any violations, even if they have not read the rule pertaining to said violation.
 - Must be made aware of reporting methods as well as who to speak to in the event of a concern or incident.
 
-## 3.4 Parents / Guardians
+## 2.4 Parents / Guardians
 
 - Responsible for providing consent for communication as well as all details for their children Team Ingenuity may require, including but not limited to:
     - Emergency contact details, media consent, and any relevant medical or support needs on behalf of minor participants.
 - Responsible for understanding this policy, any emergency details, as well as the code of conduct of both Team Ingenuity and HCCS.
 - Responsible for understanding that they are not exempt from this policy when on event grounds or participating in an event related activity.
 
-# 4. Medical & Emergency Plans
+# 3. Medical & Emergency Plans
 
-## 4.1 First Aid
+## 3.1 First Aid
 
 - All events must have at least one first aid kit on site. The recommended ratio is 1 kit per 60 participants. Organizers should familiarize themselves with their first aid kit.
 - At least one organizer, who may be the event lead, must be first aid certified.
@@ -96,12 +97,12 @@ Rules include but are not limited to:
 - An incident log should be maintained via the Team Ingenuity incident logging spreadsheet.
 - OTC medication may only be administered should the parent provide explicit permission and only may the specific medication (including brand, dose, and time) be administered.
 
-## 4.2 Other Emergencies
+## 3.2 Other Emergencies
 
 - Organizers are expected to work with the venue to familiarize themselves with other emergency procedures, such as evacuations, lockdowns, and more.
 - Organizers are expected to be prepared for any events which have specific appendices outlined, as well as be able to respond to any unexpected emergencies and ensure participant safety.
 
-## 4.3 Participant Incidents
+## 3.3 Participant Incidents
 
 - Participants and organizers alike are expected to be able to recognize incidents, such as mental health crises, bullying, sexual abuse, or a participant disclosing personal incidents (such as self harm, abuse at home, or other incidents).
 - Organizers must ensure clear signage both digitally and physically of instructions on how to contact the Event team as well as the designated safeguarding person.
@@ -113,28 +114,28 @@ Rules include but are not limited to:
 - The safeguarding person must review all reports, provide guidance on next steps, and support organizers during complex situations.
 - The team must review all safeguarding incidents after the event and make continual improvements to prevent repeat incidents.
 
-## 4.4 Confidentiality
+## 3.4 Confidentiality
 
 - All reports must be confidential.
 - Report data must be shared on a need to know basis only.
 - No retaliation shall be made against any reporter.
 
-## 4.5 Disciplinary Actions
+## 3.5 Disciplinary Actions
 
 - When Team Ingenuity organizers are made aware of misconduct, disciplinary actions may include: warning, being sent home, being barred from further participation in Team Ingenuity events, and removal from events.
 - Serious incidents, such as sexual abuse, will lead to an immediate removal and escalation to local authorities. Team Ingenuity will make all efforts to work with local law enforcement when it believes that escalation may be required.
 
-## 4.6 Media & Photography
+## 3.6 Media & Photography
 
 - All participants must complete a media release form as part of the Team Ingenuity event waiver prior to participation. This form governs the capture and use of photography, video, and other media at Team Ingenuity events.
 
-## 4.7 Parent Consent
+## 3.7 Parent Consent
 
 - All participants must have parental consent to participate if under 18.
 - If Team Ingenuity is made aware that a minor participant does not have parental consent, Team Ingenuity will make all steps possible to contact the parents should no safeguarding incidents prevent such action from being taken.
 - If Team Ingenuity is made aware that a minor participant may be experiencing issues at home, Team Ingenuity will work with local law enforcement to ensure the participant's safety.
 
-# 5. Discretion
+# 4. Discretion
 
 - If a policy is not specifically outlined, Team Ingenuity members may take actions under their own discretion following the principles set out in Section 2.2.
 
@@ -198,7 +199,7 @@ The following template must be completed and communicated to all participants, p
 - **Email:** ___________________________________
 
 **To report a concern:**
-Speak directly to the Safeguarding Officer or Event Lead, or submit a report via [reporting method, e.g. reporting form link / designated email / in-person].
+Speak directly to the Safeguarding Officer or Event Lead, or speak to a volunteer.
 
 **In an emergency, always call 911 first.**
 
