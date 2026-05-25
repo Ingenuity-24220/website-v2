@@ -331,7 +331,13 @@
         <div class="left image-robot">
             <img class="robot-img-1" src={robot1} alt="Our 2025-2026 robot, Ginny, next to Erik">
             <!-- TODO: for one w/o erik cite author (@sydsp1cs)-->
-            <img class="robot-img-2" src={robot2} alt="Our robot Ginny during a practice round">
+             <figure>
+                <img class="robot-img-2" src={robot2} alt="Our robot Ginny during a practice round">
+                <figcaption>
+                    Taken by 
+                    <a href="https://sydsp1cs.mypixieset.com/">@sydsp1cs</a>
+                </figcaption>
+            </figure>
         </div>
     </div>
     {#if memberLength > 0} <!-- can't believe im doing this but just in case -->
