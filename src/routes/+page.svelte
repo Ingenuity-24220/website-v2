@@ -26,10 +26,7 @@
     import costco from '$lib/assets/logos/costco.svg'
     import chipotle from '$lib/assets/logos/chipotle.svg'
     import Footer from '$lib/components/footer.svelte'
-    import { resolve } from '$app/paths';
     import { flip } from 'svelte/animate';
-    import { fade } from 'svelte/transition';
-    import { onMount } from 'svelte';
 	import Header from '$lib/components/header.svelte';
 
     const members = {
@@ -303,7 +300,7 @@
     </h2> -->
     <div class="block-grid">
         <div class="left about">
-            <h2>Ingenuity is <br><u>community, as team and at heart.</u></h2>
+            <h2>Ingenuity is <br><u>community.</u></h2>
             <p>
                 Ingenuity is a tight knit team based in Maryland. 
                 <!-- <br> -->
@@ -321,14 +318,13 @@
     </div>
     <div class="block-grid">
         <div class="right robot">
-            <h2>Ingenuity is <br><u>a team of makers that experiment.</u></h2>
+            <h2>Ingenuity is <br><u>for makers that experiment.</u></h2>
             <p>
                 This is our 2025-2026 design! We're in the process of updating our design for <a href="https://www.kyfirstrobotics.org/runfortherobots">Run for The Robots</a>, the premiere event that our team is attending! You can see our robot, Ginny, in the pictures.
             </p>
         </div>
         <div class="left image-robot">
             <img class="robot-img-1" src={robot1} alt="Our 2025-2026 robot, Ginny, next to Erik">
-            <!-- TODO: for one w/o erik cite author (@sydsp1cs)-->
              <figure>
                 <img class="robot-img-2" src={robot2} alt="Our robot Ginny during a practice round">
                 <figcaption>
