@@ -63,7 +63,7 @@
             Cost? Not an issue.
         </h2>
         <p class="about-text">
-            Our camp costs only $00 for the whole week. Financial aid is available. Please reach out to contact@ingenuity.team if you require this.
+            Our camp costs only $400 for the whole week. Financial aid is available. Please reach out to contact@ingenuity.team if you require this.
         </p>
         <h2>
             Need aftercare or precare? We've got it.

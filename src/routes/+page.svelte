@@ -238,30 +238,30 @@
     };
 
     // swap headers based on whether the hero is still on screen
-    onMount(() => {
-        // no hero? nothing to watch
-        if (!heroEl) {
-            return;
-        }
+    // onMount(() => {
+    //     // no hero? nothing to watch
+    //     if (!heroEl) {
+    //         return;
+    //     }
 
-        // watch the hero and flip which header shows
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                // inline header when hero is visible, sticky when it isn't
-                showInlineHeader = entry.isIntersecting;
-                showStickyHeader = !entry.isIntersecting;
-            },
-            {
-                root: null, // viewport
-                threshold: 0.2 // swap after ~20% of hero is out
-            }
-        );
-        // start watching the hero
-        observer.observe(heroEl);
+    //     // watch the hero and flip which header shows
+    //     const observer = new IntersectionObserver(
+    //         ([entry]) => {
+    //             // inline header when hero is visible, sticky when it isn't
+    //             showInlineHeader = entry.isIntersecting;
+    //             showStickyHeader = !entry.isIntersecting;
+    //         },
+    //         {
+    //             root: null, // viewport
+    //             threshold: 0.2 // swap after ~20% of hero is out
+    //         }
+    //     );
+    //     // start watching the hero
+    //     observer.observe(heroEl);
 
-        // cleanup observer on unmount
-        return () => observer.disconnect();
-    });
+    //     // cleanup observer on unmount
+    //     return () => observer.disconnect();
+    // });
 </script>
 <!-- TODO: MAKE THE BUTTONS WORK IN HERO-BG -->
 <!-- {#if showStickyHeader}
