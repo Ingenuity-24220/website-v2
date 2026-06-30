@@ -25,6 +25,7 @@
     import craftingtable from '$lib/assets/logos/craftingtable.png'
     import costco from '$lib/assets/logos/costco.svg'
     import chipotle from '$lib/assets/logos/chipotle.svg'
+    import optimum from '$lib/assets/logos/optimum.png'
     import Footer from '$lib/components/footer.svelte'
     import { flip } from 'svelte/animate';
 	import Header from '$lib/components/header.svelte';
@@ -450,9 +451,21 @@
                     <img src={chipotle} alt="Chipotle">
                 </a>
             </div>
+            <div class="div8">
+                <a href="https://www.facebook.com/optimamtg/" target="_blank" rel="noreferrer noopener">
+                    <img src={optimum} alt="Optimum Mortgage Company">
+                </a>
+            </div>
+            <div class="div9">
+                <a class="logo-click" href="mailto:contact@ingenuity.team?subject=Sponsorship Inquiry">Your logo here?</a>
+            </div>
             <!-- TODO: ADD SPONSOR IMAGES HERE -->
         </div>
     </div> 
+    <div class="center">
+        <h2>Videos</h2>
+        <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9vO0fapHHuw?si=-ozYdNu7RATBeFcp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
     <div class="center contact">
         <h2>Interested?</h2>
         <p>
@@ -1046,6 +1059,10 @@
         .button-2 {
             align-self: center;
             justify-self: center;
+        }
+
+        .div9 a {
+            text-decoration: underline;
         }
     }
 </style>

@@ -30,7 +30,6 @@
 <style>
 	:global(a) {
 		color: #ed2525;
-		text-decoration: none;
 	}
 
 	:global(a:visited) {
