@@ -270,7 +270,7 @@
 
 <div class="hero-bg" bind:this={heroEl}>
     <!-- {#if showInlineHeader} -->
-    <Header summer={true} />
+    <Header summer={false} />
     <!-- {/if} -->
     <div class="hero-content">
         <h1>
