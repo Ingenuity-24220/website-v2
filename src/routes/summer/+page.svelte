@@ -39,20 +39,13 @@
         Accepting all aged 6-14 and all experience levels.
     </p>
     <div class="hero-cta">
-        <!-- href removed to disable registration: https://ingenuity24220.fillout.com/t/2CNjsSxSzzus?utm_medium=website -->
-        <a class="button-2 disabled" aria-disabled="true" role="link">
+        <a class="button-2" href="https://ingenuity24220.fillout.com/t/2CNjsSxSzzus?utm_medium=website">
             Register now
         </a>
-        <span class="closed-note">
-            Camp registration is closed.
-        </span>
         <!-- <a class="button-2" href="#about">
             Learn more
         </a> -->
     </div>
-    <p class="contact-note">
-        Questions? Reach out to us at <a href="mailto:contact@ingenuity.team">contact@ingenuity.team</a>.
-    </p>
 </div>
 
 <div class="about" id="about">
@@ -139,17 +132,7 @@
     .hero-cta {
         display: flex;
         flex-direction: row;
-        align-items: flex-end;
         gap: 1ch;
-    }
-
-    .closed-note {
-        font-style: italic;
-        font-size: clamp(0.75rem, 0.85vw, 1rem);
-    }
-
-    .contact-note {
-        margin-top: 0.5rem;
     }
     .hero {
         --gutter: clamp(1rem, 4vw, 4rem);
@@ -186,20 +169,6 @@
 
     .button-2:focus {
         outline: revert;
-    }
-
-    .button-2.disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
-        user-select: none;
-        -webkit-user-select: none;
-    }
-
-    .button-2.disabled:hover {
-        color: black;
-        background: white;
-        outline: none;
-        cursor: not-allowed;
     }
 
     .about {
