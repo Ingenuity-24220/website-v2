@@ -25,10 +25,11 @@
             </a>
             <!-- <a class="nav-link" href={resolve("/about")}>
                 About
-            </a>
+            </a> -->
             <a class="nav-link" href={resolve("/team")}>
                 Team
             </a>
+            <!--
             <a class="nav-link" href={resolve("/outreach")}>
                 Outreach
             </a>
@@ -106,7 +107,7 @@
         margin-left: auto;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.75rem;
+        gap: 2rem;
         justify-content: flex-end;
     }
 
