@@ -3,6 +3,8 @@
 </svelte:head>
 
 <script lang="ts">
+
+    import elaine from '$lib/assets/team/elaine.jpg';
 	import coachdai from '$lib/assets/team/coachdai.jpeg';
     import erik from '$lib/assets/team/erik.jpg';
     import johnathan from '$lib/assets/team/jonathan.jpeg';
@@ -15,6 +17,7 @@
     import constance from '$lib/assets/team/constance.jpg'
     import mentorzhang from '$lib/assets/team/baoshe.jpg'
     import niko from '$lib/assets/team/niko.jpg'
+	import justin from '$lib/assets/team/justin.jpg'
 	import Header from '$lib/components/header.svelte';
 	
 </script>
@@ -27,33 +30,95 @@
 		<h3 id="we-are-ingenuity">We are Ingenuity.</h3>
 	</div>
 	<div class="team-members">
-		<div class="coaches">
-			<div class="left-coaches">
-				<h1 class="team-title">Coaches</h1>
-				<p class="team-desc">
-					placeholder
-				</p>
-			</div>
-			<div class="right-coaches">
+		<div class="leadership">
+			<h1>Leadership</h1>
+			<div class="leadership-people">
 				<div class="person">
 					<img src={coachdai} alt="Coach Dai" class="person-avatar"/>
-					<div>
-						<h3>Coach Dai</h3>
-						<p>Head Coach</p>
-					</div>
+					<h3>Coach Dai</h3>
+					<p>Head Coach</p>
 				</div>
 				<div class="person">
 					<img src={coachwan} alt="Coach Wan" class="person-avatar"/>
-					<div>
-						<h3>Coach Wan</h3>
-						<p>Assistant Coach</p>
-					</div>
+					<h3>Coach Wan</h3>
+					<p>Assistant Coach</p>
 				</div>
 				<div class="person">
 					<img src={mentorzhang} alt="Mentor Zhang" class="person-avatar"/>
-					<div>
-						<h3>Mentor Zhang</h3>
-						<p>Software Mentor</p>
+					<h3>Mentor Zhang</h3>
+					<p>Software Mentor</p>
+				</div>
+				<div class="person">
+					<img src={elaine} alt="Elaine" class="person-avatar"/>
+					<h3>Elaine</h3>
+					<p>Team Captain</p>
+				</div>
+			</div>
+		</div>
+		<div class="non-leadership">
+			<div class="non-leadership-entry">
+				<h1>Hardware</h1>
+				<div class="non-leadership-people">
+					<div class="person">
+						<img src={erik} alt="Erik" class="person-avatar"/>
+						<h3>Erik</h3>
+						<p>Hardware Lead</p>
+					</div>
+					<div class="person">
+						<img src={nathan} alt="Nathan" class="person-avatar"/>
+						<h3>Nathan</h3>
+						<p>Electrical Lead</p>
+					</div>
+					<div class="person">
+						<img src={vincent} alt="Vincent" class="person-avatar"/>
+						<h3>Vincent</h3>
+						<p>Hardware Specialist</p>
+					</div>
+					<div class="person">
+						<img src={sherry} alt="Sherry" class="person-avatar"/>
+						<h3>Sherry</h3>
+						<p>Hardware Specialist</p>
+					</div>
+				</div>
+			</div>
+			<div class="non-leadership-entry">
+				<h1>Software</h1>
+				<div class="non-leadership-people">
+					<div class="person">
+						<img src={niko} alt="Niko" class="person-avatar"/>
+						<h3>Niko</h3>
+						<p>Software Lead</p>
+					</div>
+					<div class="person">
+						<img src={justin} alt="Justin" class="person-avatar"/>
+						<h3>Justin</h3>
+						<p>Software Specialist</p>
+					</div>
+				</div>
+			</div>
+			<div class="non-leadership-entry">
+				<h1>CAD</h1>
+				<div class="non-leadership-people">
+					<div class="person">
+						<img src={zilong} alt="Zilong" class="person-avatar"/>
+						<h3>Zilong</h3>
+						<p>CAD Lead</p>
+					</div>
+				</div>
+			</div>
+			<div class="non-leadership-entry">
+				<h1>Outreach</h1>
+				<div class="non-leadership-people">
+					<div class="person">
+						<img src={johnathan} alt="Jonathan" class="person-avatar"/>
+						<h3>Jonathan</h3>
+						<p>Outreach Specialist</p>
+					</div>
+					<div class="person">
+						<img src={max} alt="Max" class="person-avatar"/>
+						<h3>Max</h3>
+						<p>Outreach Specialist</p>
+
 					</div>
 				</div>
 			</div>
@@ -78,31 +143,52 @@
 		text-align: center;
 		margin-bottom: 2rem;
 	}
-	.coaches {
-		display: grid;
-
-		grid-template-columns: 1fr 1fr;
-	}
-	.left-coaches {
-		text-align: center;
-		font-weight: 700;
-	}
-	.team-title {
-		font-size: 5em;
-		margin-bottom: 0.75rem;
-	}
-	.team-desc {
-		margin-top: .75rem;
-		font-size: 1.5em;
-	}
-	.right-coaches {
+	.team-members {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 		align-items: center;
+		gap: 2rem;
+	}
+	.leadership {
+		text-align: center;
+		font-size: large;
+		border-radius: 20px;
+		border-style: solid;
+		border-color: #5000008c;
+		background-color: #24000053;
+	}
+	.leadership-people {
+		display: flex;
 		justify-content: center;
+		padding: 2rem;
+		padding-top: 0;
+	}
+	.non-leadership {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 3%;
+		width:  80%;
+		row-gap: 2rem;
+	}
+	.non-leadership-entry{
+		border-style: solid;
+		border-color: #5000008c;
+		background-color: #24000053;
+		border-radius: 20px;
+		width: 48%;
+
+		text-align: center;
+		font-size: large;
+
+	}
+	.non-leadership-people{
+		display: flex;
+		justify-content: center;
+		padding: 2rem;
+		padding-top: 0;
 	}
 	.person{
-		flex: 1;
+		flex: 0 0 27%;
 		text-align: center;
 	}
 	.person-avatar {
