@@ -20,6 +20,16 @@
 	import justin from '$lib/assets/team/justin.jpg'
 	import Header from '$lib/components/header.svelte';
 	
+	let modalContent = $state('');
+	let modalAvatar = $state(niko);
+	let modalRole = $state('');
+	function openDialog(person, avatar, role) {
+		const dialog = document.querySelector('dialog');
+		modalContent = person;
+		modalAvatar = avatar;
+		modalRole = role;
+		dialog?.showModal();
+	}
 </script>
 <div class="header-container">
 	<Header/>
@@ -85,9 +95,11 @@
 				<h1>Software</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<img src={niko} alt="Niko" class="person-avatar"/>
-						<h3>Niko</h3>
-						<p>Software Lead</p>
+						<button type="button" class="person-button" id="niko-button" onclick={() =>openDialog("niko", niko, "Software Lead")}>
+							<img src={niko} alt="Niko" class="person-avatar"/>
+							<h3>Niko</h3>
+							<p>Software Lead</p>
+						</button>
 					</div>
 					<div class="person">
 						<img src={justin} alt="Justin" class="person-avatar"/>
@@ -125,6 +137,11 @@
 		</div>
 	</div>
 </div>
+<dialog class="bio-modal">
+	<img src={modalAvatar} alt={modalContent} class="person-avatar" style="width:20%;"/>
+	<h1>{modalContent}</h1>
+	<p>{modalRole}</p>
+</dialog>
 <style>
 	.header-container {
 		position: sticky;
@@ -147,14 +164,16 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
 		gap: 2rem;
 	}
 	.leadership {
 		text-align: center;
 		font-size: large;
 		border-radius: 20px;
+		width:90%;
 		border-style: solid;
-		border-color: #5000008c;
+		border-color: #500000bd;
 		background-color: #24000053;
 	}
 	.leadership-people {
@@ -166,6 +185,7 @@
 	.non-leadership {
 		display: flex;
 		flex-wrap: wrap;
+		justify-content: center;
 		gap: 3%;
 		width:  80%;
 		row-gap: 2rem;
@@ -183,18 +203,39 @@
 	}
 	.non-leadership-people{
 		display: flex;
-		justify-content: center;
+		justify-content: space-evenly;
+		font-size: 80%;
 		padding: 2rem;
 		padding-top: 0;
 	}
 	.person{
-		flex: 0 0 27%;
+		flex: 0 0 25%;
 		text-align: center;
 	}
+	.person-button{
+		background: none;
+		border: none;
+		font: inherit;
+		color: inherit;
+		cursor:pointer;
+	}
 	.person-avatar {
-		width: 60%;
+		width: 80%;
 		height: auto;
 		border-radius: 50%;
+	}
+	.bio-modal {
+		width: 50%;
+		height: 50%;
+		background-color:#040000;
+		color:white;
+		border-radius: 20px;
+		border-color: #90000073;
+		border-width: 2px;
+
+	}
+	.bio-modal::backdrop {
+		background-color: rgba(0, 0, 0, 0.8);
 	}
 	#meet-the-team {
 		margin-bottom: 0.1rem;
