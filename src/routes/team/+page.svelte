@@ -19,6 +19,7 @@
     import niko from '$lib/assets/team/niko.jpg'
 	import justin from '$lib/assets/team/justin.jpg'
 	import Header from '$lib/components/header.svelte';
+	import close from '$lib/assets/close.svg'
 	
 	let modalName = $state('');
 	let modalAvatar = $state(niko);
@@ -30,6 +31,7 @@
 		modalRole = role;
 		dialog?.showModal();
 	}
+
 </script>
 <div class="header-container">
 	<Header/>
@@ -162,15 +164,18 @@
 	</div>
 </div>
 <dialog class="bio-modal">
+	<button class="modal-close-button" onclick={() => document.querySelector("dialog").close()}>
+		<img src={close} alt="Close" class="modal-close-image">
+	</button>
 	<div class="bio-flex-container">
 		<div class="bio-modal-person">
-			<img src={modalAvatar} alt={modalName} class="person-avatar" style="width:50%;"/>
+			<img src={modalAvatar} alt={modalName} class="modal-avatar"/>
 			<h1>{modalName}</h1>
 			<p>{modalRole}</p>
 		</div>
-		<p class="bio-modal-bio">
+		<div class="bio-modal-bio">
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</p>
+		</div>
 	</div>
 </dialog>
 
@@ -206,7 +211,6 @@
 		width:90%;
 		border-style: solid;
 		border-color: #500000bd;
-		background-color: #24000053;
 	}
 	.leadership-people {
 		display: flex;
@@ -220,7 +224,8 @@
 		justify-content: center;
 		gap: 3%;
 		width:  80%;
-		row-gap: 2rem;
+		font-size: large;
+
 	}
 	.non-leadership-entry{
 		border-style: solid;
@@ -228,7 +233,7 @@
 		background-color: #24000053;
 		border-radius: 20px;
 		width: 48%;
-
+		margin-bottom: 2rem;
 		text-align: center;
 		font-size: large;
 
@@ -243,46 +248,98 @@
 	.person{
 		flex: 0 0 25%;
 		text-align: center;
+		font-size: 120%;
 	}
 	.person-button{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
 		background: none;
 		border: none;
 		font: inherit;
 		color: inherit;
 		cursor:pointer;
 	}
+	.person-button p {
+		margin: .2rem;
+	}
+	.person-button h3 {
+		margin-bottom: 0.25rem;
+	}
 	.person-avatar {
+		display: block;
 		width: 80%;
+		max-width: 100%;
 		height: auto;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
 		border-radius: 50%;
 	}
 	.bio-modal {
-		width: 50%;
+		width: 45%;
 		height: 50%;
 		background-color:#040000;
 		color:white;
 		border-radius: 20px;
 		border-color: #90000073;
 		border-width: 2px;
+		overflow:hidden;
+		text-align: right;
 	}
 	.bio-modal::backdrop {
 		background-color: rgba(0, 0, 0, 0.8);
+	}
+	.modal-close-button {
+		height: 5%;
+		background-color: #000000;
+		border-style: none;
+		cursor: pointer;
+	}
+	.modal-close-image {
+		height: 100%;
+		filter: invert(100%);
 	}
 	.bio-flex-container {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;
-		gap: 1rem;
-		padding: 2rem;
+		gap: 4rem;
+		padding: 1rem;
+		height:90%;
+		padding-top: 0;
+		padding-bottom: 0;
 	}
 	.bio-modal-person{
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		justify-content: center;
+		width:100%;
+		height: 100%;
+		text-align: center;
+	}
+	.bio-modal-person h1{
+		margin-bottom: 0;
+	}
+	.bio-modal-person p{
+		margin-top: .5rem;
 	}
 	.bio-modal-bio{
-		height: 60%;
+		height: 70%;
+		width: 200%;
+		font-size: 1.2rem;
+		text-align: right;
+		display: flex;
+		align-items: center;
+	}
+	.modal-avatar {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		border-radius: 50%;
 	}
 	#meet-the-team {
 		margin-bottom: 0.1rem;
