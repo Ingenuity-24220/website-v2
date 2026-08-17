@@ -20,12 +20,12 @@
 	import justin from '$lib/assets/team/justin.jpg'
 	import Header from '$lib/components/header.svelte';
 	
-	let modalContent = $state('');
+	let modalName = $state('');
 	let modalAvatar = $state(niko);
 	let modalRole = $state('');
 	function openDialog(person, avatar, role) {
 		const dialog = document.querySelector('dialog');
-		modalContent = person;
+		modalName = person.charAt(0).toUpperCase() + person.slice(1); // capitalize the first letter of the name
 		modalAvatar = avatar;
 		modalRole = role;
 		dialog?.showModal();
@@ -44,24 +44,32 @@
 			<h1>Leadership</h1>
 			<div class="leadership-people">
 				<div class="person">
-					<img src={coachdai} alt="Coach Dai" class="person-avatar"/>
-					<h3>Coach Dai</h3>
-					<p>Head Coach</p>
+					<button type="button" class="person-button" onclick={() => openDialog("Coach Dai", coachdai, "Head Coach")}>
+						<img src={coachdai} alt="Coach Dai" class="person-avatar"/>
+						<h3>Coach Dai</h3>
+						<p>Head Coach</p>
+					</button>
 				</div>
 				<div class="person">
-					<img src={coachwan} alt="Coach Wan" class="person-avatar"/>
-					<h3>Coach Wan</h3>
-					<p>Assistant Coach</p>
+					<button type="button" class="person-button" onclick={() => openDialog("Coach Wan", coachwan, "Assistant Coach")}>
+						<img src={coachwan} alt="Coach Wan" class="person-avatar"/>
+						<h3>Coach Wan</h3>
+						<p>Assistant Coach</p>
+					</button>
 				</div>
 				<div class="person">
-					<img src={mentorzhang} alt="Mentor Zhang" class="person-avatar"/>
-					<h3>Mentor Zhang</h3>
-					<p>Software Mentor</p>
+					<button type="button" class="person-button" onclick={() => openDialog("Mentor Zhang", mentorzhang, "Software Mentor")}>
+						<img src={mentorzhang} alt="Mentor Zhang" class="person-avatar"/>
+						<h3>Mentor Zhang</h3>
+						<p>Software Mentor</p>
+					</button>
 				</div>
 				<div class="person">
-					<img src={elaine} alt="Elaine" class="person-avatar"/>
-					<h3>Elaine</h3>
-					<p>Team Captain</p>
+					<button type="button" class="person-button" onclick={() => openDialog("Elaine", elaine, "Team Captain")}>
+						<img src={elaine} alt="Elaine" class="person-avatar"/>
+						<h3>Elaine</h3>
+						<p>Team Captain</p>
+					</button>
 				</div>
 			</div>
 		</div>
@@ -70,24 +78,32 @@
 				<h1>Hardware</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<img src={erik} alt="Erik" class="person-avatar"/>
-						<h3>Erik</h3>
-						<p>Hardware Lead</p>
+						<button type="button" class="person-button" onclick={() => openDialog("Erik", erik, "Hardware Lead")}>
+							<img src={erik} alt="Erik" class="person-avatar"/>
+							<h3>Erik</h3>
+							<p>Hardware Lead</p>
+						</button>
 					</div>
 					<div class="person">
-						<img src={nathan} alt="Nathan" class="person-avatar"/>
-						<h3>Nathan</h3>
-						<p>Electrical Lead</p>
+						<button type="button" class="person-button" onclick={() => openDialog("Nathan", nathan, "Electrical Lead")}>
+							<img src={nathan} alt="Nathan" class="person-avatar"/>
+							<h3>Nathan</h3>
+							<p>Electrical Lead</p>
+						</button>
 					</div>
 					<div class="person">
-						<img src={vincent} alt="Vincent" class="person-avatar"/>
-						<h3>Vincent</h3>
-						<p>Hardware Specialist</p>
+						<button type="button" class="person-button" onclick={() => openDialog("Vincent", vincent, "Hardware Specialist")}>
+							<img src={vincent} alt="Vincent" class="person-avatar"/>
+							<h3>Vincent</h3>
+							<p>Hardware Specialist</p>
+						</button>
 					</div>
 					<div class="person">
-						<img src={sherry} alt="Sherry" class="person-avatar"/>
-						<h3>Sherry</h3>
-						<p>Hardware Specialist</p>
+						<button type="button" class="person-button" onclick={() => openDialog("Sherry", sherry, "Hardware Specialist")}>
+							<img src={sherry} alt="Sherry" class="person-avatar"/>
+							<h3>Sherry</h3>
+							<p>Hardware Specialist</p>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -102,9 +118,11 @@
 						</button>
 					</div>
 					<div class="person">
-						<img src={justin} alt="Justin" class="person-avatar"/>
-						<h3>Justin</h3>
-						<p>Software Specialist</p>
+						<button type="button" class="person-button" onclick={() => openDialog("Justin", justin, "Software Specialist")}>
+							<img src={justin} alt="Justin" class="person-avatar"/>
+							<h3>Justin</h3>
+							<p>Software Specialist</p>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -112,9 +130,11 @@
 				<h1>CAD</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<img src={zilong} alt="Zilong" class="person-avatar"/>
-						<h3>Zilong</h3>
-						<p>CAD Lead</p>
+						<button type="button" class="person-button" onclick={() => openDialog("Zilong", zilong, "CAD Lead")}>
+							<img src={zilong} alt="Zilong" class="person-avatar"/>
+							<h3>Zilong</h3>
+							<p>CAD Lead</p>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -122,14 +142,18 @@
 				<h1>Outreach</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<img src={johnathan} alt="Jonathan" class="person-avatar"/>
-						<h3>Jonathan</h3>
-						<p>Outreach Specialist</p>
+						<button type="button" class="person-button" onclick={() => openDialog("Jonathan", johnathan, "Outreach Specialist")}>
+							<img src={johnathan} alt="Jonathan" class="person-avatar"/>
+							<h3>Jonathan</h3>
+							<p>Outreach Specialist</p>
+						</button>
 					</div>
 					<div class="person">
-						<img src={max} alt="Max" class="person-avatar"/>
-						<h3>Max</h3>
-						<p>Outreach Specialist</p>
+						<button type="button" class="person-button" onclick={() => openDialog("Max", max, "Outreach Specialist")}>
+							<img src={max} alt="Max" class="person-avatar"/>
+							<h3>Max</h3>
+							<p>Outreach Specialist</p>
+						</button>
 
 					</div>
 				</div>
@@ -138,10 +162,18 @@
 	</div>
 </div>
 <dialog class="bio-modal">
-	<img src={modalAvatar} alt={modalContent} class="person-avatar" style="width:20%;"/>
-	<h1>{modalContent}</h1>
-	<p>{modalRole}</p>
+	<div class="bio-flex-container">
+		<div class="bio-modal-person">
+			<img src={modalAvatar} alt={modalName} class="person-avatar" style="width:50%;"/>
+			<h1>{modalName}</h1>
+			<p>{modalRole}</p>
+		</div>
+		<p class="bio-modal-bio">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</p>
+	</div>
 </dialog>
+
 <style>
 	.header-container {
 		position: sticky;
@@ -232,10 +264,25 @@
 		border-radius: 20px;
 		border-color: #90000073;
 		border-width: 2px;
-
 	}
 	.bio-modal::backdrop {
 		background-color: rgba(0, 0, 0, 0.8);
+	}
+	.bio-flex-container {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		padding: 2rem;
+	}
+	.bio-modal-person{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	.bio-modal-bio{
+		height: 60%;
 	}
 	#meet-the-team {
 		margin-bottom: 0.1rem;
