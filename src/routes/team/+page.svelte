@@ -24,11 +24,13 @@
 	let modalName = $state('');
 	let modalAvatar = $state(niko);
 	let modalRole = $state('');
-	function openDialog(person, avatar, role) {
+	let bioText = $state('')
+	function openDialog(person, avatar, role, text) {
 		const dialog = document.querySelector('dialog');
 		modalName = person.charAt(0).toUpperCase() + person.slice(1); // capitalize the first letter of the name
 		modalAvatar = avatar;
 		modalRole = role;
+		bioText = text;
 		dialog?.showModal();
 	}
 
@@ -46,28 +48,28 @@
 			<h1>Leadership</h1>
 			<div class="leadership-people">
 				<div class="person">
-					<button type="button" class="person-button" onclick={() => openDialog("Coach Dai", coachdai, "Head Coach")}>
+					<button type="button" class="person-button" onclick={() => openDialog("Coach Dai", coachdai, "Head Coach", "Coach Dai is in his third year coaching the Ingenuity FTC team. He earned his PhD in Electrical Engineering from Boston University and currently works as a Senior Staff Engineer at Northrop Grumman. He is passionate about circuit design, control systems, and automation, and enjoys sharing that enthusiasm with students. His goal is to guide the team through the entire engineering process—from concept and design to testing and refinement—while ensuring they have the support and resources they need to learn, grow, and succeed.")}>
 						<img src={coachdai} alt="Coach Dai" class="person-avatar"/>
 						<h3>Coach Dai</h3>
 						<p>Head Coach</p>
 					</button>
 				</div>
 				<div class="person">
-					<button type="button" class="person-button" onclick={() => openDialog("Coach Wan", coachwan, "Assistant Coach")}>
+					<button type="button" class="person-button" onclick={() => openDialog("Coach Wan", coachwan, "Assistant Coach", "John Wan is a Supervisory Data Scientist at the U.S. FDA and an experienced FIRST mentor. He coaches FTC and FLL teams with a focus on engineering design, autonomous strategy, and data-driven problem solving. John also teaches data science at UMBC and brings real-world analytics and leadership experience to youth STEM education. He holds an MBA from Georgia Tech and a B.S. in Computer Engineering.")}>
 						<img src={coachwan} alt="Coach Wan" class="person-avatar"/>
 						<h3>Coach Wan</h3>
 						<p>Assistant Coach</p>
 					</button>
 				</div>
 				<div class="person">
-					<button type="button" class="person-button" onclick={() => openDialog("Mentor Zhang", mentorzhang, "Software Mentor")}>
+					<button type="button" class="person-button" onclick={() => openDialog("Mentor Zhang", mentorzhang, "Software Mentor", "Dr. Baoshe Zhang is a software mentor for Team Ingenuity. He holds a Ph.D. in Physics from the Hong Kong University of Science and Technology and is an Associate Professor at the University of Maryland School of Medicine. With a background in software engineering and expertise in programming and automation, he helps guide the team's software development.")}>
 						<img src={mentorzhang} alt="Mentor Zhang" class="person-avatar"/>
 						<h3>Mentor Zhang</h3>
 						<p>Software Mentor</p>
 					</button>
 				</div>
 				<div class="person">
-					<button type="button" class="person-button" onclick={() => openDialog("Elaine", elaine, "Team Captain")}>
+					<button type="button" class="person-button" onclick={() => openDialog("Elaine", elaine, "Team Captain", "Elaine is a Junior and fourth-year team member with seven years of experience in FIRST. With past experience in hardware, software, and outreach, she is eager to assist her team in any aspect. In her free time, you can find Elaine hiding in a corner or managing her minions.")}>
 						<img src={elaine} alt="Elaine" class="person-avatar"/>
 						<h3>Elaine</h3>
 						<p>Team Captain</p>
@@ -80,28 +82,28 @@
 				<h1>Hardware</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Erik", erik, "Hardware Lead")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Erik", erik, "Hardware Lead", "Erik is the Hardware Lead of Team Ingenuity, overseeing the mechanical design and construction of the robot. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currenlty a Junior at Gilman and enjoys playing squash in his free time.")}>
 							<img src={erik} alt="Erik" class="person-avatar"/>
 							<h3>Erik</h3>
 							<p>Hardware Lead</p>
 						</button>
 					</div>
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Nathan", nathan, "Electrical Lead")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Nathan", nathan, "Electrical Lead", "Nathan is a 4th year FTC student on team Ingenuity 24220. He also participated in 4 years of FLL, even going to nationals once. He enjoys playing soccer and spending times with his friends and family.")}>
 							<img src={nathan} alt="Nathan" class="person-avatar"/>
 							<h3>Nathan</h3>
 							<p>Electrical Lead</p>
 						</button>
 					</div>
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Vincent", vincent, "Hardware Specialist")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Vincent", vincent, "Hardware Specialist", "Vincent is a member of Team Ingenuity's hardware team, where he helps with robot construction and assembly. He enjoys working hands-on with mechanical components and collaborating with teammates to bring designs to life.")}>
 							<img src={vincent} alt="Vincent" class="person-avatar"/>
 							<h3>Vincent</h3>
 							<p>Hardware Specialist</p>
 						</button>
 					</div>
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Sherry", sherry, "Hardware Specialist")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Sherry", sherry, "Hardware Specialist", "Sherry works on the hardware and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.")}>
 							<img src={sherry} alt="Sherry" class="person-avatar"/>
 							<h3>Sherry</h3>
 							<p>Hardware Specialist</p>
@@ -113,14 +115,14 @@
 				<h1>Software</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<button type="button" class="person-button" id="niko-button" onclick={() =>openDialog("niko", niko, "Software Lead")}>
+						<button type="button" class="person-button" id="niko-button" onclick={() =>openDialog("niko", niko, "Software Lead", "Niko manages the software side of Team Ingenuity, having worked on the robot's vision system along with maintaining and building out the website as it stands today. In his free time, he likes to code projects, mostly in Python or Javascript, and work on running events with Hack Club.")}>
 							<img src={niko} alt="Niko" class="person-avatar"/>
 							<h3>Niko</h3>
 							<p>Software Lead</p>
 						</button>
 					</div>
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Justin", justin, "Software Specialist")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Justin", justin, "Software Specialist", "Justin works alongside Niko on software for Team Ingenuity. He helps with website development and the more mathematical side of robotics. He is currently a sophomore at Centennial High. In his free time, you can find him playing piano or doing math.")}>
 							<img src={justin} alt="Justin" class="person-avatar"/>
 							<h3>Justin</h3>
 							<p>Software Specialist</p>
@@ -132,7 +134,7 @@
 				<h1>CAD</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Zilong", zilong, "CAD Lead")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Zilong", zilong, "CAD Lead", "Zilong is the CAD Lead of Team Ingenuity, specializing in computer-aided design and 3D modeling, helping out with creating parts which are not available off the shelf. His high level of CAD skill and creative problem-solving skills helps to  bring the robot to life.")}>
 							<img src={zilong} alt="Zilong" class="person-avatar"/>
 							<h3>Zilong</h3>
 							<p>CAD Lead</p>
@@ -144,14 +146,14 @@
 				<h1>Outreach</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Jonathan", johnathan, "Outreach Specialist")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Jonathan", johnathan, "Outreach Specialist", "Max works on outreach for Team Ingenuity, helping to connect with the community and spread awareness about FIRST robotics. He assists with events, coordinates with sponsors, and works to inspire the next generation of engineers.")}>
 							<img src={johnathan} alt="Jonathan" class="person-avatar"/>
 							<h3>Jonathan</h3>
 							<p>Outreach Specialist</p>
 						</button>
 					</div>
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Max", max, "Outreach Specialist")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Max", max, "Outreach Specialist", "Jonathan, a new addition to Team Ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. In his downtime, he enjoys associating with friends and family.")}>
 							<img src={max} alt="Max" class="person-avatar"/>
 							<h3>Max</h3>
 							<p>Outreach Specialist</p>
@@ -173,9 +175,7 @@
 			<h1>{modalName}</h1>
 			<p>{modalRole}</p>
 		</div>
-		<div class="bio-modal-bio">
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		</div>
+		<div class="bio-modal-bio">{bioText}</div>
 	</div>
 </dialog>
 
@@ -328,11 +328,12 @@
 	}
 	.bio-modal-bio{
 		height: 70%;
-		width: 200%;
+		width: 150%;
 		font-size: 1.2rem;
 		text-align: right;
 		display: flex;
 		align-items: center;
+		margin-bottom: 4rem
 	}
 	.modal-avatar {
 		width: 100%;
