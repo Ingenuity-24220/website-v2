@@ -20,9 +20,11 @@
             </a>
         </div>
         <div class="nav"> <!-- NAV CONTAINER, PUSH TO END-->
+            {#if summer}
             <a class="nav-link" href={resolve("/summer")}>
                 Summer Camp
             </a>
+            {/if}
             <!-- <a class="nav-link" href={resolve("/about")}>
                 About
             </a> -->

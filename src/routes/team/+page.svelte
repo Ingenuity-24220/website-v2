@@ -191,7 +191,7 @@
 		flex-direction: column;
 		align-items: center;
 		margin-top: 2rem;
-		height: 100vw;
+		min-height: 100vw;
 	}
 	.title {
 		text-align: center;
@@ -328,7 +328,7 @@
 	}
 	.bio-modal-bio{
 		height: 70%;
-		width: 150%;
+		width: 100%;
 		font-size: 1.2rem;
 		text-align: right;
 		display: flex;
