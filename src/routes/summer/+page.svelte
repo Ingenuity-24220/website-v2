@@ -142,6 +142,7 @@
         align-items: flex-end;
         gap: 1ch;
     }
+
     .closed-note {
         font-style: italic;
         font-size: clamp(0.75rem, 0.85vw, 1rem);
@@ -187,6 +188,20 @@
         outline: revert;
     }
      .button-2.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .button-2.disabled:hover {
+        color: black;
+        background: white;
+        outline: none;
+        cursor: not-allowed;
+    }
+
+    .button-2.disabled {
         opacity: 0.5;
         cursor: not-allowed;
         user-select: none;
