@@ -187,6 +187,19 @@
     .button-2:focus {
         outline: revert;
     }
+     .button-2.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .button-2.disabled:hover {
+        color: black;
+        background: white;
+        outline: none;
+        cursor: not-allowed;
+    }
 
     .button-2.disabled {
         opacity: 0.5;
