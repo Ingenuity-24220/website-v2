@@ -82,7 +82,7 @@
 				<h1>Hardware</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Erik", erik, "Hardware Lead", "Erik is the Hardware Lead of Team Ingenuity, overseeing the mechanical design and construction of the robot. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currenlty a Junior at Gilman and enjoys playing squash in his free time.")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Erik", erik, "Hardware Lead", "Erik is the Hardware Lead of Team Ingenuity, overseeing the mechanical design and construction of the robot. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior at Gilman and enjoys playing squash in his free time.")}>
 							<img src={erik} alt="Erik" class="person-avatar"/>
 							<h3>Erik</h3>
 							<p>Hardware Lead</p>
@@ -134,7 +134,7 @@
 				<h1>CAD</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Zilong", zilong, "CAD Lead", "Zilong is the CAD Lead of Team Ingenuity, specializing in computer-aided design and 3D modeling, helping out with creating parts which are not available off the shelf. His high level of CAD skill and creative problem-solving skills helps to  bring the robot to life.")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Zilong", zilong, "CAD Lead", "Zilong is the CAD Lead of Team Ingenuity, specializing in computer-aided design and 3D modeling, helping out with creating parts which are not available off the shelf. His high level of CAD skill and creative problem-solving skills helps to bring the robot to life.")}>
 							<img src={zilong} alt="Zilong" class="person-avatar"/>
 							<h3>Zilong</h3>
 							<p>CAD Lead</p>
@@ -146,14 +146,14 @@
 				<h1>Outreach</h1>
 				<div class="non-leadership-people">
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Jonathan", johnathan, "Outreach Specialist", "Max works on outreach for Team Ingenuity, helping to connect with the community and spread awareness about FIRST robotics. He assists with events, coordinates with sponsors, and works to inspire the next generation of engineers.")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Jonathan", johnathan, "Outreach Specialist", "Johnathan, a new addition to team ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. in his downtime, he enjoys associating with friends and family.")}>
 							<img src={johnathan} alt="Jonathan" class="person-avatar"/>
 							<h3>Jonathan</h3>
 							<p>Outreach Specialist</p>
 						</button>
 					</div>
 					<div class="person">
-						<button type="button" class="person-button" onclick={() => openDialog("Max", max, "Outreach Specialist", "Jonathan, a new addition to Team Ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. In his downtime, he enjoys associating with friends and family.")}>
+						<button type="button" class="person-button" onclick={() => openDialog("Max", max, "Outreach Specialist", "Max works on outreach for Team Ingenuity, helping to connect with the community and spread awareness about FIRST robotics. He assists with events, coordinates with sponsors, and works to inspire the next generation of engineers.")}>
 							<img src={max} alt="Max" class="person-avatar"/>
 							<h3>Max</h3>
 							<p>Outreach Specialist</p>
