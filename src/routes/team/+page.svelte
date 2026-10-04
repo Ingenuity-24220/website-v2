@@ -278,7 +278,7 @@
 	}
 	.bio-modal {
 		width: 45%;
-		height: 50%;
+		height: 60%;
 		background-color:#040000;
 		color:white;
 		border-radius: 20px;
