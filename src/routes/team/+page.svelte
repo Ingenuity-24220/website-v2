@@ -13,494 +13,453 @@
 	import niko from '$lib/assets/team/niko.jpg';
 	import justin from '$lib/assets/team/justin.jpg';
 	import Header from '$lib/components/header.svelte';
+	import Footer from '$lib/components/footer.svelte';
 	import close from '$lib/assets/close.svg';
 
-	let modalName = $state('');
-	let modalAvatar = $state(niko);
-	let modalRole = $state('');
-	let bioText = $state('');
-	function openDialog(person: string, avatar: string, role: string, text: string) {
-		const dialog = document.querySelector('dialog');
-		modalName = person.charAt(0).toUpperCase() + person.slice(1); // capitalize the first letter of the name
-		modalAvatar = avatar;
-		modalRole = role;
-		bioText = text;
+	type Member = {
+		img: string;
+		name: string;
+		role: string;
+		bio: string;
+	};
+
+	// groups flow onto the same row as their neighbours when there's room
+	const groups: { name: string; members: Member[] }[] = [
+		{
+			name: 'Leadership',
+			members: [
+				{
+					img: coachdai,
+					name: 'Coach Dai',
+					role: 'Head Coach',
+					bio: 'Coach Dai is in his third year coaching the Ingenuity FTC team. He earned his PhD in Electrical Engineering from Boston University and currently works as a Senior Staff Engineer at Northrop Grumman. He is passionate about circuit design, control systems, and automation, and enjoys sharing that enthusiasm with students. His goal is to guide the team through the entire engineering process—from concept and design to testing and refinement—while ensuring they have the support and resources they need to learn, grow, and succeed.'
+				},
+				{
+					img: coachwan,
+					name: 'Coach Wan',
+					role: 'Assistant Coach',
+					bio: 'John Wan is a Supervisory Data Scientist at the U.S. FDA and an experienced FIRST mentor. He coaches FTC and FLL teams with a focus on engineering design, autonomous strategy, and data-driven problem solving. John also teaches data science at UMBC and brings real-world analytics and leadership experience to youth STEM education. He holds an MBA from Georgia Tech and a B.S. in Computer Engineering.'
+				},
+				{
+					img: mentorzhang,
+					name: 'Mentor Zhang',
+					role: 'Software Mentor',
+					bio: "Dr. Baoshe Zhang is a software mentor for Team Ingenuity. He holds a Ph.D. in Physics from the Hong Kong University of Science and Technology and is an Associate Professor at the University of Maryland School of Medicine. With a background in software engineering and expertise in programming and automation, he helps guide the team's software development."
+				},
+				{
+					img: elaine,
+					name: 'Elaine',
+					role: 'Team Captain',
+					bio: 'Elaine is a Junior and fourth-year team member with seven years of experience in FIRST. With past experience in hardware, software, and outreach, she is eager to assist her team in any aspect. In her free time, you can find Elaine hiding in a corner or managing her minions.'
+				}
+			]
+		},
+		{
+			name: 'Hardware',
+			members: [
+				{
+					img: erik,
+					name: 'Erik',
+					role: 'Hardware Lead',
+					bio: 'Erik is the Hardware Lead of Team Ingenuity, overseeing the mechanical design and construction of the robot. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior at Gilman and enjoys playing squash in his free time.'
+				},
+				{
+					img: nathan,
+					name: 'Nathan',
+					role: 'Electrical Lead',
+					bio: 'Nathan is a 4th year FTC student on team Ingenuity 24220. He also participated in 4 years of FLL, even going to nationals once. He enjoys playing soccer and spending times with his friends and family.'
+				},
+				{
+					img: vincent,
+					name: 'Vincent',
+					role: 'Hardware Specialist',
+					bio: "Vincent is a member of Team Ingenuity's hardware team, where he helps with robot construction and assembly. He enjoys working hands-on with mechanical components and collaborating with teammates to bring designs to life."
+				},
+				{
+					img: sherry,
+					name: 'Sherry',
+					role: 'Hardware Specialist',
+					bio: 'Sherry works on the hardware and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.'
+				}
+			]
+		},
+		{
+			name: 'Software',
+			members: [
+				{
+					img: niko,
+					name: 'Niko',
+					role: 'Software Lead',
+					bio: "Niko manages the software side of Team Ingenuity, having worked on the robot's vision system along with maintaining and building out the website as it stands today. In his free time, he likes to code projects, mostly in Python or Javascript, and work on running events with Hack Club."
+				},
+				{
+					img: justin,
+					name: 'Justin',
+					role: 'Software Specialist',
+					bio: 'Justin works alongside Niko on software for Team Ingenuity. He helps with website development and the more mathematical side of robotics. He is currently a sophomore at Centennial High. In his free time, you can find him playing piano or doing math.'
+				}
+			]
+		},
+		{
+			name: 'CAD',
+			members: [
+				{
+					img: zilong,
+					name: 'Zilong',
+					role: 'CAD Lead',
+					bio: 'Zilong is the CAD Lead of Team Ingenuity, specializing in computer-aided design and 3D modeling, helping out with creating parts which are not available off the shelf. His high level of CAD skill and creative problem-solving skills helps to bring the robot to life.'
+				}
+			]
+		},
+		{
+			name: 'Outreach',
+			members: [
+				{
+					img: johnathan,
+					name: 'Jonathan',
+					role: 'Outreach Specialist',
+					bio: 'Johnathan, a new addition to team ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. in his downtime, he enjoys associating with friends and family.'
+				},
+				{
+					img: max,
+					name: 'Max',
+					role: 'Outreach Specialist',
+					bio: 'Max works on outreach for Team Ingenuity, helping to connect with the community and spread awareness about FIRST robotics. He assists with events, coordinates with sponsors, and works to inspire the next generation of engineers.'
+				}
+			]
+		}
+	];
+
+	let dialog: HTMLDialogElement | null = $state(null);
+	let selected: Member | null = $state(null);
+
+	function openDialog(member: Member) {
+		selected = member;
 		dialog?.showModal();
+	}
+
+	// backdrop clicks land on the dialog itself rather than its contents
+	function closeOnBackdrop(event: MouseEvent) {
+		if (event.target === dialog) {
+			dialog?.close();
+		}
 	}
 </script>
 
 <svelte:head>
 	<title>Team | Ingenuity</title>
 </svelte:head>
-<div class="header-container">
+
+<div class="hero-bg">
 	<Header />
+	<div class="hero-content">
+		<h1>Meet the Team</h1>
+		<h2 class="hero-sub">We are <i><u>Ingenuity.</u></i></h2>
+	</div>
 </div>
+
 <div class="content">
-	<div class="title">
-		<h1 id="meet-the-team">Meet the Team</h1>
-		<h3 id="we-are-ingenuity">We are Ingenuity.</h3>
-	</div>
-	<div class="team-members">
-		<div class="leadership">
-			<h1>Leadership</h1>
-			<div class="leadership-people">
-				<div class="person">
-					<button
-						type="button"
-						class="person-button"
-						onclick={() =>
-							openDialog(
-								'Coach Dai',
-								coachdai,
-								'Head Coach',
-								'Coach Dai is in his third year coaching the Ingenuity FTC team. He earned his PhD in Electrical Engineering from Boston University and currently works as a Senior Staff Engineer at Northrop Grumman. He is passionate about circuit design, control systems, and automation, and enjoys sharing that enthusiasm with students. His goal is to guide the team through the entire engineering process—from concept and design to testing and refinement—while ensuring they have the support and resources they need to learn, grow, and succeed.'
-							)}
-					>
-						<img src={coachdai} alt="Coach Dai" class="person-avatar" />
-						<h3>Coach Dai</h3>
-						<p>Head Coach</p>
-					</button>
+	<div class="groups">
+		{#each groups as group (group.name)}
+			<section class="group">
+				<h2><u>{group.name}</u></h2>
+				<div class="member-grid">
+					{#each group.members as member (member.name)}
+						<button type="button" class="member-item" onclick={() => openDialog(member)}>
+							<div class="member-container">
+								<img src={member.img} alt={member.name} />
+								<div class="member-hover" aria-hidden="true">
+									<span class="button-2">Meet {member.name}</span>
+								</div>
+							</div>
+							<p>{member.name}</p>
+							<p class="member-subtitle">{member.role}</p>
+						</button>
+					{/each}
 				</div>
-				<div class="person">
-					<button
-						type="button"
-						class="person-button"
-						onclick={() =>
-							openDialog(
-								'Coach Wan',
-								coachwan,
-								'Assistant Coach',
-								'John Wan is a Supervisory Data Scientist at the U.S. FDA and an experienced FIRST mentor. He coaches FTC and FLL teams with a focus on engineering design, autonomous strategy, and data-driven problem solving. John also teaches data science at UMBC and brings real-world analytics and leadership experience to youth STEM education. He holds an MBA from Georgia Tech and a B.S. in Computer Engineering.'
-							)}
-					>
-						<img src={coachwan} alt="Coach Wan" class="person-avatar" />
-						<h3>Coach Wan</h3>
-						<p>Assistant Coach</p>
-					</button>
-				</div>
-				<div class="person">
-					<button
-						type="button"
-						class="person-button"
-						onclick={() =>
-							openDialog(
-								'Mentor Zhang',
-								mentorzhang,
-								'Software Mentor',
-								"Dr. Baoshe Zhang is a software mentor for Team Ingenuity. He holds a Ph.D. in Physics from the Hong Kong University of Science and Technology and is an Associate Professor at the University of Maryland School of Medicine. With a background in software engineering and expertise in programming and automation, he helps guide the team's software development."
-							)}
-					>
-						<img src={mentorzhang} alt="Mentor Zhang" class="person-avatar" />
-						<h3>Mentor Zhang</h3>
-						<p>Software Mentor</p>
-					</button>
-				</div>
-				<div class="person">
-					<button
-						type="button"
-						class="person-button"
-						onclick={() =>
-							openDialog(
-								'Elaine',
-								elaine,
-								'Team Captain',
-								'Elaine is a Junior and fourth-year team member with seven years of experience in FIRST. With past experience in hardware, software, and outreach, she is eager to assist her team in any aspect. In her free time, you can find Elaine hiding in a corner or managing her minions.'
-							)}
-					>
-						<img src={elaine} alt="Elaine" class="person-avatar" />
-						<h3>Elaine</h3>
-						<p>Team Captain</p>
-					</button>
-				</div>
-			</div>
-		</div>
-		<div class="non-leadership">
-			<div class="non-leadership-entry">
-				<h1>Hardware</h1>
-				<div class="non-leadership-people">
-					<div class="person">
-						<button
-							type="button"
-							class="person-button"
-							onclick={() =>
-								openDialog(
-									'Erik',
-									erik,
-									'Hardware Lead',
-									'Erik is the Hardware Lead of Team Ingenuity, overseeing the mechanical design and construction of the robot. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior at Gilman and enjoys playing squash in his free time.'
-								)}
-						>
-							<img src={erik} alt="Erik" class="person-avatar" />
-							<h3>Erik</h3>
-							<p>Hardware Lead</p>
-						</button>
-					</div>
-					<div class="person">
-						<button
-							type="button"
-							class="person-button"
-							onclick={() =>
-								openDialog(
-									'Nathan',
-									nathan,
-									'Electrical Lead',
-									'Nathan is a 4th year FTC student on team Ingenuity 24220. He also participated in 4 years of FLL, even going to nationals once. He enjoys playing soccer and spending times with his friends and family.'
-								)}
-						>
-							<img src={nathan} alt="Nathan" class="person-avatar" />
-							<h3>Nathan</h3>
-							<p>Electrical Lead</p>
-						</button>
-					</div>
-					<div class="person">
-						<button
-							type="button"
-							class="person-button"
-							onclick={() =>
-								openDialog(
-									'Vincent',
-									vincent,
-									'Hardware Specialist',
-									"Vincent is a member of Team Ingenuity's hardware team, where he helps with robot construction and assembly. He enjoys working hands-on with mechanical components and collaborating with teammates to bring designs to life."
-								)}
-						>
-							<img src={vincent} alt="Vincent" class="person-avatar" />
-							<h3>Vincent</h3>
-							<p>Hardware Specialist</p>
-						</button>
-					</div>
-					<div class="person">
-						<button
-							type="button"
-							class="person-button"
-							onclick={() =>
-								openDialog(
-									'Sherry',
-									sherry,
-									'Hardware Specialist',
-									'Sherry works on the hardware and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.'
-								)}
-						>
-							<img src={sherry} alt="Sherry" class="person-avatar" />
-							<h3>Sherry</h3>
-							<p>Hardware Specialist</p>
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="non-leadership-entry">
-				<h1>Software</h1>
-				<div class="non-leadership-people">
-					<div class="person">
-						<button
-							type="button"
-							class="person-button"
-							id="niko-button"
-							onclick={() =>
-								openDialog(
-									'niko',
-									niko,
-									'Software Lead',
-									"Niko manages the software side of Team Ingenuity, having worked on the robot's vision system along with maintaining and building out the website as it stands today. In his free time, he likes to code projects, mostly in Python or Javascript, and work on running events with Hack Club."
-								)}
-						>
-							<img src={niko} alt="Niko" class="person-avatar" />
-							<h3>Niko</h3>
-							<p>Software Lead</p>
-						</button>
-					</div>
-					<div class="person">
-						<button
-							type="button"
-							class="person-button"
-							onclick={() =>
-								openDialog(
-									'Justin',
-									justin,
-									'Software Specialist',
-									'Justin works alongside Niko on software for Team Ingenuity. He helps with website development and the more mathematical side of robotics. He is currently a sophomore at Centennial High. In his free time, you can find him playing piano or doing math.'
-								)}
-						>
-							<img src={justin} alt="Justin" class="person-avatar" />
-							<h3>Justin</h3>
-							<p>Software Specialist</p>
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="non-leadership-entry">
-				<h1>CAD</h1>
-				<div class="non-leadership-people">
-					<div class="person">
-						<button
-							type="button"
-							class="person-button"
-							onclick={() =>
-								openDialog(
-									'Zilong',
-									zilong,
-									'CAD Lead',
-									'Zilong is the CAD Lead of Team Ingenuity, specializing in computer-aided design and 3D modeling, helping out with creating parts which are not available off the shelf. His high level of CAD skill and creative problem-solving skills helps to bring the robot to life.'
-								)}
-						>
-							<img src={zilong} alt="Zilong" class="person-avatar" />
-							<h3>Zilong</h3>
-							<p>CAD Lead</p>
-						</button>
-					</div>
-				</div>
-			</div>
-			<div class="non-leadership-entry">
-				<h1>Outreach</h1>
-				<div class="non-leadership-people">
-					<div class="person">
-						<button
-							type="button"
-							class="person-button"
-							onclick={() =>
-								openDialog(
-									'Jonathan',
-									johnathan,
-									'Outreach Specialist',
-									'Johnathan, a new addition to team ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. in his downtime, he enjoys associating with friends and family.'
-								)}
-						>
-							<img src={johnathan} alt="Jonathan" class="person-avatar" />
-							<h3>Jonathan</h3>
-							<p>Outreach Specialist</p>
-						</button>
-					</div>
-					<div class="person">
-						<button
-							type="button"
-							class="person-button"
-							onclick={() =>
-								openDialog(
-									'Max',
-									max,
-									'Outreach Specialist',
-									'Max works on outreach for Team Ingenuity, helping to connect with the community and spread awareness about FIRST robotics. He assists with events, coordinates with sponsors, and works to inspire the next generation of engineers.'
-								)}
-						>
-							<img src={max} alt="Max" class="person-avatar" />
-							<h3>Max</h3>
-							<p>Outreach Specialist</p>
-						</button>
-					</div>
-				</div>
-			</div>
-		</div>
+			</section>
+		{/each}
 	</div>
 </div>
-<dialog class="bio-modal">
-	<button class="modal-close-button" onclick={() => document.querySelector('dialog')?.close()}>
-		<img src={close} alt="Close" class="modal-close-image" />
-	</button>
-	<div class="bio-flex-container">
-		<div class="bio-modal-person">
-			<img src={modalAvatar} alt={modalName} class="modal-avatar" />
-			<h1>{modalName}</h1>
-			<p>{modalRole}</p>
+
+<Footer />
+
+<dialog class="bio-modal" bind:this={dialog} onclick={closeOnBackdrop}>
+	{#if selected}
+		<button type="button" class="modal-close" onclick={() => dialog?.close()} aria-label="Close">
+			<img src={close} alt="" />
+		</button>
+		<div class="bio-grid">
+			<div class="bio-person">
+				<img src={selected.img} alt={selected.name} class="modal-avatar" />
+				<h2>{selected.name}</h2>
+				<p class="member-subtitle">{selected.role}</p>
+			</div>
+			<p class="bio-text">{selected.bio}</p>
 		</div>
-		<div class="bio-modal-bio">{bioText}</div>
-	</div>
+	{/if}
 </dialog>
 
 <style>
-	.header-container {
-		position: sticky;
-		top: 0;
-		z-index: 1000;
-	}
-	.content {
-		display: flex;
+	.hero-bg {
+		--gutter: clamp(1rem, 4vw, 4rem);
+
+		background-image: linear-gradient(#841515, #000);
+		margin: 0;
 		color: white;
+		box-sizing: border-box;
+		overflow-x: clip;
+	}
+
+	.hero-content {
+		padding-inline: var(--gutter);
+		padding-block: clamp(2rem, 8vh, 6rem);
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(2rem, 4.5vw, 3.75rem);
+		line-height: 1.1;
+	}
+
+	.hero-sub {
+		font-weight: 300;
+		font-size: clamp(1.75rem, 3vw, 3.25rem);
+		margin-block: clamp(0.5rem, 2vh, 2rem) 0;
+		line-height: 1.2;
+	}
+
+	.content {
+		--gutter: clamp(1rem, 4vw, 4rem);
+		--member-size: clamp(8rem, 14vw, 13rem);
+
+		display: flex;
 		flex-direction: column;
-		align-items: center;
-		margin-top: 2rem;
+		background: black;
 		min-height: 100vh;
+		margin: 0;
+		color: white;
+		padding-inline: var(--gutter);
+		padding-block: clamp(1rem, 4vh, 4rem);
+		box-sizing: border-box;
+		gap: 5rem;
+		overflow-x: clip;
 	}
-	.title {
-		text-align: center;
-		margin-bottom: 2rem;
+
+	.content h2,
+	.bio-modal h2 {
+		margin: 0;
+		font-size: clamp(1.75rem, 3.5vw, 3rem);
+		line-height: 1.15;
 	}
-	.team-members {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		gap: 2rem;
+
+	.content p,
+	.bio-modal p {
+		font-size: clamp(1rem, 1.15vw, 1.25rem);
+		line-height: 1.5;
 	}
-	.leadership {
-		text-align: center;
-		font-size: large;
-		border-radius: 20px;
-		width: 90%;
-		border-style: solid;
-		border-color: #500000bd;
-	}
-	.leadership-people {
-		display: flex;
-		justify-content: center;
-		padding: 2rem;
-		padding-top: 0;
-	}
-	.non-leadership {
+
+	/* groups sit side by side when they fit and wrap when they don't */
+	.groups {
 		display: flex;
 		flex-wrap: wrap;
-		justify-content: center;
-		gap: 3%;
-		width: 80%;
-		font-size: large;
+		column-gap: clamp(2rem, 6vw, 6rem);
+		row-gap: 5rem;
 	}
-	.non-leadership-entry {
-		border-style: solid;
-		border-color: #5000008c;
-		background-color: #24000053;
-		border-radius: 20px;
-		width: 48%;
-		margin-bottom: 2rem;
-		text-align: center;
-		font-size: large;
-	}
-	.non-leadership-people {
-		display: flex;
-		justify-content: space-evenly;
-		font-size: 80%;
-		padding: 2rem;
-		padding-top: 0;
-	}
-	.person {
-		flex: 0 0 25%;
-		text-align: center;
-		font-size: 120%;
-	}
-	.person-button {
+
+	.group {
+		flex: 1 1 auto;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		width: 100%;
-		background: none;
-		border: none;
-		font: inherit;
-		color: inherit;
+		gap: clamp(1rem, 2vh, 2rem);
+		min-width: 0;
+	}
+
+	.member-grid {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
+	.member-item {
+		all: unset;
+		display: flex;
+		flex-direction: column;
+		width: var(--member-size);
 		cursor: pointer;
 	}
-	.person-button p {
-		margin: 0.2rem;
+
+	.member-item:focus-visible {
+		outline: 2px solid white;
+		outline-offset: 4px;
+		border-radius: 0.25rem;
 	}
-	.person-button h3 {
-		margin-bottom: 0.25rem;
+
+	.member-item p {
+		margin-bottom: 0;
 	}
-	.person-avatar {
+
+	.member-container {
+		position: relative;
+		transition: transform 0.2s ease;
+	}
+
+	.member-item:hover .member-container,
+	.member-item:focus-visible .member-container {
+		transform: translateY(-6px);
+	}
+
+	.member-container img {
 		display: block;
-		width: 80%;
-		max-width: 100%;
-		height: auto;
+		width: 100%;
 		aspect-ratio: 1 / 1;
 		object-fit: cover;
-		border-radius: 50%;
 	}
+
+	.member-hover {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.4);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.2s ease;
+	}
+
+	.member-item:hover .member-hover,
+	.member-item:focus-visible .member-hover {
+		opacity: 1;
+	}
+
+	.member-subtitle {
+		font-weight: 300;
+		margin-top: 0.25rem;
+		margin-bottom: 0;
+		min-height: 2lh;
+	}
+
+	.button-2 {
+		background: white;
+		color: black;
+		border-radius: 50rem;
+		padding: clamp(0.35rem, 0.75vh, 0.6rem) clamp(0.75rem, 1.5vw, 1.25rem);
+		font-weight: 400;
+		font-size: clamp(0.75rem, 0.85vw, 1rem);
+		white-space: nowrap;
+	}
+
 	.bio-modal {
-		width: 45%;
-		height: 60%;
+		--gutter: clamp(1rem, 4vw, 4rem);
+
+		width: min(56rem, calc(100% - var(--gutter) * 2));
+		max-height: min(40rem, 85vh);
+		padding: clamp(1.5rem, 3vw, 3rem);
+		box-sizing: border-box;
 		background-color: #040000;
 		color: white;
+		border: 2px solid #90000073;
 		border-radius: 20px;
-		border-color: #90000073;
-		border-width: 2px;
-		overflow: hidden;
-		text-align: right;
+		overflow-y: auto;
+		transition:
+			opacity 0.2s ease,
+			transform 0.2s ease,
+			overlay 0.2s ease allow-discrete,
+			display 0.2s ease allow-discrete;
 	}
+
+	.bio-modal:not([open]) {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+
+	@starting-style {
+		.bio-modal[open] {
+			opacity: 0;
+			transform: translateY(12px);
+		}
+	}
+
 	.bio-modal::backdrop {
 		background-color: rgba(0, 0, 0, 0.8);
 	}
-	.modal-close-button {
-		height: 5%;
-		background-color: #000000;
-		border-style: none;
+
+	.modal-close {
+		all: unset;
+		position: absolute;
+		top: clamp(0.75rem, 1.5vw, 1.25rem);
+		right: clamp(0.75rem, 1.5vw, 1.25rem);
+		display: flex;
 		cursor: pointer;
+		transition: transform 0.15s ease;
 	}
-	.modal-close-image {
-		height: 100%;
+
+	.modal-close:hover {
+		transform: scale(1.1);
+	}
+
+	.modal-close:active {
+		transform: scale(0.92);
+	}
+
+	.modal-close:focus-visible {
+		outline: 2px solid white;
+		outline-offset: 4px;
+		border-radius: 0.25rem;
+	}
+
+	.modal-close img {
+		width: clamp(1.5rem, 2vw, 2rem);
 		filter: invert(100%);
 	}
-	.bio-flex-container {
-		display: flex;
-		flex-direction: row;
+
+	.bio-grid {
+		display: grid;
+		grid-template-columns: auto 1fr;
 		align-items: center;
-		justify-content: center;
-		gap: 4rem;
-		padding: 1rem;
-		height: 90%;
-		padding-top: 0;
-		padding-bottom: 0;
+		gap: clamp(1.5rem, 4vw, 4rem);
 	}
-	.bio-modal-person {
+
+	.bio-person {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		width: 100%;
-		height: 100%;
-		text-align: center;
 	}
-	.bio-modal-person h1 {
-		margin-bottom: 0;
-	}
-	.bio-modal-person p {
-		margin-top: 0.5rem;
-	}
-	.bio-modal-bio {
-		height: 70%;
-		width: 100%;
-		font-size: 1.2rem;
-		text-align: right;
-		display: flex;
-		align-items: safe center;
-		overflow-y: auto;
-		margin-bottom: 4rem;
-	}
+
 	.modal-avatar {
-		width: 100%;
-		height: auto;
+		display: block;
+		width: clamp(8rem, 18vw, 16rem);
 		aspect-ratio: 1 / 1;
 		object-fit: cover;
-		border-radius: 50%;
+		border: 10px solid white;
+		box-sizing: border-box;
+		margin-bottom: 1rem;
 	}
-	#meet-the-team {
-		margin-bottom: 0.1rem;
-		color: white;
-		font-weight: 1000;
-		font-size: clamp(2rem, 6vw, 4rem);
+
+	.bio-text {
+		margin: 0;
+		text-align: right;
 	}
-	#we-are-ingenuity {
-		margin-top: 0.1rem;
-		color: white;
-		font-weight: 500;
-		font-size: clamp(1rem, 3vw, 2rem);
-	}
+
 	@media (max-width: 48rem) {
-		.bio-modal {
-			width: 90%;
-			height: 85%;
-		}
-		.bio-flex-container {
-			flex-direction: column;
-			gap: 1rem;
-		}
-		.bio-modal-person {
-			height: auto;
-		}
-		.modal-avatar {
-			max-width: 8rem;
-		}
-		.bio-modal-bio {
-			flex: 1;
-			min-height: 0;
-			font-size: 1rem;
+		.hero-bg,
+		.group {
 			text-align: center;
-			margin-bottom: 1rem;
+		}
+		.member-grid {
+			justify-content: center;
+		}
+		.member-hover {
+			display: none;
+		}
+		.bio-grid {
+			grid-template-columns: 1fr;
+			text-align: center;
+		}
+		.bio-person {
+			align-items: center;
+		}
+		.bio-text {
+			text-align: center;
 		}
 	}
 </style>
