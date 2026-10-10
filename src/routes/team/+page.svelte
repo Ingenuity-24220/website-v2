@@ -14,7 +14,6 @@
     import sherry from '$lib/assets/team/sherry1.jpg'
     import vincent from '$lib/assets/team/vincent.jpg'
     import zilong from '$lib/assets/team/zilong.jpg'
-    import constance from '$lib/assets/team/constance.jpg'
     import mentorzhang from '$lib/assets/team/baoshe.jpg'
     import niko from '$lib/assets/team/niko.jpg'
 	import justin from '$lib/assets/team/justin.jpg'
@@ -25,7 +24,7 @@
 	let modalAvatar = $state(niko);
 	let modalRole = $state('');
 	let bioText = $state('')
-	function openDialog(person, avatar, role, text) {
+	function openDialog(person: string, avatar: string, role: string, text: string) {
 		const dialog = document.querySelector('dialog');
 		modalName = person.charAt(0).toUpperCase() + person.slice(1); // capitalize the first letter of the name
 		modalAvatar = avatar;
@@ -166,7 +165,7 @@
 	</div>
 </div>
 <dialog class="bio-modal">
-	<button class="modal-close-button" onclick={() => document.querySelector("dialog").close()}>
+	<button class="modal-close-button" onclick={() => document.querySelector("dialog")?.close()}>
 		<img src={close} alt="Close" class="modal-close-image">
 	</button>
 	<div class="bio-flex-container">
@@ -191,7 +190,7 @@
 		flex-direction: column;
 		align-items: center;
 		margin-top: 2rem;
-		min-height: 100vw;
+		min-height: 100vh;
 	}
 	.title {
 		text-align: center;
@@ -332,7 +331,8 @@
 		font-size: 1.2rem;
 		text-align: right;
 		display: flex;
-		align-items: center;
+		align-items: safe center;
+		overflow-y: auto;
 		margin-bottom: 4rem
 	}
 	.modal-avatar {
@@ -353,5 +353,28 @@
 		color: white;
 		font-weight: 500;
 		font-size: clamp(1rem, 3vw, 2rem);
+	}
+	@media (max-width: 48rem) {
+		.bio-modal {
+			width: 90%;
+			height: 85%;
+		}
+		.bio-flex-container {
+			flex-direction: column;
+			gap: 1rem;
+		}
+		.bio-modal-person {
+			height: auto;
+		}
+		.modal-avatar {
+			max-width: 8rem;
+		}
+		.bio-modal-bio {
+			flex: 1;
+			min-height: 0;
+			font-size: 1rem;
+			text-align: center;
+			margin-bottom: 1rem;
+		}
 	}
 </style>
