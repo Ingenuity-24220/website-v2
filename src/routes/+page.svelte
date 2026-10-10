@@ -5,19 +5,6 @@
 	import team2 from '$lib/assets/images/team-2.webp';
 	import robot1 from '$lib/assets/images/robot-1.webp';
 	import robot2 from '$lib/assets/images/robot-2.webp';
-	import elaine from '$lib/assets/team/elaine.jpg';
-	import coachdai from '$lib/assets/team/coachdai.jpeg';
-	import erik from '$lib/assets/team/erik.jpg';
-	import johnathan from '$lib/assets/team/jonathan.jpeg';
-	import nathan from '$lib/assets/team/nathan.jpeg';
-	import max from '$lib/assets/team/max.jpg';
-	import coachwan from '$lib/assets/team/john.jpg';
-	import sherry from '$lib/assets/team/sherry1.jpg';
-	import vincent from '$lib/assets/team/vincent.jpg';
-	import zilong from '$lib/assets/team/zilong.jpg';
-	import constance from '$lib/assets/team/constance.jpg';
-	import mentorzhang from '$lib/assets/team/baoshe.jpg';
-	import niko from '$lib/assets/team/niko.jpg';
 	import msde from '$lib/assets/logos/msde.svg';
 	import hccs from '$lib/assets/logos/hccs.png';
 	import luxcraft from '$lib/assets/logos/luxcraft.png';
@@ -29,80 +16,8 @@
 	import Footer from '$lib/components/footer.svelte';
 	import { flip } from 'svelte/animate';
 	import Header from '$lib/components/header.svelte';
-
-	const members = {
-		// leadership
-		elaine: {
-			img: elaine,
-			name: 'Elaine',
-			role: 'Team Captain'
-		}, // middle on init
-		'coach-dai': {
-			img: coachdai,
-			name: 'Coach Dai',
-			role: 'Head Coach'
-		}, // 4th on init
-		// hardware
-		erik: {
-			img: erik,
-			name: 'Erik',
-			role: 'Hardware Lead'
-		}, // 4th on init
-		nathan: {
-			img: nathan,
-			name: 'Nathan',
-			role: 'Electrical Lead'
-		},
-		sherry: {
-			img: sherry,
-			name: 'Sherry',
-			role: 'Hardware'
-		},
-		vincent: {
-			img: vincent,
-			name: 'Vincent',
-			role: 'Hardware'
-		},
-		// CAD
-		zilong: {
-			img: zilong,
-			name: 'Zilong',
-			role: 'CAD Lead'
-		},
-		// software
-		constance: {
-			img: constance,
-			name: 'Constance',
-			role: 'Software Lead'
-		},
-		niko: {
-			img: niko,
-			name: 'Niko',
-			role: 'Infrastructure Lead and Software'
-		},
-		'mentor-zhang': {
-			img: mentorzhang,
-			name: 'Mentor Zhang',
-			role: 'Software Mentor'
-		},
-		// outreach
-		max: {
-			img: max,
-			name: 'Max',
-			role: 'Outreach'
-		},
-		johnathan: {
-			img: johnathan,
-			name: 'Johnathan',
-			role: 'Outreach'
-		}, // 1st on init
-		// leadership (again)
-		'coach-wan': {
-			img: coachwan,
-			name: 'Coach Wan',
-			role: 'Assistant Coach'
-		} // 2nd on init
-	};
+	import { resolve } from '$app/paths';
+	import { members } from '$lib/team'; // shared with the team page
 
 	const Reach = {
 		Local: 'local',
@@ -209,19 +124,18 @@
 		}
 	};
 	let heroEl: HTMLDivElement | null = $state(null);
-	const memberLength = Object.keys(members).length;
-	let memberIndexes = $state([
-		memberLength - 4,
-		memberLength - 3,
-		memberLength - 2,
-		memberLength - 1,
-		0,
-		1,
-		2,
-		3,
-		4
-	]); // cursed? yes. works? hopefully!
-	const slots = $derived(memberIndexes.map((i) => Object.entries(members)[i])); // yips
+	const memberLength = members.length;
+	// start with elaine in the middle slot, 4 people either side
+	const startIndex = Math.max(
+		members.findIndex((m) => m.slug === 'elaine'),
+		0
+	);
+	let memberIndexes = $state(
+		[-4, -3, -2, -1, 0, 1, 2, 3, 4].map(
+			(offset) => (startIndex + offset + memberLength) % memberLength
+		)
+	); // cursed? yes. works? hopefully!
+	const slots = $derived(memberIndexes.map((i) => members[i])); // yips
 
 	// hooray learning how to use .map (and on the way .forEach :D)
 	function moveMemberRight() {
@@ -364,9 +278,7 @@
 					Everyone on our team has a role to play. Meet each of them, and see the faces behind
 					Ingenuity.
 				</p>
-				<!-- <a class="button-2" href={resolve("/team")} aria-label="Meet the Team">
-                    Meet the Team
-                </a> -->
+				<a class="button-2" href={resolve('/team')}>Meet the Team</a>
 			</div>
 		</div>
 		<div class="member-section">
@@ -381,13 +293,13 @@
 				</button>
 				<div class="member-strip">
 					<!-- TODO: scrolling member list -->
-					{#each slots as [slug, member] (slug)}
+					{#each slots as member (member.slug)}
 						<div class="member-item" animate:flip={{ duration: 400 }}>
 							<div class="member-container">
 								<img src={member.img} alt={member.name} />
-								<!-- <div class="member-hover" aria-hidden="true">
-                                    <a class="button-1" href={resolve(`/team/${slug}`)}>Meet {member.name}</a>
-                                </div> -->
+								<div class="member-hover">
+									<a class="button-1" href={resolve(`/team#${member.slug}`)}>Meet {member.name}</a>
+								</div>
 							</div>
 							<p>
 								{member.name}
@@ -1056,6 +968,9 @@
 		.strip-nav {
 			opacity: 1;
 			transition: none;
+		}
+		.member-hover {
+			display: none;
 		}
 		.block-grid {
 			grid-template-columns: 1fr;
