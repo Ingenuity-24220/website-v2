@@ -50,14 +50,14 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				slug: 'erik',
 				img: erik,
 				name: 'Erik',
-				role: 'Team Lead',
+				role: 'Team Captain',
 				bio: 'Erik is a team Lead of Team Ingenuity. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior and enjoys playing squash in his free time.'
 			},
 			{
 				slug: 'nathan',
 				img: nathan,
 				name: 'Nathan',
-				role: 'Team Lead',
+				role: 'Team Captain',
 				bio: 'Nathan is a 4th year FTC student on team Ingenuity 24220. He also participated in 4 years of FLL, even going to nationals once. He enjoys playing soccer and spending times with his friends and family.'
 			}
 		]
