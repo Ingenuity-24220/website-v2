@@ -128,7 +128,7 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				slug: 'sherry',
 				img: sherry,
 				name: 'Sherry',
-				role: 'Hardware Specialist',
+				role: 'Outreach Specialist',
 				bio: 'Sherry works on the hardware and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.'
 			},
 			

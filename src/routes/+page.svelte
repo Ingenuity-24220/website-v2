@@ -38,81 +38,8 @@
 	import { fly } from 'svelte/transition';
 	import Header from '$lib/components/header.svelte';
     import { sineInOut } from 'svelte/easing';
-    const members = {
-        // leadership
-        'elaine': {
-            img: elaine,
-            name: 'Elaine',
-            role: 'Team Captain',
-        }, // middle on init 
-        'coach-dai': {
-            img: coachdai,
-            name: 'Coach Dai',
-            role: 'Head Coach',
-        }, // 4th on init
-        // hardware
-        'erik': {
-            img: erik,
-            name: 'Erik',
-            role: 'Hardware Lead',
-        }, // 4th on init
-        'nathan': {
-            img: nathan,
-            name: 'Nathan',
-            role: 'Electrical Lead',
-        }, 
-        'sherry': {
-            img: sherry,
-            name: 'Sherry',
-            role: 'Hardware'
-        }, 
-        'vincent': {
-            img: vincent,
-            name: 'Vincent',
-            role: 'Hardware'
-        }, 
-        // CAD
-        'zilong': {
-            img: zilong,
-            name: 'Zilong',
-            role: 'CAD Lead'
-        },
-        // software
-        'constance': {
-            img: constance,
-            name: 'Constance', 
-            role: 'Software Lead'
-        }, 
-        'niko': {
-            img: niko,
-            name: 'Niko',
-            role: 'Infrastructure Lead and Software'
-        },
-        'mentor-zhang': {
-            img: mentorzhang,
-            name: 'Mentor Zhang',
-            role: 'Software Mentor'
-        },
-        // outreach
-        'max': {
-            img: max,
-            name: 'Max',
-            role: 'Outreach'
-        },
-        'johnathan': {
-            img: johnathan,
-            name: 'Johnathan',
-            role: 'Outreach'
-        }, // 1st on init
-        // leadership (again)
-        'coach-wan': {
-            img: coachwan,
-            name: 'Coach Wan',
-            role: "Assistant Coach"
-        } // 2nd on init
-        };
-	/*import { resolve } from '$app/paths';
-	import { members } from '$lib/team'; // shared with the team page*/
+	import { resolve } from '$app/paths';
+	import { members } from '$lib/team'; // shared with the team page
 
 	const Reach = {
 		Local: 'local',
@@ -249,11 +176,12 @@
     const memberLength = Object.keys(members).length;
     let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully! rainger what on earth -justin
     let memberDirection = $state(1);
-    const memberSlots = $derived(memberIndexes.map(i => Object.entries(members)[i])); // yips
+    const memberSlots = $derived(memberIndexes.map(i => members[i])); // yips
     let galleryIndexes = $state([0, 1, 2, 3]);
     const gallerySlots = $derived(galleryIndexes.map(i => Object.entries(gallery)[i])); // yips x2
     const galleryLength = Object.keys(gallery).length;
     let galleryDirection = $state(1);
+	
 
     // hooray learning how to use .map (and on the way .forEach :D)
     function moveCarouselRight( indexes: number[], length: number ) {
@@ -387,7 +315,7 @@
 			</figure>
 		</div>
 	</div>
-	<!--{#if memberLength > 0}
+	{#if memberLength > 0}
 		 can't believe im doing this but just in case
 		<div class="block-grid">
 			<div class="left team">
@@ -410,9 +338,8 @@
 					<img src="https://icons.hackclub.com/api/icons/white/view-back" alt="" />
 				</button>
 				<div class="carousel-strip">
-					 TODO: scrolling member list
 					{#each memberSlots as member (member.slug)}
-						<div class="member-item" animate:flip={{ duration: 400}}>  buggy if you scroll while the animation is still running but who cares 
+						<div class="member-item" animate:flip={{ duration: 400}}>  
 							<div class="member-container">
 								<img src={member.img} alt={member.name} />
 								<div class="member-hover">
@@ -433,8 +360,8 @@
 				</button>
 			</div>
 		</div>
-	/if
-	/-->
+{/if}
+	
 	<div class="block-grid">
 		<div class="right community">
 			<h2>Ingenuity is <br /><u>dedicated to giving back.</u></h2>
