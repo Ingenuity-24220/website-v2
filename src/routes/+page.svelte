@@ -26,10 +26,18 @@
     import costco from '$lib/assets/logos/costco.svg'
     import chipotle from '$lib/assets/logos/chipotle.svg'
     import optimum from '$lib/assets/logos/optimum.png'
+    import placeholder from '$lib/assets/placeholder.jpg'
+    import summercamp from '$lib/assets/images/summercamp.webp'
+    import rftr from "$lib/assets/images/rftr.jpg"
+    import v5fll from '$lib/assets/images/v5fll.jpg'
+    import fllumbc from '$lib/assets/images/fllumbc.jpg'
+    import ftcstates from '$lib/assets/images/ftcstates.jpg'
+    import idk from '$lib/assets/images/idk.jpg'
     import Footer from '$lib/components/footer.svelte'
     import { flip } from 'svelte/animate';
+	import { fly } from 'svelte/transition';
 	import Header from '$lib/components/header.svelte';
-
+    import { sineInOut } from 'svelte/easing';
     const members = {
         // leadership
         'elaine': {
@@ -208,28 +216,58 @@
             alt: ''
         }
     };
+    const gallery = {
+        'summercamp': {
+            name: "2026 Summer Camp",
+            img: summercamp,
+        },
+        'rftr': {
+            name: "Run for the Robots 2026",
+            img: rftr,
+        },
+        'v5fll': {
+            name: "Outreach with V5 FLL",
+            img: v5fll,
+        },
+        'ftcstates': {
+            name: "FTC States 2025-2026",
+            img: ftcstates,
+        },
+        'fllumbc': {
+            name: "FLL UMBC Competition 2025-2026",
+            img: fllumbc,
+        },
+        'idk': {
+            name: "Placeholder",
+            img: idk,
+        }
+    }
     let heroEl: HTMLDivElement | null = $state(null);
     const memberLength = Object.keys(members).length;
-    let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully!
-    const slots = $derived(memberIndexes.map(i => Object.entries(members)[i])); // yips
+    let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully! rainger what on earth -justin
+    let memberDirection = $state(1);
+    const memberSlots = $derived(memberIndexes.map(i => Object.entries(members)[i])); // yips
+    let galleryIndexes = $state([0, 1, 2, 3]);
+    const gallerySlots = $derived(galleryIndexes.map(i => Object.entries(gallery)[i])); // yips x2
+    const galleryLength = Object.keys(gallery).length;
+    let galleryDirection = $state(1);
 
     // hooray learning how to use .map (and on the way .forEach :D)
-    function moveMemberRight() {
-        memberIndexes = memberIndexes.map((element) => {
-                if (memberLength == 0) { // should never happen! but if it does theres this guard here
+    function moveCarouselRight( indexes: number[], length: number ) {
+        return indexes.map((element) => {
+                if (length == 0) { // should never happen! but if it does theres this guard here
                     return 0;
                 }
-                return (element + 1 ) % memberLength;
+                return (element + 1 ) % length;
             }
         )
     };
-
-    function moveMemberLeft() {
-        memberIndexes = memberIndexes.map((element) => {
-                if (memberLength == 0) {
+    function moveCarouselLeft( indexes: number[], length: number ) {
+        return indexes.map((element) => {
+                if (length == 0) {
                     return 0;
                 }
-                return (element - 1 + memberLength) % memberLength;
+                return (element - 1 + length) % length;
                 // apparently JS % acts more like a remainder so we're doing this
             }
         )
@@ -348,14 +386,14 @@
             </div>
         </div>
         <div class="member-section">
-            <div class="member-row">
-                <button type="button" class="strip-nav" onclick={moveMemberLeft} aria-label="Previous members">
+            <div class="carousel-row">
+                <button type="button" class="strip-nav" onclick={() => {memberIndexes = moveCarouselLeft(memberIndexes, memberLength); memberDirection = -1}} aria-label="Previous members">
                     <img src="https://icons.hackclub.com/api/icons/white/view-back" alt="">
                 </button>
-                <div class="member-strip">
+                <div class="carousel-strip">
                     <!-- TODO: scrolling member list -->
-                    {#each slots as [slug, member] (slug)}
-                        <div class="member-item" animate:flip={{ duration: 400 }}>
+                    {#each memberSlots as [slug, member] (slug)}
+                        <div class="member-item" animate:flip={{ duration: 400}} transition:fly={{ x: 100 * memberDirection, duration: 400, easing: sineInOut }}> <!-- buggy if you scroll while the animation is still running but who cares -->
                             <div class="member-container">
                                 <img src={member.img} alt={member.name}>
                                 <!-- <div class="member-hover" aria-hidden="true">
@@ -371,7 +409,7 @@
                         </div>
                     {/each}
                 </div>
-                <button type="button" class="strip-nav" onclick={moveMemberRight} aria-label="Next members">
+                <button type="button" class="strip-nav" onclick={() => {memberIndexes = moveCarouselRight(memberIndexes, memberLength); memberDirection = 1}} aria-label="Next members">
                     <img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="">
                 </button>
             </div>
@@ -462,9 +500,28 @@
             <!-- TODO: ADD SPONSOR IMAGES HERE -->
         </div>
     </div> 
-    <div class="center">
+    <!-- <div class="center">
         <h2>Videos</h2>
         <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9vO0fapHHuw?si=-ozYdNu7RATBeFcp" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div> -->
+    <div class="center">
+        <h2>Gallery</h2>
+        <div class="carousel-row">
+            <button type="button" class="strip-nav" onclick={() => {galleryDirection = -1;galleryIndexes = moveCarouselLeft(galleryIndexes, galleryLength);}} aria-label="Previous gallery items">
+                <img src="https://icons.hackclub.com/api/icons/white/view-back" alt="">
+            </button>
+            <div class="carousel-strip">
+                {#each gallerySlots as [slug, item] (slug)}
+                    <div class="gallery-item" animate:flip={{ duration: 400}} in:fly={{ x: 100 * galleryDirection, duration: 400, easing: sineInOut }} out:fly={{ x: -100 * galleryDirection, duration: 400, easing: sineInOut }}>
+                        <img src={item.img} alt={item.name} class="gallery-img">
+                        <p>{item.name}</p>
+                    </div>
+                {/each}
+            </div>
+           <button type="button" class="strip-nav" onclick={() => {galleryDirection = 1;galleryIndexes = moveCarouselRight(galleryIndexes, galleryLength);}} aria-label="Next">
+               <img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="Next">
+            </button>
+        </div>
     </div>
     <div class="center contact">
         <h2>Interested?</h2>
@@ -479,24 +536,41 @@
 <!-- TODO: FOOTER -->
 
 <style>
-
+    .center{
+        display: block;
+        text-align: center;
+    }
     .member-section {
         display: flex;
         flex-direction: column;
         gap: 1rem;
     }
 
-    .member-row {
+    .carousel-row {
         display: flex;
+        justify-content: center;
+        align-items: center;
         flex-direction: row;
-        align-items: flex-start;
+        align-items: center;
+        justify-content: center;
     }
 
     .member-item {
         display: flex;
         flex-direction: column;
     }
+    .gallery-item {
+        display: flex;
+        flex-direction: column;
+        position:relative;
+        border-radius: 1rem;
 
+    }
+    .gallery-item:hover{
+        transition: transform 0.2s ease;
+        transform: scale(1.06);
+        z-index: 1000;
+    }
     .member-item p {
         margin-bottom: 0;
     }
@@ -533,17 +607,19 @@
         width: clamp(1.5rem, 3vw, 2.5rem);
     }
 
-    .member-row:hover .strip-nav {
+    .carousel-row:hover .strip-nav {
         opacity: 1
     }
 
-    .member-strip {
+    .carousel-strip {
         display: flex;
         flex-direction: row;
         align-items: flex-start;
         justify-content: center;
-        gap: 1rem;
+        gap: 3rem;
         overflow: hidden;
+        padding-block: 1.5rem;
+        margin-block: -1.5rem;
         mask-image: linear-gradient(
             to right, 
             transparent 0%,
@@ -551,8 +627,8 @@
             black 70%, 
             transparent 100%
         );
-        width: calc(100% + (var(--gutter) * 2));
-        margin-left: calc(var(--gutter) * -1);
+        width: 100%;
+        margin-left:0;
     }
 
     .member-hover {
@@ -590,6 +666,13 @@
         width: clamp(8rem, 18vw, 16rem);
         aspect-ratio: 1 / 1;
         object-fit: cover;
+    }
+    .gallery-img {
+        display: block;
+        width: clamp(8rem, 20vw, 70rem);
+        height: clamp(8rem, 20vw, 70rem);
+        object-fit: cover;
+        border-radius: 1rem;
     }
 
     .block-grid {
