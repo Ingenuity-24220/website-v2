@@ -531,7 +531,7 @@
 				<div class="carousel-strip">
 					<!-- TODO: scrolling member list -->
 					{#each memberSlots as member (member.slug)}
-						<div class="member-item" animate:flip={{ duration: 400}} transition:fly={{ x: 100 * memberDirection, duration: 400, easing: sineInOut }}> <!-- buggy if you scroll while the animation is still running but who cares -->
+						<div class="member-item" animate:flip={{ duration: 400}}> <!-- buggy if you scroll while the animation is still running but who cares -->
 							<div class="member-container">
 								<img src={member.img} alt={member.name} />
 								<div class="member-hover">
@@ -671,7 +671,7 @@
             </button>
             <div class="carousel-strip">
                 {#each gallerySlots as [slug, item] (slug)}
-                    <div class="gallery-item" animate:flip={{ duration: 400}} in:fly={{ x: 100 * galleryDirection, duration: 400, easing: sineInOut }} out:fly={{ x: -100 * galleryDirection, duration: 400, easing: sineInOut }}>
+                    <div class="gallery-item" animate:flip={{ duration: 400}} >
                         <img src={item.img} alt={item.name} class="gallery-img">
                         <p>{item.name}</p>
                     </div>
@@ -700,11 +700,15 @@
     .center{
         display: block;
         text-align: center;
-    }	.member-section {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
+    }
+    .center h2{
+        padding-bottom: 2rem;
+    }
+    .member-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
 
     .carousel-row {
         display: flex;
