@@ -111,8 +111,8 @@
             role: "Assistant Coach"
         } // 2nd on init
         };
-	import { resolve } from '$app/paths';
-	import { members } from '$lib/team'; // shared with the team page
+	/*import { resolve } from '$app/paths';
+	import { members } from '$lib/team'; // shared with the team page*/
 
 	const Reach = {
 		Local: 'local',
@@ -218,110 +218,7 @@
 			alt: ''
 		}
 	};
-	let heroEl: HTMLDivElement | null = $state(null);
-	const memberLength = members.length;
-	// start with elaine in the middle slot, 4 people either side
-	const startIndex = Math.max(
-		members.findIndex((m) => m.slug === 'elaine'),
-		0
-	);
-	let memberIndexes = $state(
-		[-4, -3, -2, -1, 0, 1, 2, 3, 4].map(
-			(offset) => (startIndex + offset + memberLength) % memberLength
-		)
-	); // cursed? yes. works? hopefully!
-	const slots = $derived(memberIndexes.map((i) => members[i])); // yips
         // TODO: Remove img
-        const outreach = {
-        'SEED': {
-           name: 'SEED Presentation',
-           img: '',
-           people: 80,
-           reach: Reach.Local,
-           type: outreachType.Reach,
-           alt: ''
-        },
-        'STEM': {
-           name: 'MD STEM Festival',
-           img: '',
-           people: 400,
-           reach: Reach.Regional,
-           type: outreachType.Reach,
-           alt: ''
-        },
-        'CHINA': {
-           name: 'China Day Sale',
-           img: '',
-           people: 200,
-           reach: Reach.Local,
-           type: outreachType.Reach,
-           alt: ''
-        },
-        'NOVATARD': {
-           name: 'Novatard #24950 meetings',
-           img: '',
-           people: 0,
-           reach: Reach.International,
-           type: outreachType.Connect,
-           alt: ''
-        },
-        'CDC': {
-           name: 'CDC.zip #34148 Mentoring',
-           img: '',
-           people: 0,
-           reach: Reach.International,
-           type: outreachType.Connect,
-           alt: ''
-        },
-        'NORTHROP': {
-           name: 'Meeting with Northrop Gruman Engineer',
-           img: '',
-           people: 0,
-           reach: Reach.Local,
-           type: outreachType.ConnectExpert,
-           alt: ''
-        },
-        'CODENINJA': {
-           name: 'Meeting with VP of CodeNinjas',
-           img: '',
-           people: 0,
-           reach: Reach.National,
-           type: outreachType.ConnectExpert,
-           alt: ''
-        },
-        'NVIDIA': {
-           name: 'Meeting with NVIDIA Data Scientist',
-           img: '',
-           people: 0,
-           reach: Reach.Local,
-           type: outreachType.ConnectExpert,
-           alt: ''
-        },
-        'USARMY': {
-            name: 'Meeting with Mechanical Engineer at the US Army ERDC',
-            img: '',
-            people: 0,
-            reach: Reach.Local,
-            type: outreachType.ConnectExpert,
-            alt: ''
-        },
-        'FLLSTATES': {
-            name: 'Showcase at FLL States',
-            img: '',
-            people: 100,
-            reach: Reach.Regional,
-            type: outreachType.Connect,
-            alt: ''
-        },
-        'FLLV5': {
-            name: 'Mentoring FLL #65542 V5',
-            img: '',
-            people: 20,
-            reach: Reach.Local,
-            type: outreachType.Connect,
-            alt: ''
-        }
-    };
     const gallery = {
         'summercamp': {
             name: "2026 Summer Camp",
@@ -490,8 +387,8 @@
 			</figure>
 		</div>
 	</div>
-	{#if memberLength > 0}
-		<!-- can't believe im doing this but just in case -->
+	<!--{#if memberLength > 0}
+		 can't believe im doing this but just in case
 		<div class="block-grid">
 			<div class="left team">
 				<h2>Ingenuity is <br /><u>a team of all trades.</u></h2>
@@ -513,9 +410,9 @@
 					<img src="https://icons.hackclub.com/api/icons/white/view-back" alt="" />
 				</button>
 				<div class="carousel-strip">
-					<!-- TODO: scrolling member list -->
+					 TODO: scrolling member list
 					{#each memberSlots as member (member.slug)}
-						<div class="member-item" animate:flip={{ duration: 400}}> <!-- buggy if you scroll while the animation is still running but who cares -->
+						<div class="member-item" animate:flip={{ duration: 400}}>  buggy if you scroll while the animation is still running but who cares 
 							<div class="member-container">
 								<img src={member.img} alt={member.name} />
 								<div class="member-hover">
@@ -536,7 +433,8 @@
 				</button>
 			</div>
 		</div>
-	{/if}
+	/if
+	/-->
 	<div class="block-grid">
 		<div class="right community">
 			<h2>Ingenuity is <br /><u>dedicated to giving back.</u></h2>
