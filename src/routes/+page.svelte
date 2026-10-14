@@ -5,22 +5,7 @@
 	import team2 from '$lib/assets/images/team-2.webp';
 	import robot1 from '$lib/assets/images/robot-1.webp';
 	import robot2 from '$lib/assets/images/robot-2.webp';
-	import msde from '$lib/assets/logos/msde.svg';
-	import hccs from '$lib/assets/logos/hccs.png';
-	import luxcraft from '$lib/assets/logos/luxcraft.png';
-	import allstate from '$lib/assets/logos/allstate.svg';
-	import craftingtable from '$lib/assets/logos/craftingtable.png';
-	import costco from '$lib/assets/logos/costco.svg';
-	import chipotle from '$lib/assets/logos/chipotle.svg';
-	import optimum from '$lib/assets/logos/optimum.png';
-	import Footer from '$lib/components/footer.svelte';
 	import { flip } from 'svelte/animate';
-    import teamImg from '$lib/assets/images/team.webp';
-    import arrowUp from '$lib/assets/arrowup.webp';
-    import team1 from '$lib/assets/images/team-1.webp';
-    import team2 from '$lib/assets/images/team-2.webp';
-    import robot1 from '$lib/assets/images/robot-1.webp';
-    import robot2 from '$lib/assets/images/robot-2.webp';
     import elaine from '$lib/assets/team/elaine.jpg';
     import coachdai from '$lib/assets/team/coachdai.jpeg';
     import erik from '$lib/assets/team/erik.jpg';
@@ -50,7 +35,6 @@
     import ftcstates from '$lib/assets/images/ftcstates.jpg'
     import idk from '$lib/assets/images/idk.jpg'
     import Footer from '$lib/components/footer.svelte'
-    import { flip } from 'svelte/animate';
 	import { fly } from 'svelte/transition';
 	import Header from '$lib/components/header.svelte';
     import { sineInOut } from 'svelte/easing';
