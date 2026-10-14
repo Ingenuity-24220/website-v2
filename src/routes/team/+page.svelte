@@ -196,7 +196,7 @@
 	.title {
 		text-align: center;
 		margin-bottom: 2rem;
-	}
+	   pacman -Qi lib32-libpcap | grep 'Required By'}
 	.team-members {
 		display: flex;
 		flex-direction: column;
