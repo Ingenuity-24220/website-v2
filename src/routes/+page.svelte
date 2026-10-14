@@ -5,7 +5,6 @@
 	import team2 from '$lib/assets/images/team-2.webp';
 	import robot1 from '$lib/assets/images/robot-1.webp';
 	import robot2 from '$lib/assets/images/robot-2.webp';
-	import { flip } from 'svelte/animate';
     import elaine from '$lib/assets/team/elaine.jpg';
     import coachdai from '$lib/assets/team/coachdai.jpeg';
     import erik from '$lib/assets/team/erik.jpg';
