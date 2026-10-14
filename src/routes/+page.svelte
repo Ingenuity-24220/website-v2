@@ -15,7 +15,118 @@
 	import optimum from '$lib/assets/logos/optimum.png';
 	import Footer from '$lib/components/footer.svelte';
 	import { flip } from 'svelte/animate';
+    import teamImg from '$lib/assets/images/team.webp';
+    import arrowUp from '$lib/assets/arrowup.webp';
+    import team1 from '$lib/assets/images/team-1.webp';
+    import team2 from '$lib/assets/images/team-2.webp';
+    import robot1 from '$lib/assets/images/robot-1.webp';
+    import robot2 from '$lib/assets/images/robot-2.webp';
+    import elaine from '$lib/assets/team/elaine.jpg';
+    import coachdai from '$lib/assets/team/coachdai.jpeg';
+    import erik from '$lib/assets/team/erik.jpg';
+    import johnathan from '$lib/assets/team/jonathan.jpeg';
+    import nathan from '$lib/assets/team/nathan.jpeg';
+    import max from '$lib/assets/team/max.jpg'
+    import coachwan from '$lib/assets/team/john.jpg';
+    import sherry from '$lib/assets/team/sherry1.jpg'
+    import vincent from '$lib/assets/team/vincent.jpg'
+    import zilong from '$lib/assets/team/zilong.jpg'
+    import constance from '$lib/assets/team/constance.jpg'
+    import mentorzhang from '$lib/assets/team/baoshe.jpg'
+    import niko from '$lib/assets/team/niko.jpg'
+    import msde from '$lib/assets/logos/msde.svg'
+    import hccs from '$lib/assets/logos/hccs.png'
+    import luxcraft from '$lib/assets/logos/luxcraft.png'
+    import allstate from '$lib/assets/logos/allstate.svg'
+    import craftingtable from '$lib/assets/logos/craftingtable.png'
+    import costco from '$lib/assets/logos/costco.svg'
+    import chipotle from '$lib/assets/logos/chipotle.svg'
+    import optimum from '$lib/assets/logos/optimum.png'
+    import placeholder from '$lib/assets/placeholder.jpg'
+    import summercamp from '$lib/assets/images/summercamp.webp'
+    import rftr from "$lib/assets/images/rftr.jpg"
+    import v5fll from '$lib/assets/images/v5fll.jpg'
+    import fllumbc from '$lib/assets/images/fllumbc.jpg'
+    import ftcstates from '$lib/assets/images/ftcstates.jpg'
+    import idk from '$lib/assets/images/idk.jpg'
+    import Footer from '$lib/components/footer.svelte'
+    import { flip } from 'svelte/animate';
+	import { fly } from 'svelte/transition';
 	import Header from '$lib/components/header.svelte';
+    import { sineInOut } from 'svelte/easing';
+    const members = {
+        // leadership
+        'elaine': {
+            img: elaine,
+            name: 'Elaine',
+            role: 'Team Captain',
+        }, // middle on init 
+        'coach-dai': {
+            img: coachdai,
+            name: 'Coach Dai',
+            role: 'Head Coach',
+        }, // 4th on init
+        // hardware
+        'erik': {
+            img: erik,
+            name: 'Erik',
+            role: 'Hardware Lead',
+        }, // 4th on init
+        'nathan': {
+            img: nathan,
+            name: 'Nathan',
+            role: 'Electrical Lead',
+        }, 
+        'sherry': {
+            img: sherry,
+            name: 'Sherry',
+            role: 'Hardware'
+        }, 
+        'vincent': {
+            img: vincent,
+            name: 'Vincent',
+            role: 'Hardware'
+        }, 
+        // CAD
+        'zilong': {
+            img: zilong,
+            name: 'Zilong',
+            role: 'CAD Lead'
+        },
+        // software
+        'constance': {
+            img: constance,
+            name: 'Constance', 
+            role: 'Software Lead'
+        }, 
+        'niko': {
+            img: niko,
+            name: 'Niko',
+            role: 'Infrastructure Lead and Software'
+        },
+        'mentor-zhang': {
+            img: mentorzhang,
+            name: 'Mentor Zhang',
+            role: 'Software Mentor'
+        },
+        // outreach
+        'max': {
+            img: max,
+            name: 'Max',
+            role: 'Outreach'
+        },
+        'johnathan': {
+            img: johnathan,
+            name: 'Johnathan',
+            role: 'Outreach'
+        }, // 1st on init
+        // leadership (again)
+        'coach-wan': {
+            img: coachwan,
+            name: 'Coach Wan',
+            role: "Assistant Coach"
+        } // 2nd on init
+        };
 	import { resolve } from '$app/paths';
 	import { members } from '$lib/team'; // shared with the team page
 
@@ -136,27 +247,153 @@
 		)
 	); // cursed? yes. works? hopefully!
 	const slots = $derived(memberIndexes.map((i) => members[i])); // yips
+        // TODO: Remove img
+        const outreach = {
+        'SEED': {
+           name: 'SEED Presentation',
+           img: '',
+           people: 80,
+           reach: Reach.Local,
+           type: outreachType.Reach,
+           alt: ''
+        },
+        'STEM': {
+           name: 'MD STEM Festival',
+           img: '',
+           people: 400,
+           reach: Reach.Regional,
+           type: outreachType.Reach,
+           alt: ''
+        },
+        'CHINA': {
+           name: 'China Day Sale',
+           img: '',
+           people: 200,
+           reach: Reach.Local,
+           type: outreachType.Reach,
+           alt: ''
+        },
+        'NOVATARD': {
+           name: 'Novatard #24950 meetings',
+           img: '',
+           people: 0,
+           reach: Reach.International,
+           type: outreachType.Connect,
+           alt: ''
+        },
+        'CDC': {
+           name: 'CDC.zip #34148 Mentoring',
+           img: '',
+           people: 0,
+           reach: Reach.International,
+           type: outreachType.Connect,
+           alt: ''
+        },
+        'NORTHROP': {
+           name: 'Meeting with Northrop Gruman Engineer',
+           img: '',
+           people: 0,
+           reach: Reach.Local,
+           type: outreachType.ConnectExpert,
+           alt: ''
+        },
+        'CODENINJA': {
+           name: 'Meeting with VP of CodeNinjas',
+           img: '',
+           people: 0,
+           reach: Reach.National,
+           type: outreachType.ConnectExpert,
+           alt: ''
+        },
+        'NVIDIA': {
+           name: 'Meeting with NVIDIA Data Scientist',
+           img: '',
+           people: 0,
+           reach: Reach.Local,
+           type: outreachType.ConnectExpert,
+           alt: ''
+        },
+        'USARMY': {
+            name: 'Meeting with Mechanical Engineer at the US Army ERDC',
+            img: '',
+            people: 0,
+            reach: Reach.Local,
+            type: outreachType.ConnectExpert,
+            alt: ''
+        },
+        'FLLSTATES': {
+            name: 'Showcase at FLL States',
+            img: '',
+            people: 100,
+            reach: Reach.Regional,
+            type: outreachType.Connect,
+            alt: ''
+        },
+        'FLLV5': {
+            name: 'Mentoring FLL #65542 V5',
+            img: '',
+            people: 20,
+            reach: Reach.Local,
+            type: outreachType.Connect,
+            alt: ''
+        }
+    };
+    const gallery = {
+        'summercamp': {
+            name: "2026 Summer Camp",
+            img: summercamp,
+        },
+        'rftr': {
+            name: "Run for the Robots 2026",
+            img: rftr,
+        },
+        'v5fll': {
+            name: "Outreach with V5 FLL",
+            img: v5fll,
+        },
+        'ftcstates': {
+            name: "FTC States 2025-2026",
+            img: ftcstates,
+        },
+        'fllumbc': {
+            name: "FLL UMBC Competition 2025-2026",
+            img: fllumbc,
+        },
+        'idk': {
+            name: "Placeholder",
+            img: idk,
+        }
+    }
+    let heroEl: HTMLDivElement | null = $state(null);
+    const memberLength = Object.keys(members).length;
+    let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully! rainger what on earth -justin
+    let memberDirection = $state(1);
+    const memberSlots = $derived(memberIndexes.map(i => Object.entries(members)[i])); // yips
+    let galleryIndexes = $state([0, 1, 2, 3]);
+    const gallerySlots = $derived(galleryIndexes.map(i => Object.entries(gallery)[i])); // yips x2
+    const galleryLength = Object.keys(gallery).length;
+    let galleryDirection = $state(1);
 
-	// hooray learning how to use .map (and on the way .forEach :D)
-	function moveMemberRight() {
-		memberIndexes = memberIndexes.map((element) => {
-			if (memberLength == 0) {
-				// should never happen! but if it does theres this guard here
-				return 0;
-			}
-			return (element + 1) % memberLength;
-		});
-	}
-
-	function moveMemberLeft() {
-		memberIndexes = memberIndexes.map((element) => {
-			if (memberLength == 0) {
-				return 0;
-			}
-			return (element - 1 + memberLength) % memberLength;
-			// apparently JS % acts more like a remainder so we're doing this
-		});
-	}
+    // hooray learning how to use .map (and on the way .forEach :D)
+    function moveCarouselRight( indexes: number[], length: number ) {
+        return indexes.map((element) => {
+                if (length == 0) { // should never happen! but if it does theres this guard here
+                    return 0;
+                }
+                return (element + 1 ) % length;
+            }
+        )
+    };
+    function moveCarouselLeft( indexes: number[], length: number ) {
+        return indexes.map((element) => {
+                if (length == 0) {
+                    return 0;
+                }
+                return (element - 1 + length) % length;
+                // apparently JS % acts more like a remainder so we're doing this
+            }
+        )
+    };
 
 	// swap headers based on whether the hero is still on screen
 	// onMount(() => {
@@ -282,19 +519,19 @@
 			</div>
 		</div>
 		<div class="member-section">
-			<div class="member-row">
+			<div class="carousel-row">
 				<button
 					type="button"
 					class="strip-nav"
-					onclick={moveMemberLeft}
+					onclick={() => {memberIndexes = moveCarouselLeft(memberIndexes, memberLength); memberDirection = -1}}
 					aria-label="Previous members"
 				>
 					<img src="https://icons.hackclub.com/api/icons/white/view-back" alt="" />
 				</button>
-				<div class="member-strip">
+				<div class="carousel-strip">
 					<!-- TODO: scrolling member list -->
-					{#each slots as member (member.slug)}
-						<div class="member-item" animate:flip={{ duration: 400 }}>
+					{#each memberSlots as member (member.slug)}
+						<div class="member-item" animate:flip={{ duration: 400}} transition:fly={{ x: 100 * memberDirection, duration: 400, easing: sineInOut }}> <!-- buggy if you scroll while the animation is still running but who cares -->
 							<div class="member-container">
 								<img src={member.img} alt={member.name} />
 								<div class="member-hover">
@@ -310,7 +547,7 @@
 						</div>
 					{/each}
 				</div>
-				<button type="button" class="strip-nav" onclick={moveMemberRight} aria-label="Next members">
+				<button type="button" class="strip-nav" onclick={() => {memberIndexes = moveCarouselRight(memberIndexes, memberLength); memberDirection = 1}} aria-label="Next members">
 					<img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="" />
 				</button>
 			</div>
@@ -413,7 +650,7 @@
 			<!-- TODO: ADD SPONSOR IMAGES HERE -->
 		</div>
 	</div>
-	<div class="center">
+	<!-- <div class="center">
 		<h2>Videos</h2>
 		<iframe
 			width="560"
@@ -425,6 +662,25 @@
 			referrerpolicy="strict-origin-when-cross-origin"
 			allowfullscreen
 		></iframe>
+    </div> -->
+    <div class="center">
+        <h2>Gallery</h2>
+        <div class="carousel-row">
+            <button type="button" class="strip-nav" onclick={() => {galleryDirection = -1;galleryIndexes = moveCarouselLeft(galleryIndexes, galleryLength);}} aria-label="Previous gallery items">
+                <img src="https://icons.hackclub.com/api/icons/white/view-back" alt="">
+            </button>
+            <div class="carousel-strip">
+                {#each gallerySlots as [slug, item] (slug)}
+                    <div class="gallery-item" animate:flip={{ duration: 400}} in:fly={{ x: 100 * galleryDirection, duration: 400, easing: sineInOut }} out:fly={{ x: -100 * galleryDirection, duration: 400, easing: sineInOut }}>
+                        <img src={item.img} alt={item.name} class="gallery-img">
+                        <p>{item.name}</p>
+                    </div>
+                {/each}
+            </div>
+           <button type="button" class="strip-nav" onclick={() => {galleryDirection = 1;galleryIndexes = moveCarouselRight(galleryIndexes, galleryLength);}} aria-label="Next">
+               <img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="Next">
+            </button>
+        </div>
 	</div>
 	<div class="center contact">
 		<h2>Interested?</h2>
@@ -441,26 +697,43 @@
 <!-- TODO: FOOTER -->
 
 <style>
-	.member-section {
+    .center{
+        display: block;
+        text-align: center;
+    }	.member-section {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 	}
 
-	.member-row {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-	}
+    .carousel-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
 
-	.member-item {
-		display: flex;
-		flex-direction: column;
-	}
+    .member-item {
+        display: flex;
+        flex-direction: column;
+    }
+    .gallery-item {
+        display: flex;
+        flex-direction: column;
+        position:relative;
+        border-radius: 1rem;
 
-	.member-item p {
-		margin-bottom: 0;
-	}
+    }
+    .gallery-item:hover{
+        transition: transform 0.2s ease;
+        transform: scale(1.06);
+        z-index: 1000;
+    }
+    .member-item p {
+        margin-bottom: 0;
+    }
 
 	.strip-nav {
 		all: unset;
@@ -496,21 +769,29 @@
 		width: clamp(1.5rem, 3vw, 2.5rem);
 	}
 
-	.member-row:hover .strip-nav {
-		opacity: 1;
-	}
+    .carousel-row:hover .strip-nav {
+        opacity: 1
+    }
 
-	.member-strip {
-		display: flex;
-		flex-direction: row;
-		align-items: flex-start;
-		justify-content: center;
-		gap: 1rem;
-		overflow: hidden;
-		mask-image: linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%);
-		width: calc(100% + (var(--gutter) * 2));
-		margin-left: calc(var(--gutter) * -1);
-	}
+    .carousel-strip {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 3rem;
+        overflow: hidden;
+        padding-block: 1.5rem;
+        margin-block: -1.5rem;
+        mask-image: linear-gradient(
+            to right, 
+            transparent 0%,
+            black 30%,
+            black 70%, 
+            transparent 100%
+        );
+        width: 100%;
+        margin-left:0;
+    }
 
 	.member-hover {
 		position: absolute;
@@ -542,12 +823,19 @@
 		min-height: 2lh;
 	}
 
-	.member-container img {
-		display: block;
-		width: clamp(8rem, 18vw, 16rem);
-		aspect-ratio: 1 / 1;
-		object-fit: cover;
-	}
+    .member-container img {
+        display: block;
+        width: clamp(8rem, 18vw, 16rem);
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+    .gallery-img {
+        display: block;
+        width: clamp(8rem, 20vw, 70rem);
+        height: clamp(8rem, 20vw, 70rem);
+        object-fit: cover;
+        border-radius: 1rem;
+    }
 
 	.block-grid {
 		display: grid;
