@@ -174,13 +174,17 @@
     }
     let heroEl: HTMLDivElement | null = $state(null);
     const memberLength = Object.keys(members).length;
+	const galleryEntries = [...Object.entries(gallery), ...Object.entries(gallery)].map(([slug, item], n) => ({
+		key: `${slug}-${n}`,
+		...item
+	}));
     let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully! rainger what on earth -justin
-    let memberDirection = $state(1);
+    // let memberDirection = $state(1);
     const memberSlots = $derived(memberIndexes.map(i => members[i])); // yips
-    let galleryIndexes = $state([0, 1, 2, 3, 4, 5,]);
-    const gallerySlots = $derived(galleryIndexes.map(i => Object.entries(gallery)[i])); // yips x2
-    const galleryLength = Object.keys(gallery).length;
-    let galleryDirection = $state(1);
+	const galleryLength = galleryEntries.length;
+    let galleryIndexes = $state([galleryLength-3, galleryLength-2, galleryLength-1, 0, 1, 2, 3]);
+    const gallerySlots = $derived(galleryIndexes.map(i => galleryEntries[i])); // yips x2
+    // let galleryDirection = $state(1);
 	
 
     // hooray learning how to use .map (and on the way .forEach :D)
@@ -332,7 +336,7 @@
 				<button
 					type="button"
 					class="strip-nav"
-					onclick={() => {memberIndexes = moveCarouselLeft(memberIndexes, memberLength); memberDirection = -1}}
+					onclick={() => {memberIndexes = moveCarouselLeft(memberIndexes, memberLength)}}
 					aria-label="Previous members"
 				>
 					<img src="https://icons.hackclub.com/api/icons/white/view-back" alt="" />
@@ -355,7 +359,7 @@
 						</div>
 					{/each}
 				</div>
-				<button type="button" class="strip-nav" onclick={() => {memberIndexes = moveCarouselRight(memberIndexes, memberLength); memberDirection = 1}} aria-label="Next members">
+				<button type="button" class="strip-nav" onclick={() => {memberIndexes = moveCarouselRight(memberIndexes, memberLength)}} aria-label="Next members">
 					<img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="" />
 				</button>
 			</div>
@@ -475,18 +479,18 @@
     <div class="center">
         <h2>Gallery</h2>
         <div class="carousel-row">
-            <button type="button" class="strip-nav" onclick={() => {galleryDirection = -1;galleryIndexes = moveCarouselLeft(galleryIndexes, galleryLength);}} aria-label="Previous gallery items">
+            <button type="button" class="strip-nav" onclick={() => {galleryIndexes = moveCarouselLeft(galleryIndexes, galleryLength);}} aria-label="Previous gallery items">
                 <img src="https://icons.hackclub.com/api/icons/white/view-back" alt="">
             </button>
             <div class="carousel-strip">
-                {#each gallerySlots as [slug, item] (slug)}
+                {#each gallerySlots as item (item.key)}
                     <div class="gallery-item" animate:flip={{ duration: 400}} >
                         <img src={item.img} alt={item.name} class="gallery-img">
                         <p>{item.name}</p>
                     </div>
                 {/each}
             </div>
-           <button type="button" class="strip-nav" onclick={() => {galleryDirection = 1;galleryIndexes = moveCarouselRight(galleryIndexes, galleryLength);}} aria-label="Next">
+           <button type="button" class="strip-nav" onclick={() => {galleryIndexes = moveCarouselRight(galleryIndexes, galleryLength);}} aria-label="Next">
                <img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="Next">
             </button>
         </div>
