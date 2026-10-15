@@ -177,7 +177,7 @@
     let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully! rainger what on earth -justin
     let memberDirection = $state(1);
     const memberSlots = $derived(memberIndexes.map(i => members[i])); // yips
-    let galleryIndexes = $state([0, 1, 2, 3]);
+    let galleryIndexes = $state([0, 1, 2, 3, 4, 5,]);
     const gallerySlots = $derived(galleryIndexes.map(i => Object.entries(gallery)[i])); // yips x2
     const galleryLength = Object.keys(gallery).length;
     let galleryDirection = $state(1);
