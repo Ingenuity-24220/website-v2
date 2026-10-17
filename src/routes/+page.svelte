@@ -5,40 +5,40 @@
 	import team2 from '$lib/assets/images/team-2.webp';
 	import robot1 from '$lib/assets/images/robot-1.webp';
 	import robot2 from '$lib/assets/images/robot-2.webp';
-    import elaine from '$lib/assets/team/elaine.jpg';
-    import coachdai from '$lib/assets/team/coachdai.jpeg';
-    import erik from '$lib/assets/team/erik.jpg';
-    import johnathan from '$lib/assets/team/jonathan.jpeg';
-    import nathan from '$lib/assets/team/nathan.jpeg';
-    import max from '$lib/assets/team/max.jpg'
-    import coachwan from '$lib/assets/team/john.jpg';
-    import sherry from '$lib/assets/team/sherry1.jpg'
-    import vincent from '$lib/assets/team/vincent.jpg'
-    import zilong from '$lib/assets/team/zilong.jpg'
-    import constance from '$lib/assets/team/constance.jpg'
-    import mentorzhang from '$lib/assets/team/baoshe.jpg'
-    import niko from '$lib/assets/team/niko.jpg'
-    import msde from '$lib/assets/logos/msde.svg'
-    import hccs from '$lib/assets/logos/hccs.png'
-    import luxcraft from '$lib/assets/logos/luxcraft.png'
-    import allstate from '$lib/assets/logos/allstate.svg'
-    import craftingtable from '$lib/assets/logos/craftingtable.png'
-    import costco from '$lib/assets/logos/costco.svg'
-    import chipotle from '$lib/assets/logos/chipotle.svg'
-    import optimum from '$lib/assets/logos/optimum.png'
-	import onlinemetals from '$lib/assets/logos/onlinemetals.jpg'
-    import placeholder from '$lib/assets/placeholder.jpg'
-    import summercamp from '$lib/assets/images/summercamp.webp'
-    import rftr from "$lib/assets/images/rftr.jpg"
-    import v5fll from '$lib/assets/images/v5fll.jpg'
-    import fllumbc from '$lib/assets/images/fllumbc.jpg'
-    import ftcstates from '$lib/assets/images/ftcstates.jpg'
-    import fllmd from '$lib/assets/images/fllmd.jpg'
-    import Footer from '$lib/components/footer.svelte'
-    import { flip } from 'svelte/animate';
+	import elaine from '$lib/assets/team/elaine.jpg';
+	import coachdai from '$lib/assets/team/coachdai.jpeg';
+	import erik from '$lib/assets/team/erik.jpg';
+	import johnathan from '$lib/assets/team/jonathan.jpeg';
+	import nathan from '$lib/assets/team/nathan.jpeg';
+	import max from '$lib/assets/team/max.jpg';
+	import coachwan from '$lib/assets/team/john.jpg';
+	import sherry from '$lib/assets/team/sherry1.jpg';
+	import vincent from '$lib/assets/team/vincent.jpg';
+	import zilong from '$lib/assets/team/zilong.jpg';
+	import constance from '$lib/assets/team/constance.jpg';
+	import mentorzhang from '$lib/assets/team/baoshe.jpg';
+	import niko from '$lib/assets/team/niko.jpg';
+	import msde from '$lib/assets/logos/msde.svg';
+	import hccs from '$lib/assets/logos/hccs.png';
+	import luxcraft from '$lib/assets/logos/luxcraft.png';
+	import allstate from '$lib/assets/logos/allstate.svg';
+	import craftingtable from '$lib/assets/logos/craftingtable.png';
+	import costco from '$lib/assets/logos/costco.svg';
+	import chipotle from '$lib/assets/logos/chipotle.svg';
+	import optimum from '$lib/assets/logos/optimum.png';
+	import onlinemetals from '$lib/assets/logos/onlinemetals.jpg';
+	import placeholder from '$lib/assets/placeholder.jpg';
+	import summercamp from '$lib/assets/images/summercamp.webp';
+	import rftr from '$lib/assets/images/rftr.jpg';
+	import v5fll from '$lib/assets/images/v5fll.jpg';
+	import fllumbc from '$lib/assets/images/fllumbc.jpg';
+	import ftcstates from '$lib/assets/images/ftcstates.jpg';
+	import fllmd from '$lib/assets/images/fllmd.jpg';
+	import Footer from '$lib/components/footer.svelte';
+	import { flip } from 'svelte/animate';
 	import { fly } from 'svelte/transition';
 	import Header from '$lib/components/header.svelte';
-    import { sineInOut } from 'svelte/easing';
+	import { sineInOut } from 'svelte/easing';
 	import { resolve } from '$app/paths';
 	import { members } from '$lib/team'; // shared with the team page
 
@@ -146,68 +146,86 @@
 			alt: ''
 		}
 	};
-        // TODO: Remove img
-    const gallery = {
-        'summercamp': {
-            name: "2026 Summer Camp",
-            img: summercamp,
-        },
-        'rftr': {
-            name: "Run for the Robots 2026",
-            img: rftr,
-        },
-        'v5fll': {
-            name: "Outreach with V5 FLL",
-            img: v5fll,
-        },
-        'ftcstates': {
-            name: "FTC States 2025-2026",
-            img: ftcstates,
-        },
-        'fllumbc': {
-            name: "FLL UMBC Competition 2025-2026",
-            img: fllumbc,
-        },
-        'fllmd': {
-            name: "FLL Maryland States 2026",
-            img: fllmd,
-        }
-    }
-    let heroEl: HTMLDivElement | null = $state(null);
-    const memberLength = Object.keys(members).length;
-	const galleryEntries = [...Object.entries(gallery), ...Object.entries(gallery)].map(([slug, item], n) => ({
-		key: `${slug}-${n}`,
-		...item
-	}));
-    let memberIndexes = $state([memberLength-4, memberLength-3, memberLength-2, memberLength-1, 0, 1, 2, 3, 4]); // cursed? yes. works? hopefully! rainger what on earth -justin
-    // let memberDirection = $state(1);
-    const memberSlots = $derived(memberIndexes.map(i => members[i])); // yips
+	// TODO: Remove img
+	const gallery = {
+		summercamp: {
+			name: '2026 Summer Camp',
+			img: summercamp
+		},
+		rftr: {
+			name: 'Run for the Robots 2026',
+			img: rftr
+		},
+		v5fll: {
+			name: 'Outreach with V5 FLL',
+			img: v5fll
+		},
+		ftcstates: {
+			name: 'FTC States 2025-2026',
+			img: ftcstates
+		},
+		fllumbc: {
+			name: 'FLL UMBC Competition 2025-2026',
+			img: fllumbc
+		},
+		fllmd: {
+			name: 'FLL Maryland States 2026',
+			img: fllmd
+		}
+	};
+	let heroEl: HTMLDivElement | null = $state(null);
+	const memberLength = Object.keys(members).length;
+	const galleryEntries = [...Object.entries(gallery), ...Object.entries(gallery)].map(
+		([slug, item], n) => ({
+			key: `${slug}-${n}`,
+			...item
+		})
+	);
+	let memberIndexes = $state([
+		memberLength - 4,
+		memberLength - 3,
+		memberLength - 2,
+		memberLength - 1,
+		0,
+		1,
+		2,
+		3,
+		4
+	]); // cursed? yes. works? hopefully! rainger what on earth -justin
+	// let memberDirection = $state(1);
+	const memberSlots = $derived(memberIndexes.map((i) => members[i])); // yips
 	const galleryLength = galleryEntries.length;
-    let galleryIndexes = $state([galleryLength-3, galleryLength-2, galleryLength-1, 0, 1, 2, 3]);
-    const gallerySlots = $derived(galleryIndexes.map(i => galleryEntries[i])); // yips x2
-    // let galleryDirection = $state(1);
-	
+	let galleryIndexes = $state([
+		galleryLength - 3,
+		galleryLength - 2,
+		galleryLength - 1,
+		0,
+		1,
+		2,
+		3
+	]);
+	const gallerySlots = $derived(galleryIndexes.map((i) => galleryEntries[i])); // yips x2
+	// let galleryDirection = $state(1);
 
-    // hooray learning how to use .map (and on the way .forEach :D)
-    function moveCarouselRight( indexes: number[], length: number ) {
-        return indexes.map((element) => {
-                if (length == 0) { // should never happen! but if it does theres this guard here
-                    return 0;
-                }
-                return (element + 1 ) % length;
-            }
-        )
-    };
-    function moveCarouselLeft( indexes: number[], length: number ) {
-        return indexes.map((element) => {
-                if (length == 0) {
-                    return 0;
-                }
-                return (element - 1 + length) % length;
-                // apparently JS % acts more like a remainder so we're doing this
-            }
-        )
-    };
+	// hooray learning how to use .map (and on the way .forEach :D)
+	function moveCarouselRight(indexes: number[], length: number) {
+		return indexes.map((element) => {
+			if (length == 0) {
+				// should never happen! but if it does theres this guard here
+				return 0;
+			}
+			return (element + 1) % length;
+		});
+	}
+	function moveCarouselLeft(indexes: number[], length: number) {
+		return indexes.map((element) => {
+			if (length == 0) {
+				return 0;
+			}
+			return (element - 1 + length) % length;
+			// apparently JS % acts more like a remainder so we're doing this
+		});
+	}
 
 	// swap headers based on whether the hero is still on screen
 	// onMount(() => {
@@ -321,7 +339,7 @@
 		</div>
 	</div>
 	{#if memberLength > 0}
-		 can't believe im doing this but just in case
+		can't believe im doing this but just in case
 		<div class="block-grid">
 			<div class="left team">
 				<h2>Ingenuity is <br /><u>a team of all trades.</u></h2>
@@ -337,14 +355,16 @@
 				<button
 					type="button"
 					class="strip-nav"
-					onclick={() => {memberIndexes = moveCarouselLeft(memberIndexes, memberLength)}}
+					onclick={() => {
+						memberIndexes = moveCarouselLeft(memberIndexes, memberLength);
+					}}
 					aria-label="Previous members"
 				>
 					<img src="https://icons.hackclub.com/api/icons/white/view-back" alt="" />
 				</button>
 				<div class="carousel-strip">
 					{#each memberSlots as member (member.slug)}
-						<div class="member-item" animate:flip={{ duration: 400}}>  
+						<div class="member-item" animate:flip={{ duration: 400 }}>
 							<div class="member-container">
 								<img src={member.img} alt={member.name} />
 								<div class="member-hover">
@@ -360,13 +380,20 @@
 						</div>
 					{/each}
 				</div>
-				<button type="button" class="strip-nav" onclick={() => {memberIndexes = moveCarouselRight(memberIndexes, memberLength)}} aria-label="Next members">
+				<button
+					type="button"
+					class="strip-nav"
+					onclick={() => {
+						memberIndexes = moveCarouselRight(memberIndexes, memberLength);
+					}}
+					aria-label="Next members"
+				>
 					<img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="" />
 				</button>
 			</div>
 		</div>
-{/if}
-	
+	{/if}
+
 	<div class="block-grid">
 		<div class="right community">
 			<h2>Ingenuity is <br /><u>dedicated to giving back.</u></h2>
@@ -463,7 +490,8 @@
 			</div>
 			<div class="div10">
 				<a class="logo-click" href="mailto:contact@ingenuity.team?subject=Sponsorship Inquiry"
-					>Your logo here?</a>
+					>Your logo here?</a
+				>
 			</div>
 			<!-- TODO: ADD SPONSOR IMAGES HERE -->
 		</div>
@@ -481,24 +509,38 @@
 			allowfullscreen
 		></iframe>
     </div> -->
-    <div class="center">
-        <h2>Gallery</h2>
-        <div class="carousel-row">
-            <button type="button" class="strip-nav" onclick={() => {galleryIndexes = moveCarouselLeft(galleryIndexes, galleryLength);}} aria-label="Previous gallery items">
-                <img src="https://icons.hackclub.com/api/icons/white/view-back" alt="">
-            </button>
-            <div class="carousel-strip">
-                {#each gallerySlots as item (item.key)}
-                    <div class="gallery-item" animate:flip={{ duration: 400}} >
-                        <img src={item.img} alt={item.name} class="gallery-img">
-                        <p>{item.name}</p>
-                    </div>
-                {/each}
-            </div>
-           <button type="button" class="strip-nav" onclick={() => {galleryIndexes = moveCarouselRight(galleryIndexes, galleryLength);}} aria-label="Next">
-               <img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="Next">
-            </button>
-        </div>
+	<div class="center">
+		<h2>Gallery</h2>
+		<div class="carousel-row">
+			<button
+				type="button"
+				class="strip-nav"
+				onclick={() => {
+					galleryIndexes = moveCarouselLeft(galleryIndexes, galleryLength);
+				}}
+				aria-label="Previous gallery items"
+			>
+				<img src="https://icons.hackclub.com/api/icons/white/view-back" alt="" />
+			</button>
+			<div class="carousel-strip">
+				{#each gallerySlots as item (item.key)}
+					<div class="gallery-item" animate:flip={{ duration: 400 }}>
+						<img src={item.img} alt={item.name} class="gallery-img" />
+						<p>{item.name}</p>
+					</div>
+				{/each}
+			</div>
+			<button
+				type="button"
+				class="strip-nav"
+				onclick={() => {
+					galleryIndexes = moveCarouselRight(galleryIndexes, galleryLength);
+				}}
+				aria-label="Next"
+			>
+				<img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="Next" />
+			</button>
+		</div>
 	</div>
 	<div class="center contact">
 		<h2>Interested?</h2>
@@ -515,47 +557,46 @@
 <!-- TODO: FOOTER -->
 
 <style>
-    .center{
-        display: block;
-        text-align: center;
-    }
-    .center h2{
-        padding-bottom: 2rem;
-    }
-    .member-section {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
+	.center {
+		display: block;
+		text-align: center;
+	}
+	.center h2 {
+		padding-bottom: 2rem;
+	}
+	.member-section {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
 
-    .carousel-row {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-    }
+	.carousel-row {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
 
-    .member-item {
-        display: flex;
-        flex-direction: column;
-    }
-    .gallery-item {
-        display: flex;
-        flex-direction: column;
-        position:relative;
-        border-radius: 1rem;
-
-    }
-    .gallery-item:hover{
-        transition: transform 0.2s ease;
-        transform: scale(1.06);
-        z-index: 1000;
-    }
-    .member-item p {
-        margin-bottom: 0;
-    }
+	.member-item {
+		display: flex;
+		flex-direction: column;
+	}
+	.gallery-item {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		border-radius: 1rem;
+	}
+	.gallery-item:hover {
+		transition: transform 0.2s ease;
+		transform: scale(1.06);
+		z-index: 1000;
+	}
+	.member-item p {
+		margin-bottom: 0;
+	}
 
 	.strip-nav {
 		all: unset;
@@ -591,29 +632,23 @@
 		width: clamp(1.5rem, 3vw, 2.5rem);
 	}
 
-    .carousel-row:hover .strip-nav {
-        opacity: 1
-    }
+	.carousel-row:hover .strip-nav {
+		opacity: 1;
+	}
 
-    .carousel-strip {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        justify-content: center;
-        gap: 3rem;
-        overflow: hidden;
-        padding-block: 1.5rem;
-        margin-block: -1.5rem;
-        mask-image: linear-gradient(
-            to right, 
-            transparent 0%,
-            black 30%,
-            black 70%, 
-            transparent 100%
-        );
-        width: 100%;
-        margin-left:0;
-    }
+	.carousel-strip {
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		justify-content: center;
+		gap: 3rem;
+		overflow: hidden;
+		padding-block: 1.5rem;
+		margin-block: -1.5rem;
+		mask-image: linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%);
+		width: 100%;
+		margin-left: 0;
+	}
 
 	.member-hover {
 		position: absolute;
@@ -645,19 +680,19 @@
 		min-height: 2lh;
 	}
 
-    .member-container img {
-        display: block;
-        width: clamp(8rem, 18vw, 16rem);
-        aspect-ratio: 1 / 1;
-        object-fit: cover;
-    }
-    .gallery-img {
-        display: block;
-        width: clamp(8rem, 20vw, 70rem);
-        height: clamp(8rem, 20vw, 70rem);
-        object-fit: cover;
-        border-radius: 1rem;
-    }
+	.member-container img {
+		display: block;
+		width: clamp(8rem, 18vw, 16rem);
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+	}
+	.gallery-img {
+		display: block;
+		width: clamp(8rem, 20vw, 70rem);
+		height: clamp(8rem, 20vw, 70rem);
+		object-fit: cover;
+		border-radius: 1rem;
+	}
 
 	.block-grid {
 		display: grid;

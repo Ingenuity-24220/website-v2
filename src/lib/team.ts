@@ -65,7 +65,6 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 	{
 		name: 'Hardware',
 		members: [
-			
 			{
 				slug: 'vincent',
 				img: vincent,
@@ -79,8 +78,7 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				name: 'Jonathan',
 				role: 'Outreach Specialist',
 				bio: 'Johnathan, a new addition to team ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. in his downtime, he enjoys associating with friends and family.'
-			},
-			
+			}
 		]
 	},
 	{
@@ -131,7 +129,7 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				role: 'Outreach Specialist',
 				bio: 'Sherry works on the hardware and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.'
 			},
-			
+
 			{
 				slug: 'max',
 				img: max,
