@@ -5,19 +5,6 @@
 	import team2 from '$lib/assets/images/team-2.webp';
 	import robot1 from '$lib/assets/images/robot-1.webp';
 	import robot2 from '$lib/assets/images/robot-2.webp';
-	import elaine from '$lib/assets/team/elaine.jpg';
-	import coachdai from '$lib/assets/team/coachdai.jpeg';
-	import erik from '$lib/assets/team/erik.jpg';
-	import johnathan from '$lib/assets/team/jonathan.jpeg';
-	import nathan from '$lib/assets/team/nathan.jpeg';
-	import max from '$lib/assets/team/max.jpg';
-	import coachwan from '$lib/assets/team/john.jpg';
-	import sherry from '$lib/assets/team/sherry1.jpg';
-	import vincent from '$lib/assets/team/vincent.jpg';
-	import zilong from '$lib/assets/team/zilong.jpg';
-	import constance from '$lib/assets/team/constance.jpg';
-	import mentorzhang from '$lib/assets/team/baoshe.jpg';
-	import niko from '$lib/assets/team/niko.jpg';
 	import msde from '$lib/assets/logos/msde.svg';
 	import hccs from '$lib/assets/logos/hccs.png';
 	import luxcraft from '$lib/assets/logos/luxcraft.png';
@@ -27,7 +14,6 @@
 	import chipotle from '$lib/assets/logos/chipotle.svg';
 	import optimum from '$lib/assets/logos/optimum.png';
 	import onlinemetals from '$lib/assets/logos/onlinemetals.jpg';
-	import placeholder from '$lib/assets/placeholder.jpg';
 	import summercamp from '$lib/assets/images/summercamp.webp';
 	import rftr from '$lib/assets/images/rftr.jpg';
 	import v5fll from '$lib/assets/images/v5fll.jpg';
@@ -36,9 +22,7 @@
 	import fllmd from '$lib/assets/images/fllmd.jpg';
 	import Footer from '$lib/components/footer.svelte';
 	import { flip } from 'svelte/animate';
-	import { fly } from 'svelte/transition';
 	import Header from '$lib/components/header.svelte';
-	import { sineInOut } from 'svelte/easing';
 	import { resolve } from '$app/paths';
 	import { members } from '$lib/team'; // shared with the team page
 
