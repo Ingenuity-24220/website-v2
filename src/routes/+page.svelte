@@ -26,6 +26,7 @@
     import costco from '$lib/assets/logos/costco.svg'
     import chipotle from '$lib/assets/logos/chipotle.svg'
     import optimum from '$lib/assets/logos/optimum.png'
+	import onlinemetals from '$lib/assets/logos/onlinemetals.jpg'
     import placeholder from '$lib/assets/placeholder.jpg'
     import summercamp from '$lib/assets/images/summercamp.webp'
     import rftr from "$lib/assets/images/rftr.jpg"
@@ -456,9 +457,13 @@
 				</a>
 			</div>
 			<div class="div9">
+				<a href="https://www.onlinemetals.com/" target="_blank" rel="noreferrer noopener">
+					<img src={onlinemetals} alt="Online Metals" style="border-radius: 10%" />
+				</a>
+			</div>
+			<div class="div10">
 				<a class="logo-click" href="mailto:contact@ingenuity.team?subject=Sponsorship Inquiry"
-					>Your logo here?</a
-				>
+					>Your logo here?</a>
 			</div>
 			<!-- TODO: ADD SPONSOR IMAGES HERE -->
 		</div>
@@ -885,6 +890,10 @@
 	.div7 {
 		display: none;
 	}
+	.div10 {
+		grid-area: 4 / 2 / 5 / 3;
+		justify-self: center;
+	}
 
 	.image-robot {
 		grid-column: 1;
@@ -1137,7 +1146,7 @@
 			justify-self: center;
 		}
 
-		.div9 a {
+		.div10 a {
 			text-decoration: underline;
 		}
 	}
