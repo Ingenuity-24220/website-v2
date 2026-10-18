@@ -158,7 +158,7 @@
 		}
 	};
 	let heroEl: HTMLDivElement | null = $state(null);
-	const memberLength = Object.keys(members).length;
+	const memberLength =members.length;
 	const galleryEntries = [...Object.entries(gallery), ...Object.entries(gallery)].map(
 		([slug, item], n) => ({
 			key: `${slug}-${n}`,
@@ -323,7 +323,6 @@
 		</div>
 	</div>
 	{#if memberLength > 0}
-		can't believe im doing this but just in case
 		<div class="block-grid">
 			<div class="left team">
 				<h2>Ingenuity is <br /><u>a team of all trades.</u></h2>
@@ -522,7 +521,7 @@
 				}}
 				aria-label="Next"
 			>
-				<img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="Next" />
+				<img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="" />
 			</button>
 		</div>
 	</div>
@@ -545,9 +544,6 @@
 		display: block;
 		text-align: center;
 	}
-	.center h2 {
-		padding-bottom: 2rem;
-	}
 	.member-section {
 		display: flex;
 		flex-direction: column;
@@ -559,10 +555,8 @@
 		justify-content: center;
 		align-items: center;
 		flex-direction: row;
-		align-items: center;
-		justify-content: center;
+		margin-top: 1rem;
 	}
-
 	.member-item {
 		display: flex;
 		flex-direction: column;
@@ -572,9 +566,9 @@
 		flex-direction: column;
 		position: relative;
 		border-radius: 1rem;
+		transition: transform 0.2s ease;
 	}
 	.gallery-item:hover {
-		transition: transform 0.2s ease;
 		transform: scale(1.06);
 		z-index: 1000;
 	}
@@ -630,8 +624,8 @@
 		padding-block: 1.5rem;
 		margin-block: -1.5rem;
 		mask-image: linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%);
-		width: 100%;
-		margin-left: 0;
+		width: calc(100% + (var(--gutter) * 2));
+		margin-left: calc(var(--gutter) * -1);
 	}
 
 	.member-hover {
@@ -693,12 +687,6 @@
 		display: block;
 		text-align: right;
 	}
-
-	.center {
-		display: block;
-		text-align: center;
-	}
-
 	.robot,
 	.community {
 		grid-column: 2;

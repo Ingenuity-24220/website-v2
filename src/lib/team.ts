@@ -12,6 +12,7 @@ import zilong from '$lib/assets/team/zilong.jpg';
 import niko from '$lib/assets/team/niko.jpg';
 import justin from '$lib/assets/team/justin.jpg';
 import mentorni from '$lib/assets/team/mentorni.jpeg';
+import nicholas from '$lib/assets/team/nicholas.jpg';
 
 export type Member = {
 	slug: string; // used in /team#slug to open a bio directly
@@ -50,14 +51,14 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				slug: 'erik',
 				img: erik,
 				name: 'Erik',
-				role: 'Team Captain',
-				bio: 'Erik is a team Lead of Team Ingenuity. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior and enjoys playing squash in his free time.'
+				role: 'Team Co-captain',
+				bio: 'Erik is a team captain of Team Ingenuity. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior and enjoys playing squash in his free time.'
 			},
 			{
 				slug: 'nathan',
 				img: nathan,
 				name: 'Nathan',
-				role: 'Team Captain',
+				role: 'Team Co-captain',
 				bio: 'Nathan is a 4th year FTC student on team Ingenuity 24220. He also participated in 4 years of FLL, even going to nationals once. He enjoys playing soccer and spending times with his friends and family.'
 			}
 		]
@@ -76,8 +77,15 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				slug: 'jonathan',
 				img: johnathan,
 				name: 'Jonathan',
-				role: 'Outreach Specialist',
+				role: 'Hardware Specialist',
 				bio: 'Johnathan, a new addition to team ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. in his downtime, he enjoys associating with friends and family.'
+			},
+			{
+				slug: 'nicholas',
+				img: nicholas,
+				name: 'Nicholas',
+				role: "Hardware Specialist",
+				bio: "Nicholas is a rookie member on team Ingenuity. He is in 7th grade and is on the hardware team. Prior to joining the team, he participated in 3 years of FLL and competed at the State Championship all 3 years. In his free time, he enjoys building and playing with LEGO."
 			}
 		]
 	},
@@ -127,9 +135,8 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				img: sherry,
 				name: 'Sherry',
 				role: 'Outreach Specialist',
-				bio: 'Sherry works on the hardware and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.'
+				bio: 'Sherry works on the outreach and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.'
 			},
-
 			{
 				slug: 'max',
 				img: max,
