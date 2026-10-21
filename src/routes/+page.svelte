@@ -158,7 +158,7 @@
 		}
 	};
 	let heroEl: HTMLDivElement | null = $state(null);
-	const memberLength =members.length;
+	const memberLength = members.length;
 	const galleryEntries = [...Object.entries(gallery), ...Object.entries(gallery)].map(
 		([slug, item], n) => ({
 			key: `${slug}-${n}`,

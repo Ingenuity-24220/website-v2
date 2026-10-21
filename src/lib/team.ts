@@ -84,8 +84,8 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				slug: 'nicholas',
 				img: nicholas,
 				name: 'Nicholas',
-				role: "Hardware Specialist",
-				bio: "Nicholas is a rookie member on team Ingenuity. He is in 7th grade and is on the hardware team. Prior to joining the team, he participated in 3 years of FLL and competed at the State Championship all 3 years. In his free time, he enjoys building and playing with LEGO."
+				role: 'Hardware Specialist',
+				bio: 'Nicholas is a rookie member on team Ingenuity. He is in 7th grade and is on the hardware team. Prior to joining the team, he participated in 3 years of FLL and competed at the State Championship all 3 years. In his free time, he enjoys building and playing with LEGO.'
 			}
 		]
 	},
