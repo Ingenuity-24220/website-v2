@@ -127,14 +127,14 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				slug: 'elaine',
 				img: elaine,
 				name: 'Elaine',
-				role: 'Outreach Lead',
+				role: 'Outreach Co-lead',
 				bio: 'Elaine is a Junior and fourth-year team member with seven years of experience in FIRST. With past experience in hardware, software, and outreach, she is eager to assist her team in any aspect. In her free time, you can find Elaine hiding in a corner or managing her minions.'
 			},
 			{
 				slug: 'sherry',
 				img: sherry,
 				name: 'Sherry',
-				role: 'Outreach Specialist',
+				role: 'Outreach Co-lead',
 				bio: 'Sherry works on the outreach and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.'
 			},
 			{
