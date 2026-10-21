@@ -9,9 +9,10 @@ import coachwan from '$lib/assets/team/john.jpg';
 import sherry from '$lib/assets/team/sherry1.jpg';
 import vincent from '$lib/assets/team/vincent.jpg';
 import zilong from '$lib/assets/team/zilong.jpg';
-import mentorzhang from '$lib/assets/team/baoshe.jpg';
 import niko from '$lib/assets/team/niko.jpg';
 import justin from '$lib/assets/team/justin.jpg';
+import mentorni from '$lib/assets/team/mentorni.jpeg';
+import nicholas from '$lib/assets/team/nicholas.jpg';
 
 export type Member = {
 	slug: string; // used in /team#slug to open a bio directly
@@ -40,38 +41,31 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				bio: 'John Wan is a Supervisory Data Scientist at the U.S. FDA and an experienced FIRST mentor. He coaches FTC and FLL teams with a focus on engineering design, autonomous strategy, and data-driven problem solving. John also teaches data science at UMBC and brings real-world analytics and leadership experience to youth STEM education. He holds an MBA from Georgia Tech and a B.S. in Computer Engineering.'
 			},
 			{
-				slug: 'mentor-zhang',
-				img: mentorzhang,
-				name: 'Mentor Zhang',
-				role: 'Software Mentor',
-				bio: "Dr. Baoshe Zhang is a software mentor for Team Ingenuity. He holds a Ph.D. in Physics from the Hong Kong University of Science and Technology and is an Associate Professor at the University of Maryland School of Medicine. With a background in software engineering and expertise in programming and automation, he helps guide the team's software development."
+				slug: 'mentor-ni',
+				img: mentorni,
+				name: 'Mentor Ni',
+				role: 'Hardware Mentor',
+				bio: 'N/A'
 			},
 			{
-				slug: 'elaine',
-				img: elaine,
-				name: 'Elaine',
-				role: 'Team Captain',
-				bio: 'Elaine is a Junior and fourth-year team member with seven years of experience in FIRST. With past experience in hardware, software, and outreach, she is eager to assist her team in any aspect. In her free time, you can find Elaine hiding in a corner or managing her minions.'
+				slug: 'erik',
+				img: erik,
+				name: 'Erik',
+				role: 'Team Co-captain',
+				bio: 'Erik is a team captain of Team Ingenuity. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior and enjoys playing squash in his free time.'
+			},
+			{
+				slug: 'nathan',
+				img: nathan,
+				name: 'Nathan',
+				role: 'Team Co-captain',
+				bio: 'Nathan is a 4th year FTC student on team Ingenuity 24220. He also participated in 4 years of FLL, even going to nationals once. He enjoys playing soccer and spending times with his friends and family.'
 			}
 		]
 	},
 	{
 		name: 'Hardware',
 		members: [
-			{
-				slug: 'erik',
-				img: erik,
-				name: 'Erik',
-				role: 'Hardware Lead',
-				bio: 'Erik is the Hardware Lead of Team Ingenuity, overseeing the mechanical design and construction of the robot. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior and enjoys playing squash in his free time.'
-			},
-			{
-				slug: 'nathan',
-				img: nathan,
-				name: 'Nathan',
-				role: 'Electrical Lead',
-				bio: 'Nathan is a 4th year FTC student on team Ingenuity 24220. He also participated in 4 years of FLL, even going to nationals once. He enjoys playing soccer and spending times with his friends and family.'
-			},
 			{
 				slug: 'vincent',
 				img: vincent,
@@ -80,11 +74,18 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				bio: "Vincent is a member of Team Ingenuity's hardware team, where he helps with robot construction and assembly. He enjoys working hands-on with mechanical components and collaborating with teammates to bring designs to life."
 			},
 			{
-				slug: 'sherry',
-				img: sherry,
-				name: 'Sherry',
+				slug: 'jonathan',
+				img: johnathan,
+				name: 'Jonathan',
 				role: 'Hardware Specialist',
-				bio: 'Sherry works on the hardware and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.'
+				bio: 'Johnathan, a new addition to team ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. in his downtime, he enjoys associating with friends and family.'
+			},
+			{
+				slug: 'nicholas',
+				img: nicholas,
+				name: 'Nicholas',
+				role: 'Hardware Specialist',
+				bio: 'Nicholas is a rookie member on team Ingenuity. He is in 7th grade and is on the hardware team. Prior to joining the team, he participated in 3 years of FLL and competed at the State Championship all 3 years. In his free time, he enjoys building and playing with LEGO.'
 			}
 		]
 	},
@@ -123,11 +124,18 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 		name: 'Outreach',
 		members: [
 			{
-				slug: 'jonathan',
-				img: johnathan,
-				name: 'Jonathan',
-				role: 'Outreach Specialist',
-				bio: 'Johnathan, a new addition to team ingenuity, focuses on the completion of various tasks necessary for the team, ranging from hardware roles to mission strategy. in his downtime, he enjoys associating with friends and family.'
+				slug: 'elaine',
+				img: elaine,
+				name: 'Elaine',
+				role: 'Outreach Co-lead',
+				bio: 'Elaine is a Junior and fourth-year team member with seven years of experience in FIRST. With past experience in hardware, software, and outreach, she is eager to assist her team in any aspect. In her free time, you can find Elaine hiding in a corner or managing her minions.'
+			},
+			{
+				slug: 'sherry',
+				img: sherry,
+				name: 'Sherry',
+				role: 'Outreach Co-lead',
+				bio: 'Sherry works on the outreach and portfolio, where she leads design initiatives, active building, and portfolio development. In her free time, she enjoys reading, fencing, and exploring cool concepts.'
 			},
 			{
 				slug: 'max',

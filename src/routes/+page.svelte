@@ -13,6 +13,13 @@
 	import costco from '$lib/assets/logos/costco.svg';
 	import chipotle from '$lib/assets/logos/chipotle.svg';
 	import optimum from '$lib/assets/logos/optimum.png';
+	import onlinemetals from '$lib/assets/logos/onlinemetals.jpg';
+	import summercamp from '$lib/assets/images/summercamp.webp';
+	import rftr from '$lib/assets/images/rftr.jpg';
+	import v5fll from '$lib/assets/images/v5fll.jpg';
+	import fllumbc from '$lib/assets/images/fllumbc.jpg';
+	import ftcstates from '$lib/assets/images/ftcstates.jpg';
+	import fllmd from '$lib/assets/images/fllmd.jpg';
 	import Footer from '$lib/components/footer.svelte';
 	import { flip } from 'svelte/animate';
 	import Header from '$lib/components/header.svelte';
@@ -123,37 +130,83 @@
 			alt: ''
 		}
 	};
+	// TODO: Remove img
+	const gallery = {
+		summercamp: {
+			name: '2026 Summer Camp',
+			img: summercamp
+		},
+		rftr: {
+			name: 'Run for the Robots 2026',
+			img: rftr
+		},
+		v5fll: {
+			name: 'Outreach with V5 FLL',
+			img: v5fll
+		},
+		ftcstates: {
+			name: 'FTC States 2025-2026',
+			img: ftcstates
+		},
+		fllumbc: {
+			name: 'FLL UMBC Competition 2025-2026',
+			img: fllumbc
+		},
+		fllmd: {
+			name: 'FLL Maryland States 2026',
+			img: fllmd
+		}
+	};
 	let heroEl: HTMLDivElement | null = $state(null);
 	const memberLength = members.length;
-	// start with elaine in the middle slot, 4 people either side
-	const startIndex = Math.max(
-		members.findIndex((m) => m.slug === 'elaine'),
-		0
+	const galleryEntries = [...Object.entries(gallery), ...Object.entries(gallery)].map(
+		([slug, item], n) => ({
+			key: `${slug}-${n}`,
+			...item
+		})
 	);
-	let memberIndexes = $state(
-		[-4, -3, -2, -1, 0, 1, 2, 3, 4].map(
-			(offset) => (startIndex + offset + memberLength) % memberLength
-		)
-	); // cursed? yes. works? hopefully!
-	const slots = $derived(memberIndexes.map((i) => members[i])); // yips
+	let memberIndexes = $state([
+		memberLength - 4,
+		memberLength - 3,
+		memberLength - 2,
+		memberLength - 1,
+		0,
+		1,
+		2,
+		3,
+		4
+	]); // cursed? yes. works? hopefully! rainger what on earth -justin
+	// let memberDirection = $state(1);
+	const memberSlots = $derived(memberIndexes.map((i) => members[i])); // yips
+	const galleryLength = galleryEntries.length;
+	let galleryIndexes = $state([
+		galleryLength - 3,
+		galleryLength - 2,
+		galleryLength - 1,
+		0,
+		1,
+		2,
+		3
+	]);
+	const gallerySlots = $derived(galleryIndexes.map((i) => galleryEntries[i])); // yips x2
+	// let galleryDirection = $state(1);
 
 	// hooray learning how to use .map (and on the way .forEach :D)
-	function moveMemberRight() {
-		memberIndexes = memberIndexes.map((element) => {
-			if (memberLength == 0) {
+	function moveCarouselRight(indexes: number[], length: number) {
+		return indexes.map((element) => {
+			if (length == 0) {
 				// should never happen! but if it does theres this guard here
 				return 0;
 			}
-			return (element + 1) % memberLength;
+			return (element + 1) % length;
 		});
 	}
-
-	function moveMemberLeft() {
-		memberIndexes = memberIndexes.map((element) => {
-			if (memberLength == 0) {
+	function moveCarouselLeft(indexes: number[], length: number) {
+		return indexes.map((element) => {
+			if (length == 0) {
 				return 0;
 			}
-			return (element - 1 + memberLength) % memberLength;
+			return (element - 1 + length) % length;
 			// apparently JS % acts more like a remainder so we're doing this
 		});
 	}
@@ -270,7 +323,6 @@
 		</div>
 	</div>
 	{#if memberLength > 0}
-		<!-- can't believe im doing this but just in case -->
 		<div class="block-grid">
 			<div class="left team">
 				<h2>Ingenuity is <br /><u>a team of all trades.</u></h2>
@@ -282,18 +334,19 @@
 			</div>
 		</div>
 		<div class="member-section">
-			<div class="member-row">
+			<div class="carousel-row">
 				<button
 					type="button"
 					class="strip-nav"
-					onclick={moveMemberLeft}
+					onclick={() => {
+						memberIndexes = moveCarouselLeft(memberIndexes, memberLength);
+					}}
 					aria-label="Previous members"
 				>
 					<img src="https://icons.hackclub.com/api/icons/white/view-back" alt="" />
 				</button>
-				<div class="member-strip">
-					<!-- TODO: scrolling member list -->
-					{#each slots as member (member.slug)}
+				<div class="carousel-strip">
+					{#each memberSlots as member (member.slug)}
 						<div class="member-item" animate:flip={{ duration: 400 }}>
 							<div class="member-container">
 								<img src={member.img} alt={member.name} />
@@ -310,12 +363,20 @@
 						</div>
 					{/each}
 				</div>
-				<button type="button" class="strip-nav" onclick={moveMemberRight} aria-label="Next members">
+				<button
+					type="button"
+					class="strip-nav"
+					onclick={() => {
+						memberIndexes = moveCarouselRight(memberIndexes, memberLength);
+					}}
+					aria-label="Next members"
+				>
 					<img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="" />
 				</button>
 			</div>
 		</div>
 	{/if}
+
 	<div class="block-grid">
 		<div class="right community">
 			<h2>Ingenuity is <br /><u>dedicated to giving back.</u></h2>
@@ -406,6 +467,11 @@
 				</a>
 			</div>
 			<div class="div9">
+				<a href="https://www.onlinemetals.com/" target="_blank" rel="noreferrer noopener">
+					<img src={onlinemetals} alt="Online Metals" style="border-radius: 10%" />
+				</a>
+			</div>
+			<div class="div10">
 				<a class="logo-click" href="mailto:contact@ingenuity.team?subject=Sponsorship Inquiry"
 					>Your logo here?</a
 				>
@@ -413,7 +479,7 @@
 			<!-- TODO: ADD SPONSOR IMAGES HERE -->
 		</div>
 	</div>
-	<div class="center">
+	<!-- <div class="center">
 		<h2>Videos</h2>
 		<iframe
 			width="560"
@@ -425,6 +491,39 @@
 			referrerpolicy="strict-origin-when-cross-origin"
 			allowfullscreen
 		></iframe>
+    </div> -->
+	<div class="center">
+		<h2>Gallery</h2>
+		<div class="carousel-row">
+			<button
+				type="button"
+				class="strip-nav"
+				onclick={() => {
+					galleryIndexes = moveCarouselLeft(galleryIndexes, galleryLength);
+				}}
+				aria-label="Previous gallery items"
+			>
+				<img src="https://icons.hackclub.com/api/icons/white/view-back" alt="" />
+			</button>
+			<div class="carousel-strip">
+				{#each gallerySlots as item (item.key)}
+					<div class="gallery-item" animate:flip={{ duration: 400 }}>
+						<img src={item.img} alt={item.name} class="gallery-img" />
+						<p>{item.name}</p>
+					</div>
+				{/each}
+			</div>
+			<button
+				type="button"
+				class="strip-nav"
+				onclick={() => {
+					galleryIndexes = moveCarouselRight(galleryIndexes, galleryLength);
+				}}
+				aria-label="Next"
+			>
+				<img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="" />
+			</button>
+		</div>
 	</div>
 	<div class="center contact">
 		<h2>Interested?</h2>
@@ -441,23 +540,38 @@
 <!-- TODO: FOOTER -->
 
 <style>
+	.center {
+		display: block;
+		text-align: center;
+	}
 	.member-section {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 	}
 
-	.member-row {
+	.carousel-row {
 		display: flex;
+		justify-content: center;
+		align-items: center;
 		flex-direction: row;
-		align-items: flex-start;
+		margin-top: 1rem;
 	}
-
 	.member-item {
 		display: flex;
 		flex-direction: column;
 	}
-
+	.gallery-item {
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		border-radius: 1rem;
+		transition: transform 0.2s ease;
+	}
+	.gallery-item:hover {
+		transform: scale(1.06);
+		z-index: 1000;
+	}
 	.member-item p {
 		margin-bottom: 0;
 	}
@@ -496,17 +610,19 @@
 		width: clamp(1.5rem, 3vw, 2.5rem);
 	}
 
-	.member-row:hover .strip-nav {
+	.carousel-row:hover .strip-nav {
 		opacity: 1;
 	}
 
-	.member-strip {
+	.carousel-strip {
 		display: flex;
 		flex-direction: row;
 		align-items: flex-start;
 		justify-content: center;
-		gap: 1rem;
+		gap: 3rem;
 		overflow: hidden;
+		padding-block: 1.5rem;
+		margin-block: -1.5rem;
 		mask-image: linear-gradient(to right, transparent 0%, black 30%, black 70%, transparent 100%);
 		width: calc(100% + (var(--gutter) * 2));
 		margin-left: calc(var(--gutter) * -1);
@@ -548,6 +664,13 @@
 		aspect-ratio: 1 / 1;
 		object-fit: cover;
 	}
+	.gallery-img {
+		display: block;
+		width: clamp(8rem, 20vw, 70rem);
+		height: clamp(8rem, 20vw, 70rem);
+		object-fit: cover;
+		border-radius: 1rem;
+	}
 
 	.block-grid {
 		display: grid;
@@ -564,12 +687,6 @@
 		display: block;
 		text-align: right;
 	}
-
-	.center {
-		display: block;
-		text-align: center;
-	}
-
 	.robot,
 	.community {
 		grid-column: 2;
@@ -779,6 +896,10 @@
 	.div6,
 	.div7 {
 		display: none;
+	}
+	.div10 {
+		grid-area: 4 / 2 / 5 / 3;
+		justify-self: center;
 	}
 
 	.image-robot {
@@ -1032,7 +1153,7 @@
 			justify-self: center;
 		}
 
-		.div9 a {
+		.div10 a {
 			text-decoration: underline;
 		}
 	}
