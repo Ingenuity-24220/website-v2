@@ -14,6 +14,8 @@
 	import chipotle from '$lib/assets/logos/chipotle.svg';
 	import optimum from '$lib/assets/logos/optimum.png';
 	import onlinemetals from '$lib/assets/logos/onlinemetals.jpg';
+	import tokyobuffet from '$lib/assets/logos/tokyobuffet.png';
+	import broadwayhotpot from '$lib/assets/logos/broadwayhotpot.png';
 	import summercamp from '$lib/assets/images/summercamp.webp';
 	import rftr from '$lib/assets/images/rftr.jpg';
 	import v5fll from '$lib/assets/images/v5fll.jpg';
@@ -472,6 +474,16 @@
 				</a>
 			</div>
 			<div class="div10">
+				<a href="https://tokyobuffetmd.com/" target="_blank" rel="noreferrer noopener">
+					<img src={tokyobuffet} alt="Tokyo Buffet" />
+				</a>
+			</div>
+			<div class="div11">
+				<a href="https://broadwayhotpot.com/" target="_blank" rel="noreferrer noopener">
+					<img src={broadwayhotpot} alt="Broadway Hot Pot" />
+				</a>
+			</div>
+			<div class="div12">
 				<a class="logo-click" href="mailto:contact@ingenuity.team?subject=Sponsorship Inquiry"
 					>Your logo here?</a
 				>
@@ -479,19 +491,6 @@
 			<!-- TODO: ADD SPONSOR IMAGES HERE -->
 		</div>
 	</div>
-	<!-- <div class="center">
-		<h2>Videos</h2>
-		<iframe
-			width="560"
-			height="315"
-			src="https://www.youtube-nocookie.com/embed/9vO0fapHHuw?si=-ozYdNu7RATBeFcp"
-			title="YouTube video player"
-			frameborder="0"
-			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			referrerpolicy="strict-origin-when-cross-origin"
-			allowfullscreen
-		></iframe>
-    </div> -->
 	<div class="center">
 		<h2>Gallery</h2>
 		<div class="carousel-row">
@@ -519,7 +518,7 @@
 				onclick={() => {
 					galleryIndexes = moveCarouselRight(galleryIndexes, galleryLength);
 				}}
-				aria-label="Next"
+				aria-label="Next gallery items"
 			>
 				<img src="https://icons.hackclub.com/api/icons/white/right-caret" alt="" />
 			</button>
@@ -899,7 +898,6 @@
 	}
 	.div10 {
 		grid-area: 4 / 2 / 5 / 3;
-		justify-self: center;
 	}
 
 	.image-robot {
