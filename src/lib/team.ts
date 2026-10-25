@@ -45,14 +45,14 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				img: mentorni,
 				name: 'Mentor Ni',
 				role: 'Hardware Mentor',
-				bio: 'N/A'
+				bio: 'Rui Ni is a professor in the Department of Mechanical Engineering at Johns Hopkins University. His research focuses on the fundamental science of turbulence and multi-phase flows that involve more than one phase (i.e. liquid, solid, or gas) and has applications in next-generation energy systems, environmental engineering, and physiological flows in the human body.'
 			},
 			{
 				slug: 'erik',
 				img: erik,
 				name: 'Erik',
 				role: 'Team Co-captain',
-				bio: 'Erik is a team captain of Team Ingenuity. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior and enjoys playing squash in his free time.'
+				bio: 'Erik is a team co-captain of Team Ingenuity. With a keen eye for detail and a passion for engineering, Erik ensures that the robot is built to perform at its best during competitions. Erik is currently a Junior and enjoys playing squash in his free time.'
 			},
 			{
 				slug: 'nathan',
@@ -105,7 +105,7 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				name: 'Justin',
 				role: 'Software Specialist',
 				bio: 'Justin works alongside Niko on software for Team Ingenuity. He helps with website development and the more mathematical side of robotics. He is currently a sophomore. In his free time, you can find him playing piano or doing math.'
-			}
+			} 
 		]
 	},
 	{
