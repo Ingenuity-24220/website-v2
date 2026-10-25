@@ -484,7 +484,9 @@
 				</a>
 			</div>
 			<div class="div12">
-				<a class="logo-click" href="mailto:contact@ingenuity.team?subject=Sponsorship Inquiry">Your logo here?</a>
+				<a class="logo-click" href="mailto:contact@ingenuity.team?subject=Sponsorship Inquiry"
+					>Your logo here?</a
+				>
 			</div>
 		</div>
 	</div>

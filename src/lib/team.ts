@@ -105,7 +105,7 @@ export const teamGroups: { name: string; members: Member[] }[] = [
 				name: 'Justin',
 				role: 'Software Specialist',
 				bio: 'Justin works alongside Niko on software for Team Ingenuity. He helps with website development and the more mathematical side of robotics. He is currently a sophomore. In his free time, you can find him playing piano or doing math.'
-			} 
+			}
 		]
 	},
 	{
