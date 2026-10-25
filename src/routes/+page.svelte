@@ -17,11 +17,11 @@
 	import tokyobuffet from '$lib/assets/logos/tokyobuffet.png';
 	import broadwayhotpot from '$lib/assets/logos/broadwayhotpot.png';
 	import summercamp from '$lib/assets/images/summercamp.webp';
-	import rftr from '$lib/assets/images/rftr.jpg';
-	import v5fll from '$lib/assets/images/v5fll.jpg';
-	import fllumbc from '$lib/assets/images/fllumbc.jpg';
-	import ftcstates from '$lib/assets/images/ftcstates.jpg';
-	import fllmd from '$lib/assets/images/fllmd.jpg';
+	import rftr from '$lib/assets/images/rftr.webp';
+	import v5fll from '$lib/assets/images/v5fll.webp';
+	import fllumbc from '$lib/assets/images/fllumbc.webp';
+	import ftcstates from '$lib/assets/images/ftcstates.webp';
+	import fllmd from '$lib/assets/images/fllmd.webp';
 	import Footer from '$lib/components/footer.svelte';
 	import { flip } from 'svelte/animate';
 	import Header from '$lib/components/header.svelte';
