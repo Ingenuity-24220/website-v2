@@ -16,6 +16,7 @@
 	import onlinemetals from '$lib/assets/logos/onlinemetals.jpg';
 	import tokyobuffet from '$lib/assets/logos/tokyobuffet.png';
 	import broadwayhotpot from '$lib/assets/logos/broadwayhotpot.png';
+   import msbr from '$lib/assets/logos/msbr.png'
 	import summercamp from '$lib/assets/images/summercamp.webp';
 	import rftr from '$lib/assets/images/rftr.webp';
 	import v5fll from '$lib/assets/images/v5fll.webp';
@@ -483,7 +484,12 @@
 					<img src={broadwayhotpot} alt="Broadway Hot Pot" />
 				</a>
 			</div>
-			<div class="div12">
+         <div class="div12">
+            <a href="https://mdspace.org/" target = "_blank" rel="noreferrer noopener">
+               <img src={msbr} alt = "Maryland Space Business Roundtable"/>
+            </a>
+         </div>
+			<div class="div13">
 				<a class="logo-click" href="mailto:contact@ingenuity.team?subject=Sponsorship Inquiry"
 					>Your logo here?</a
 				>
@@ -849,6 +855,7 @@
 		gap: 1rem;
 		align-items: center;
 		justify-items: center;
+      place-items: center;
 		padding: 1rem;
 	}
 
@@ -898,7 +905,10 @@
 	.div10 {
 		grid-area: 4 / 2 / 5 / 3;
 	}
-
+   .div13{
+      grid-column: 2/3;
+   }
+   
 	.image-robot {
 		grid-column: 1;
 		display: flex;
